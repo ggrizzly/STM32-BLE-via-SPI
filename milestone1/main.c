@@ -49,10 +49,6 @@ uint8_t l = 0;
 uint8_t xl = 0;
 int buttonPressed = 0;
 
-uint32_t arrayLeds[8] = {GPIOE_LED3_RED, GPIOE_LED5_ORANGE, GPIOE_LED7_GREEN, GPIOE_LED9_BLUE, GPIOE_LED10_RED, GPIOE_LED8_ORANGE, GPIOE_LED6_GREEN, GPIOE_LED4_BLUE};
-
-uint8_t 
-
 uint8_t ReceiveData (uint8_t address) {
   uint8_t receive_data;
 
@@ -84,22 +80,17 @@ static THD_FUNCTION(counterThread,arg) {
   UNUSED(arg);
   int col = 0;
   while (TRUE) {
-    if (startedCount) {
-      palSetPad(GPIOE, arrayLeds[col]);
-      chThdSleepMilliseconds(50);
-      palClearPad(GPIOE, arrayLeds[col]);
-      col = (col+ 1)%8;
-    }
-    else {
     palSetPad(GPIOE, GPIOE_LED3_RED);
     chThdSleepMilliseconds(500);
     palClearPad(GPIOE, GPIOE_LED3_RED);
     chThdSleepMilliseconds(500);
-    }
-    chThdSleepMicroseconds(3);
   }
 }
 
+static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
+
+
+}
 
 static void cmd_myecho(BaseSequentialStream *chp, int argc, char *argv[]) {
   int32_t i;
@@ -111,6 +102,7 @@ static void cmd_myecho(BaseSequentialStream *chp, int argc, char *argv[]) {
 
 static const ShellCommand commands[] = {
   {"myecho", cmd_myecho},
+  {"b", cmd_bluefruit},
   {NULL, NULL}
 };
 
@@ -156,6 +148,7 @@ int main(void) {
    * Activates the serial driver 1 using the driver default configuration.
    * PC4(RX) and PC5(TX). The default baud rate is 9600.
    */
+
   sdStart(&SD1, NULL);
   palSetPadMode(GPIOC, 4, PAL_MODE_ALTERNATE(7));
   palSetPadMode(GPIOC, 5, PAL_MODE_ALTERNATE(7));
@@ -170,7 +163,7 @@ int main(void) {
   palSetPadMode(GPIOA, 7, PAL_MODE_ALTERNATE(5));     /* MOSI.*/
   palSetPadMode(GPIOA, 8, PAL_MODE_OUTPUT_PUSHPULL);  /* pressure sensor chip select */
   palSetPadMode(GPIOE, 3, PAL_MODE_OUTPUT_PUSHPULL);  /* gyro chip select */
-  palSetPad(GPIOA, 8);                                /* Deassert the pressure sensor chip select */
+  palSetPad(GPIOA, 8);                                /* Deassert the bluetooth sensor chip select */
 
   chprintf((BaseSequentialStream*)&SD1, "\n\rUp and Running\n\r");
   // chprintf((BaseSequentialStream*)&SD1, "Gyro Whoami Byte = 0x%02x\n\r",gyro_read_register(0x0F));
