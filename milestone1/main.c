@@ -21,7 +21,7 @@ static THD_WORKING_AREA(waShell,2048);
 static thread_t *shelltp1;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
-static SPIConfig pressure_cfg = {
+static SPIConfig bluefruit_config = {
   NULL,
   GPIOA,
   8,
@@ -29,56 +29,37 @@ static SPIConfig pressure_cfg = {
   0
 };
 
-/* SPI configuration, sets up PortE Bit 3 as the chip select for the gyro */
-static SPIConfig gyro_cfg = {
-  NULL,
-  GPIOE,
-  3,
-  SPI_CR1_BR_2 | SPI_CR1_BR_1,
-  0
-};
-
-uint32_t pressureData = 0;
-uint32_t globalTime = 0;
-int pressPos = 0;
-int startedCount = 0;
-uint8_t pressureArray[15000];
-
-uint8_t h = 0;
-uint8_t l = 0;
-uint8_t xl = 0;
-int buttonPressed = 0;
-
-uint8_t ReceiveData (uint8_t address) {
-  uint8_t receive_data;
-
-  address = address | 0x80;            /* Set the read bit (bit 7)         */
+void ReceiveData (char *receive_data, uint8_t size) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
-  spiStart(&SPID1, &pressure_cfg);     /* Setup transfer parameters.       */
+  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiSend(&SPID1, 1, &address);        /* Send the address byte */
-  spiReceive(&SPID1, 1,&receive_data); 
-  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
-  spiReleaseBus(&SPID1);               /* Ownership release.               */
-  return (receive_data);
-}
-
-void WriteCommand (uint8_t address, uint8_t data) {
-  address = address & (~0x80);         /* Clear the write bit (bit 7)      */
-  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
-  spiStart(&SPID1, &pressure_cfg);     /* Setup transfer parameters.       */
-  spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiSend(&SPID1, 1, &address);        /* Send the address byte */
-  spiSend(&SPID1, 1, &data); 
+  spiReceive(&SPID1, size, receive_data); 
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
 
+void WriteCommand (char *data, uint8_t size) {
+  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
+  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
+  spiSelect(&SPID1);                   /* Slave Select assertion.          */
+  spiSend(&SPID1, size, data); 
+  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
+  spiReleaseBus(&SPID1);               /* Ownership release.               */
+}
+
+void WriteRead (char *data, uint8_t size, char *receive_data) {
+  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
+  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
+  spiSelect(&SPID1);                   /* Slave Select assertion.          */
+  spiSend(&SPID1, size, data);
+  spiReceive(&SPID1, 20, receive_data);
+  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
+  spiReleaseBus(&SPID1);               /* Ownership release.               */
+}
 /* Thread that blinks North LED as an "alive" indicator */
 static THD_WORKING_AREA(waCounterThread,128);
 static THD_FUNCTION(counterThread,arg) {
   UNUSED(arg);
-  int col = 0;
   while (TRUE) {
     palSetPad(GPIOE, GPIOE_LED3_RED);
     chThdSleepMilliseconds(500);
@@ -88,8 +69,38 @@ static THD_FUNCTION(counterThread,arg) {
 }
 
 static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
+  UNUSED(argc);
+  if(!strcmp("cmd", argv[0])) {
+    uint8_t size = 0;
+    // while (argv[1][size] != '\0') {
+    //   size++;
+    // }
+    size = 6;
+    int receive_size = 20;
 
+    uint8_t testAT[6] = {0x10, 0x00, 0x0A, 0x02, 0x41, 0x54};
+    
+    char s_data[size];
+    char r_data[receive_size];
 
+    //strcpy(s_data, argv[1]);
+    // WriteCommand(s_data,size);
+    chprintf(chp, "Sent: %d %s \n\r", size, testAT);
+    //chThdSleepMicroseconds(100);
+    // ReceiveData(r_data, 2);
+    WriteRead(testAT,size, r_data);
+    int i = -1;
+    chprintf(chp, "Received:");
+    while(++i < receive_size) {
+      chprintf(chp, " %02x", r_data[i]);  
+    }
+    chprintf(chp, "\n\r");
+    i = -1;
+    while(++i < receive_size && r_data[i] != '\n') {
+      chprintf(chp, "%c ", r_data[i]);
+    }
+    chprintf(chp, "\n\r");
+  }
 }
 
 static void cmd_myecho(BaseSequentialStream *chp, int argc, char *argv[]) {
@@ -102,7 +113,7 @@ static void cmd_myecho(BaseSequentialStream *chp, int argc, char *argv[]) {
 
 static const ShellCommand commands[] = {
   {"myecho", cmd_myecho},
-  {"b", cmd_bluefruit},
+  {"bf", cmd_bluefruit},
   {NULL, NULL}
 };
 
@@ -164,6 +175,9 @@ int main(void) {
   palSetPadMode(GPIOA, 8, PAL_MODE_OUTPUT_PUSHPULL);  /* pressure sensor chip select */
   palSetPadMode(GPIOE, 3, PAL_MODE_OUTPUT_PUSHPULL);  /* gyro chip select */
   palSetPad(GPIOA, 8);                                /* Deassert the bluetooth sensor chip select */
+  palSetPadMode(GPIOC, GPIOC_PIN3, PAL_MODE_INPUT_PULLUP); /* IRQ pin */
+
+
 
   chprintf((BaseSequentialStream*)&SD1, "\n\rUp and Running\n\r");
   // chprintf((BaseSequentialStream*)&SD1, "Gyro Whoami Byte = 0x%02x\n\r",gyro_read_register(0x0F));

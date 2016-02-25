@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cckTLuxj.s 			page 1
+ARM GAS  /tmp/cc39bRam.s 			page 1
 
 
    1              		.syntax unified
@@ -17,7 +17,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   14              		.file	"board.c"
   15              		.text
   16              	.Ltext0:
-  17              		.section	.gnu.lto_.jmpfuncs.eab92f5e0c4ac5d,"",%progbits
+  17              		.section	.gnu.lto_.jmpfuncs.ffb71183cc24ddf3,"",%progbits
   18 0000 789C6362 		.ascii	"x\234cb`b\300\006\330\2414H\226\221\201\001\000\001"
   18      6062C006 
   18      D8A13448 
@@ -25,7 +25,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   18      0001
   19 0012 39000F   		.ascii	"9\000\017"
   20              		.text
-  21              		.section	.gnu.lto_.inline.eab92f5e0c4ac5d,"",%progbits
+  21              		.section	.gnu.lto_.inline.ffb71183cc24ddf3,"",%progbits
   22 0000 789C6362 		.ascii	"x\234cb`b\300\006\264\2414P\226\205\207\021\254\210"
   22      6062C006 
   22      B4A13450 
@@ -37,14 +37,14 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   23      15660000 
   23      2CE001E7 
   24              		.text
-  25              		.section	.gnu.lto_.pureconst.eab92f5e0c4ac5d,"",%progbits
+  25              		.section	.gnu.lto_.pureconst.ffb71183cc24ddf3,"",%progbits
   26 0000 789C6362 		.ascii	"x\234cb`b`e\200\000&\006\011F\006\000\000\346\000%"
   26      60626065 
   26      80002606 
   26      09460600 
   26      00E60025 
   27              		.text
-  28              		.section	.gnu.lto___early_init.eab92f5e0c4ac5d,"",%progbits
+  28              		.section	.gnu.lto___early_init.ffb71183cc24ddf3,"",%progbits
   29 0000 789C6362 		.ascii	"x\234cb`b@\007\222@\\\003\304\026@\314\310\314\300\310"
   29      60624007 
   29      92405C03 
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   31 0026 1FC90856 		.ascii	"\037\311\010V\273\236\351\300\203\377\377\327\31596"
   31      BB9EE9C0 
   31      83FFFFD7 
-ARM GAS  /tmp/cckTLuxj.s 			page 2
+ARM GAS  /tmp/cc39bRam.s 			page 2
 
 
   31      CD3936
@@ -94,7 +94,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   38 00b3 97CC0000 		.ascii	"\227\314\000\000f\2473\270"
   38      66A733B8 
   39              		.text
-  40              		.section	.gnu.lto_boardInit.eab92f5e0c4ac5d,"",%progbits
+  40              		.section	.gnu.lto_boardInit.ffb71183cc24ddf3,"",%progbits
   41 0000 789C6362 		.ascii	"x\234cb`b@\007\222@\034\014\304\026@\314\310\314\300"
   41      60624007 
   41      92401C0C 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   45      12A42D94 
   45      91094433 
   45      5F64604C 
-ARM GAS  /tmp/cckTLuxj.s 			page 3
+ARM GAS  /tmp/cc39bRam.s 			page 3
 
 
   45      645CC8C8 
@@ -141,7 +141,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   49      00009F
   50 0099 5C28B7   		.ascii	"\\(\267"
   51              		.text
-  52              		.section	.gnu.lto_.symbol_nodes.eab92f5e0c4ac5d,"",%progbits
+  52              		.section	.gnu.lto_.symbol_nodes.ffb71183cc24ddf3,"",%progbits
   53 0000 789C45C8 		.ascii	"x\234E\310\261\015\2000\000\003\301\267\243\214\305"
   53      B10D8030 
   53      0003C1B7 
@@ -159,13 +159,13 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   56 0038 67880913 		.ascii	"g\210\011\023&\020\352"
   56      2610EA
   57              		.text
-  58              		.section	.gnu.lto_.refs.eab92f5e0c4ac5d,"",%progbits
+  58              		.section	.gnu.lto_.refs.ffb71183cc24ddf3,"",%progbits
   59 0000 789C6362 		.ascii	"x\234cb`b`d\200\002\000\000F\000\006"
   59      60626064 
   59      80020000 
   59      460006
   60              		.text
-  61              		.section	.gnu.lto_.decls.eab92f5e0c4ac5d,"",%progbits
+  61              		.section	.gnu.lto_.decls.ffb71183cc24ddf3,"",%progbits
   62 0000 789CBD96 		.ascii	"x\234\275\226_L\034E\034\307\177\263wP\256\275\264\015"
   62      5F4C1C45 
   62      1CC77FB3 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   63      B495
   64 0024 840A29AD 		.ascii	"\204\012)\255\321\247u\271]\270\213w\267\347\336\242"
   64      D1A775B9 
-ARM GAS  /tmp/cckTLuxj.s 			page 4
+ARM GAS  /tmp/cc39bRam.s 			page 4
 
 
   64      5DB88B77 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   75      A13ABB09 
   75      8FDE438C 
   75      5BE8B4
-ARM GAS  /tmp/cckTLuxj.s 			page 5
+ARM GAS  /tmp/cc39bRam.s 			page 5
 
 
   76 0103 A6AE5EF7 		.ascii	"\246\256^\367\017\237\322r\271:\303;\003G\021\261=\217"
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   87      C85A918E 
   87      CFC83006 
   87      BE
-ARM GAS  /tmp/cckTLuxj.s 			page 6
+ARM GAS  /tmp/cc39bRam.s 			page 6
 
 
   88 01da 679CAA2B 		.ascii	"g\234\252+G\345\316|\276\237,\037\217f(\350W\217\023"
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
   98      36DCB9
   99 02a9 0EFBB822 		.ascii	"\016\373\270\"X\262\270\262Q\033l\246\"\330 * \315\266"
   99      58B2B8B2 
-ARM GAS  /tmp/cckTLuxj.s 			page 7
+ARM GAS  /tmp/cc39bRam.s 			page 7
 
 
   99      511B6CA6 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  110      2941E585 
  110      646F2316 
  111 038e 2E014BFF 		.ascii	".\001K\377)\026\000\333`h\3757\307\370\357-\366\317"
-ARM GAS  /tmp/cckTLuxj.s 			page 8
+ARM GAS  /tmp/cc39bRam.s 			page 8
 
 
  111      291600DB 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  122      369A08C7 
  122      7A05914D 
  122      294234A1 
-ARM GAS  /tmp/cckTLuxj.s 			page 9
+ARM GAS  /tmp/cc39bRam.s 			page 9
 
 
  122      1019
@@ -514,7 +514,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  128      FC35
  129 04ed 52       		.ascii	"R"
  130              		.text
- 131              		.section	.gnu.lto_.symtab.eab92f5e0c4ac5d,"",%progbits
+ 131              		.section	.gnu.lto_.symtab.ffb71183cc24ddf3,"",%progbits
  132 0000 5F5F6561 		.ascii	"__early_init\000\000\000\000\000\000\000\000\000\000"
  132      726C795F 
  132      696E6974 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  136 0051 0000AB00 		.ascii	"\000\000\253\000\000\000stm32_clock_init\000\000\002"
  136      00007374 
  136      6D33325F 
-ARM GAS  /tmp/cckTLuxj.s 			page 10
+ARM GAS  /tmp/cc39bRam.s 			page 10
 
 
  136      636C6F63 
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  168              		.align	2
  169              		.p2align 4,,15
  170              		.global	boardInit
-ARM GAS  /tmp/cckTLuxj.s 			page 11
+ARM GAS  /tmp/cc39bRam.s 			page 11
 
 
  171              		.thumb
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  222 007c 15551501 		.word	18175253
  223 0080 FF000000 		.word	255
  224 0084 00000000 		.word	0
-ARM GAS  /tmp/cckTLuxj.s 			page 12
+ARM GAS  /tmp/cc39bRam.s 			page 12
 
 
  225 0088 00000000 		.word	0
@@ -695,7 +695,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  256 000c E6040000 		.4byte	.LASF119
  257 0010 01       		.byte	0x1
  258 0011 FB010000 		.4byte	.LASF120
- 259 0015 69020000 		.4byte	.LASF121
+ 259 0015 45020000 		.4byte	.LASF121
  260 0019 00000000 		.4byte	.Ldebug_ranges0+0
  261 001d 00000000 		.4byte	0
  262 0021 00000000 		.4byte	.Ldebug_line0
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  279 0041 DE000000 		.4byte	.LASF1
  280 0045 03       		.uleb128 0x3
  281 0046 37000000 		.4byte	.LASF3
-ARM GAS  /tmp/cckTLuxj.s 			page 13
+ARM GAS  /tmp/cc39bRam.s 			page 13
 
 
  282 004a 03       		.byte	0x3
@@ -737,7 +737,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  295 0060 07       		.byte	0x7
  296 0061 D1010000 		.4byte	.LASF6
  297 0065 03       		.uleb128 0x3
- 298 0066 5F020000 		.4byte	.LASF7
+ 298 0066 9A020000 		.4byte	.LASF7
  299 006a 03       		.byte	0x3
  300 006b 37       		.byte	0x37
  301 006c 70000000 		.4byte	0x70
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  336 00b3 41       		.byte	0x41
  337 00b4 65000000 		.4byte	0x65
  338 00b8 03       		.uleb128 0x3
-ARM GAS  /tmp/cckTLuxj.s 			page 14
+ARM GAS  /tmp/cc39bRam.s 			page 14
 
 
  339 00b9 0F040000 		.4byte	.LASF16
@@ -821,7 +821,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  376 010b 41       		.byte	0x41
  377 010c AD000000 		.4byte	0xad
  378 0110 03       		.uleb128 0x3
- 379 0111 53020000 		.4byte	.LASF24
+ 379 0111 8E020000 		.4byte	.LASF24
  380 0115 05       		.byte	0x5
  381 0116 43       		.byte	0x43
  382 0117 B8000000 		.4byte	0xb8
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  393 0131 03       		.uleb128 0x3
  394 0132 57040000 		.4byte	.LASF27
  395 0136 06       		.byte	0x6
-ARM GAS  /tmp/cckTLuxj.s 			page 15
+ARM GAS  /tmp/cc39bRam.s 			page 15
 
 
  396 0137 3F       		.byte	0x3f
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  450 01a3 E4000000 		.4byte	0xe4
  451 01a7 1C       		.byte	0x1c
  452 01a8 06       		.uleb128 0x6
-ARM GAS  /tmp/cckTLuxj.s 			page 16
+ARM GAS  /tmp/cc39bRam.s 			page 16
 
 
  453 01a9 DE030000 		.4byte	.LASF36
@@ -919,7 +919,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  468 01c8 11050000 		.4byte	0x511
  469 01cc 20       		.byte	0x20
  470 01cd 08       		.uleb128 0x8
- 471 01ce AD020000 		.4byte	.LASF38
+ 471 01ce 15060000 		.4byte	.LASF38
  472 01d2 07       		.byte	0x7
  473 01d3 3C01     		.2byte	0x13c
  474 01d5 2D020000 		.4byte	0x22d
@@ -956,9 +956,9 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  505 021a 3C       		.byte	0x3c
  506 021b 00       		.byte	0
  507 021c 03       		.uleb128 0x3
- 508 021d C0020000 		.4byte	.LASF44
+ 508 021d B8020000 		.4byte	.LASF44
  509 0221 06       		.byte	0x6
-ARM GAS  /tmp/cckTLuxj.s 			page 17
+ARM GAS  /tmp/cc39bRam.s 			page 17
 
 
  510 0222 44       		.byte	0x44
@@ -1014,11 +1014,11 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  560 0287 57       		.byte	0x57
  561 0288 8C020000 		.4byte	0x28c
  562 028c 0A       		.uleb128 0xa
- 563 028d 45020000 		.4byte	.LASF51
+ 563 028d 80020000 		.4byte	.LASF51
  564 0291 1C       		.byte	0x1c
  565 0292 07       		.byte	0x7
  566 0293 9201     		.2byte	0x192
-ARM GAS  /tmp/cckTLuxj.s 			page 18
+ARM GAS  /tmp/cc39bRam.s 			page 18
 
 
  567 0295 E8020000 		.4byte	0x2e8
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  621 0307 46030000 		.4byte	.LASF59
  622 030b 06       		.byte	0x6
  623 030c 61       		.byte	0x61
-ARM GAS  /tmp/cckTLuxj.s 			page 19
+ARM GAS  /tmp/cc39bRam.s 			page 19
 
 
  624 030d 11030000 		.4byte	0x311
@@ -1107,7 +1107,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  647 0340 26010000 		.4byte	0x126
  648 0344 08       		.byte	0x8
  649 0345 08       		.uleb128 0x8
- 650 0346 15060000 		.4byte	.LASF64
+ 650 0346 E2020000 		.4byte	.LASF64
  651 034a 07       		.byte	0x7
  652 034b 7101     		.2byte	0x171
  653 034d E8020000 		.4byte	0x2e8
@@ -1125,7 +1125,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  665 0366 66       		.byte	0x66
  666 0367 6B030000 		.4byte	0x36b
  667 036b 0A       		.uleb128 0xa
- 668 036c D3020000 		.4byte	.LASF67
+ 668 036c CB020000 		.4byte	.LASF67
  669 0370 10       		.byte	0x10
  670 0371 07       		.byte	0x7
  671 0372 7D01     		.2byte	0x17d
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  678 0384 00       		.byte	0
  679 0385 08       		.uleb128 0x8
  680 0386 4A010000 		.4byte	.LASF62
-ARM GAS  /tmp/cckTLuxj.s 			page 20
+ARM GAS  /tmp/cc39bRam.s 			page 20
 
 
  681 038a 07       		.byte	0x7
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  735 03fe 07       		.byte	0x7
  736 03ff CC01     		.2byte	0x1cc
  737 0401 60030000 		.4byte	0x360
-ARM GAS  /tmp/cckTLuxj.s 			page 21
+ARM GAS  /tmp/cc39bRam.s 			page 21
 
 
  738 0405 1C       		.byte	0x1c
@@ -1230,14 +1230,14 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  764 043a 04       		.uleb128 0x4
  765 043b 04       		.byte	0x4
  766 043c 07       		.byte	0x7
- 767 043d B7020000 		.4byte	.LASF78
+ 767 043d AF020000 		.4byte	.LASF78
  768 0441 03       		.uleb128 0x3
  769 0442 41010000 		.4byte	.LASF79
  770 0446 08       		.byte	0x8
  771 0447 65       		.byte	0x65
  772 0448 04030000 		.4byte	0x304
  773 044c 03       		.uleb128 0x3
- 774 044d A2020000 		.4byte	.LASF80
+ 774 044d A4020000 		.4byte	.LASF80
  775 0451 08       		.byte	0x8
  776 0452 6D       		.byte	0x6d
  777 0453 C3000000 		.4byte	0xc3
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  792 0471 41000000 		.4byte	.LASF82
  793 0475 24       		.byte	0x24
  794 0476 09       		.byte	0x9
-ARM GAS  /tmp/cckTLuxj.s 			page 22
+ARM GAS  /tmp/cc39bRam.s 			page 22
 
 
  795 0477 FD       		.byte	0xfd
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  849 04e5 41040000 		.4byte	0x441
  850 04e9 20       		.byte	0x20
  851 04ea 00       		.byte	0
-ARM GAS  /tmp/cckTLuxj.s 			page 23
+ARM GAS  /tmp/cc39bRam.s 			page 23
 
 
  852 04eb 09       		.uleb128 0x9
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  906 055d A5050000 		.4byte	0x5a5
  907 0561 12       		.uleb128 0x12
  908 0562 18040000 		.4byte	.LASF91
-ARM GAS  /tmp/cckTLuxj.s 			page 24
+ARM GAS  /tmp/cc39bRam.s 			page 24
 
 
  909 0566 07       		.byte	0x7
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  963 05d4 0C       		.byte	0xc
  964 05d5 3E       		.byte	0x3e
  965 05d6 1A060000 		.4byte	0x61a
-ARM GAS  /tmp/cckTLuxj.s 			page 25
+ARM GAS  /tmp/cc39bRam.s 			page 25
 
 
  966 05da 0C       		.byte	0xc
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1020 0646 04       		.byte	0x4
  1021 0647 06       		.uleb128 0x6
  1022 0648 B5010000 		.4byte	.LASF105
-ARM GAS  /tmp/cckTLuxj.s 			page 26
+ARM GAS  /tmp/cc39bRam.s 			page 26
 
 
  1023 064c 0D       		.byte	0xd
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1077 06bb 1801     		.2byte	0x118
  1078 06bd 86060000 		.4byte	0x686
  1079 06c1 38       		.byte	0x38
-ARM GAS  /tmp/cckTLuxj.s 			page 27
+ARM GAS  /tmp/cc39bRam.s 			page 27
 
 
  1080 06c2 08       		.uleb128 0x8
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1134 073b 07       		.byte	0x7
  1135 073c 0B02     		.2byte	0x20b
  1136 073e D3030000 		.4byte	0x3d3
-ARM GAS  /tmp/cckTLuxj.s 			page 28
+ARM GAS  /tmp/cc39bRam.s 			page 28
 
 
  1137 0742 1E       		.uleb128 0x1e
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1191 0025 3B       		.uleb128 0x3b
  1192 0026 0B       		.uleb128 0xb
  1193 0027 49       		.uleb128 0x49
-ARM GAS  /tmp/cckTLuxj.s 			page 29
+ARM GAS  /tmp/cc39bRam.s 			page 29
 
 
  1194 0028 13       		.uleb128 0x13
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1248 005e 13       		.uleb128 0x13
  1249 005f 38       		.uleb128 0x38
  1250 0060 0B       		.uleb128 0xb
-ARM GAS  /tmp/cckTLuxj.s 			page 30
+ARM GAS  /tmp/cc39bRam.s 			page 30
 
 
  1251 0061 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1305 0097 13       		.uleb128 0x13
  1306 0098 00       		.byte	0
  1307 0099 00       		.byte	0
-ARM GAS  /tmp/cckTLuxj.s 			page 31
+ARM GAS  /tmp/cc39bRam.s 			page 31
 
 
  1308 009a 0D       		.uleb128 0xd
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1362 00d0 0B       		.uleb128 0xb
  1363 00d1 3A       		.uleb128 0x3a
  1364 00d2 0B       		.uleb128 0xb
-ARM GAS  /tmp/cckTLuxj.s 			page 32
+ARM GAS  /tmp/cc39bRam.s 			page 32
 
 
  1365 00d3 3B       		.uleb128 0x3b
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1419 0109 03       		.uleb128 0x3
  1420 010a 0E       		.uleb128 0xe
  1421 010b 3A       		.uleb128 0x3a
-ARM GAS  /tmp/cckTLuxj.s 			page 33
+ARM GAS  /tmp/cc39bRam.s 			page 33
 
 
  1422 010c 0B       		.uleb128 0xb
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1476 0146 00       		.byte	0
  1477 0147 00       		.byte	0
  1478 0148 1B       		.uleb128 0x1b
-ARM GAS  /tmp/cckTLuxj.s 			page 34
+ARM GAS  /tmp/cc39bRam.s 			page 34
 
 
  1479 0149 2E       		.uleb128 0x2e
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1533 0180 00       		.byte	0
  1534 0181 00       		.byte	0
  1535 0182 1E       		.uleb128 0x1e
-ARM GAS  /tmp/cckTLuxj.s 			page 35
+ARM GAS  /tmp/cc39bRam.s 			page 35
 
 
  1536 0183 34       		.uleb128 0x34
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1590 0010 00000000 		.4byte	0
  1591 0014 00000000 		.4byte	0
  1592              		.section	.debug_line,"",%progbits
-ARM GAS  /tmp/cckTLuxj.s 			page 36
+ARM GAS  /tmp/cc39bRam.s 			page 36
 
 
  1593              	.Ldebug_line0:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1618 0082 6D61696E 		.ascii	"mainthread\000"
  1618      74687265 
  1618      616400
-ARM GAS  /tmp/cckTLuxj.s 			page 37
+ARM GAS  /tmp/cc39bRam.s 			page 37
 
 
  1619              	.LASF89:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1646      746100
  1647              	.LASF20:
  1648 0120 74737461 		.ascii	"tstate_t\000"
-ARM GAS  /tmp/cckTLuxj.s 			page 38
+ARM GAS  /tmp/cc39bRam.s 			page 38
 
 
  1648      74655F74 
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1678      67717565 
  1678      756500
  1679              	.LASF105:
-ARM GAS  /tmp/cckTLuxj.s 			page 39
+ARM GAS  /tmp/cc39bRam.s 			page 39
 
 
  1680 01b5 6F737065 		.ascii	"ospeedr\000"
@@ -2321,54 +2321,53 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1698              	.LASF19:
  1699 023d 746D6F64 		.ascii	"tmode_t\000"
  1699      655F7400 
- 1700              	.LASF51:
- 1701 0245 63685F72 		.ascii	"ch_ready_list\000"
- 1701      65616479 
- 1701      5F6C6973 
- 1701      7400
- 1702              	.LASF24:
- 1703 0253 6576656E 		.ascii	"eventmask_t\000"
- 1703      746D6173 
- 1703      6B5F7400 
- 1704              	.LASF7:
- 1705 025f 5F5F696E 		.ascii	"__int32_t\000"
- 1705      7433325F 
- 1705      7400
- 1706              	.LASF121:
- 1707 0269 2F752F67 		.ascii	"/u/galexeev/classes/P442WifiTrailCounterProject/lab"
- 1707      616C6578 
- 1707      6565762F 
-ARM GAS  /tmp/cckTLuxj.s 			page 40
+ 1700              	.LASF121:
+ 1701 0245 2F752F67 		.ascii	"/u/galexeev/classes/P442WifiTrailCounterProject/mil"
+ 1701      616C6578 
+ 1701      6565762F 
+ 1701      636C6173 
+ 1701      7365732F 
+ 1702 0278 6573746F 		.ascii	"estone1\000"
+ 1702      6E653100 
+ 1703              	.LASF51:
+ 1704 0280 63685F72 		.ascii	"ch_ready_list\000"
+ 1704      65616479 
+ 1704      5F6C6973 
+ 1704      7400
+ 1705              	.LASF24:
+ 1706 028e 6576656E 		.ascii	"eventmask_t\000"
+ 1706      746D6173 
+ 1706      6B5F7400 
+ARM GAS  /tmp/cc39bRam.s 			page 40
 
 
- 1707      636C6173 
- 1707      7365732F 
- 1708 029c 355F3434 		.ascii	"5_442\000"
- 1708      3200
+ 1707              	.LASF7:
+ 1708 029a 5F5F696E 		.ascii	"__int32_t\000"
+ 1708      7433325F 
+ 1708      7400
  1709              	.LASF80:
- 1710 02a2 73746B61 		.ascii	"stkalign_t\000"
+ 1710 02a4 73746B61 		.ascii	"stkalign_t\000"
  1710      6C69676E 
  1710      5F7400
- 1711              	.LASF38:
- 1712 02ad 705F7761 		.ascii	"p_waiting\000"
- 1712      6974696E 
- 1712      6700
- 1713              	.LASF78:
- 1714 02b7 73697A65 		.ascii	"sizetype\000"
- 1714      74797065 
- 1714      00
- 1715              	.LASF44:
- 1716 02c0 74687265 		.ascii	"thread_reference_t\000"
- 1716      61645F72 
- 1716      65666572 
- 1716      656E6365 
- 1716      5F7400
- 1717              	.LASF67:
- 1718 02d3 63685F76 		.ascii	"ch_virtual_timers_list\000"
- 1718      69727475 
- 1718      616C5F74 
- 1718      696D6572 
- 1718      735F6C69 
+ 1711              	.LASF78:
+ 1712 02af 73697A65 		.ascii	"sizetype\000"
+ 1712      74797065 
+ 1712      00
+ 1713              	.LASF44:
+ 1714 02b8 74687265 		.ascii	"thread_reference_t\000"
+ 1714      61645F72 
+ 1714      65666572 
+ 1714      656E6365 
+ 1714      5F7400
+ 1715              	.LASF67:
+ 1716 02cb 63685F76 		.ascii	"ch_virtual_timers_list\000"
+ 1716      69727475 
+ 1716      616C5F74 
+ 1716      696D6572 
+ 1716      735F6C69 
+ 1717              	.LASF64:
+ 1718 02e2 76745F66 		.ascii	"vt_func\000"
+ 1718      756E6300 
  1719              	.LASF68:
  1720 02ea 76745F6C 		.ascii	"vt_lasttime\000"
  1720      61737474 
@@ -2398,10 +2397,10 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1733              	.LASF56:
  1734 032b 725F6F6C 		.ascii	"r_older\000"
  1734      64657200 
-ARM GAS  /tmp/cckTLuxj.s 			page 41
-
-
  1735              	.LASF12:
+ARM GAS  /tmp/cc39bRam.s 			page 41
+
+
  1736 0333 5F5F7569 		.ascii	"__uint64_t\000"
  1736      6E743634 
  1736      5F7400
@@ -2458,10 +2457,10 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1764      7400
  1765              	.LASF53:
  1766 03c2 725F7072 		.ascii	"r_prio\000"
-ARM GAS  /tmp/cckTLuxj.s 			page 42
-
-
  1766      696F00
+ARM GAS  /tmp/cc39bRam.s 			page 42
+
+
  1767              	.LASF110:
  1768 03c9 50414461 		.ascii	"PAData\000"
  1768      746100
@@ -2518,10 +2517,10 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1794 0452 63686172 		.ascii	"char\000"
  1794      00
  1795              	.LASF27:
-ARM GAS  /tmp/cckTLuxj.s 			page 43
-
-
  1796 0457 74687265 		.ascii	"thread_t\000"
+ARM GAS  /tmp/cc39bRam.s 			page 43
+
+
  1796      61645F74 
  1796      00
  1797              	.LASF99:
@@ -2578,10 +2577,10 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1826 04de 75696E74 		.ascii	"uint8_t\000"
  1826      385F7400 
  1827              	.LASF119:
-ARM GAS  /tmp/cckTLuxj.s 			page 44
-
-
  1828 04e6 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ARM GAS  /tmp/cc39bRam.s 			page 44
+
+
  1828      4320342E 
  1828      382E3420 
  1828      32303134 
@@ -2636,25 +2635,26 @@ ARM GAS  /tmp/cckTLuxj.s 			page 1
  1847              	.LASF31:
  1848 060f 705F6374 		.ascii	"p_ctx\000"
  1848      7800
- 1849              	.LASF64:
- 1850 0615 76745F66 		.ascii	"vt_func\000"
-ARM GAS  /tmp/cckTLuxj.s 			page 45
+ 1849              	.LASF38:
+ 1850 0615 705F7761 		.ascii	"p_waiting\000"
+ 1850      6974696E 
+ARM GAS  /tmp/cc39bRam.s 			page 45
 
 
- 1850      756E6300 
+ 1850      6700
  1851              		.comm	__gnu_lto_v1,1,1
  1852              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
-ARM GAS  /tmp/cckTLuxj.s 			page 46
+ARM GAS  /tmp/cc39bRam.s 			page 46
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 board.c
-     /tmp/cckTLuxj.s:147    .text.__early_init:00000000 $t
-     /tmp/cckTLuxj.s:153    .text.__early_init:00000000 __early_init
-     /tmp/cckTLuxj.s:168    .text.boardInit:00000000 $t
-     /tmp/cckTLuxj.s:174    .text.boardInit:00000000 boardInit
-     /tmp/cckTLuxj.s:190    .rodata.pal_default_config:00000000 pal_default_config
-     /tmp/cckTLuxj.s:187    .rodata.pal_default_config:00000000 $d
+     /tmp/cc39bRam.s:147    .text.__early_init:00000000 $t
+     /tmp/cc39bRam.s:153    .text.__early_init:00000000 __early_init
+     /tmp/cc39bRam.s:168    .text.boardInit:00000000 $t
+     /tmp/cc39bRam.s:174    .text.boardInit:00000000 boardInit
+     /tmp/cc39bRam.s:190    .rodata.pal_default_config:00000000 pal_default_config
+     /tmp/cc39bRam.s:187    .rodata.pal_default_config:00000000 $d
                             *COM*:00000001 __gnu_lto_v1
                      .debug_frame:00000010 $d
 

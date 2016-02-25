@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccXP3SV1.s 			page 1
+ARM GAS  /tmp/ccEDwDdq.s 			page 1
 
 
    1              		.syntax unified
@@ -17,7 +17,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   14              		.file	"testheap.c"
   15              		.text
   16              	.Ltext0:
-  17              		.section	.gnu.lto_.jmpfuncs.808bfd7a54622f47,"",%progbits
+  17              		.section	.gnu.lto_.jmpfuncs.551157147c2da695,"",%progbits
   18 0000 789C6362 		.ascii	"x\234cb`b\300\006f2Ch\240,\023S\004c&#\003\017\230\013"
   18      6062C006 
   18      66324368 
@@ -58,13 +58,13 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   25      047307DC 
   25      D2
   26 009d 17A0AC08 		.ascii	"\027\240\254\010\000\207\223\212\230"
-ARM GAS  /tmp/ccXP3SV1.s 			page 2
+ARM GAS  /tmp/ccEDwDdq.s 			page 2
 
 
   26      0087938A 
   26      98
   27              		.text
-  28              		.section	.gnu.lto_.inline.808bfd7a54622f47,"",%progbits
+  28              		.section	.gnu.lto_.inline.551157147c2da695,"",%progbits
   29 0000 789C6362 		.ascii	"x\234cb`b\300\006\3662Bh&\006\216\347\214g\031\030\031"
   29      6062C006 
   29      F6324268 
@@ -92,14 +92,14 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   34      0300F3DA 
   34      2085
   35              		.text
-  36              		.section	.gnu.lto_.pureconst.808bfd7a54622f47,"",%progbits
+  36              		.section	.gnu.lto_.pureconst.551157147c2da695,"",%progbits
   37 0000 789C6362 		.ascii	"x\234cb`b`e\200\000&\006\011&\011\000\001\000\000>"
   37      60626065 
   37      80002606 
   37      09260900 
   37      0100003E 
   38              		.text
-  39              		.section	.gnu.lto_heap1_execute.808bfd7a54622f47,"",%progbits
+  39              		.section	.gnu.lto_heap1_execute.551157147c2da695,"",%progbits
   40 0000 789CAD58 		.ascii	"x\234\255X]lTE\024>s\357\376uw\333\335n\2734})\224\246"
   40      5D6C5445 
   40      143E73EF 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   43 0044 101F3001 		.ascii	"\020\0370\001\264Q\243-\021\032\023\022\301\370\263"
   43      B451A32D 
   43      111A1312 
-ARM GAS  /tmp/ccXP3SV1.s 			page 3
+ARM GAS  /tmp/ccEDwDdq.s 			page 3
 
 
   43      C1F8B3
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   55 011b F32CCD10 		.ascii	"\363,\315\020\303F\006)\006\333\320`\313\370\244yJA"
   55      C3460629 
   55      06DBD060 
-ARM GAS  /tmp/ccXP3SV1.s 			page 4
+ARM GAS  /tmp/ccEDwDdq.s 			page 4
 
 
   55      CBF8A479 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   67      D19094CB 
   67      DBC9BD
   68 0202 833C3B69 		.ascii	"\203<;i\330\205\356\323\350\356\227\313\273i9E+\203"
-ARM GAS  /tmp/ccXP3SV1.s 			page 5
+ARM GAS  /tmp/ccEDwDdq.s 			page 5
 
 
   68      D885EED3 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   79      42D9
   80 02d2 DCF469BF 		.ascii	"\334\364i\277\251\373\352\024\267\201N\225f1\321\341"
   80      A9FBEA14 
-ARM GAS  /tmp/ccXP3SV1.s 			page 6
+ARM GAS  /tmp/ccEDwDdq.s 			page 6
 
 
   80      B7814E95 
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
   92 03a7 4239F3CE 		.ascii	"B9\363\316\312iQ\212\270\351\250\210f\025w\3131\256"
   92      CA69518A 
   92      B8E9A888 
-ARM GAS  /tmp/ccXP3SV1.s 			page 7
+ARM GAS  /tmp/ccEDwDdq.s 			page 7
 
 
   92      661577CB 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  103      6D1B5D
  104 0487 93F1262C 		.ascii	"\223\361&,f\365`\351\266A\311O9f\224\272-d\034\006\215"
  104      66F560E9 
-ARM GAS  /tmp/ccXP3SV1.s 			page 8
+ARM GAS  /tmp/ccEDwDdq.s 			page 8
 
 
  104      B641C94F 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  115      5F1A8B59 
  115      E969D8A6 
  115      BF10
-ARM GAS  /tmp/ccXP3SV1.s 			page 9
+ARM GAS  /tmp/ccEDwDdq.s 			page 9
 
 
  116 0564 E598FB1B 		.ascii	"\345\230\373\033\266\350\017c\350\313l\356\366{*loA"
@@ -525,7 +525,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  125 05fe FF1F59C0 		.ascii	"\377\037Y\300\276\345"
  125      BEE5
  126              		.text
- 127              		.section	.gnu.lto_heap1_setup.808bfd7a54622f47,"",%progbits
+ 127              		.section	.gnu.lto_heap1_setup.551157147c2da695,"",%progbits
  128 0000 789C6362 		.ascii	"x\234cb`b@\007\222@|\000\210\025\200\230\221\231\201"
  128      60624007 
  128      92407C00 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  129      9E89
  130 0025 B13E9211 		.ascii	"\261>\222\021\254v=\323\201\007\377\377\257\233pl\376"
  130      AC763DD3 
-ARM GAS  /tmp/ccXP3SV1.s 			page 10
+ARM GAS  /tmp/ccEDwDdq.s 			page 10
 
 
  130      8107FFFF 
@@ -580,7 +580,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  137      0000
  138 00cb 2B9D3CB6 		.ascii	"+\235<\266"
  139              		.text
- 140              		.section	.gnu.lto_.symbol_nodes.808bfd7a54622f47,"",%progbits
+ 140              		.section	.gnu.lto_.symbol_nodes.551157147c2da695,"",%progbits
  141 0000 789C4D90 		.ascii	"x\234M\220\313J\003A\020E\253\272g2QW\356C\262\363\247"
  141      CB4A0341 
  141      1045ABBA 
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  144 0036 C171167D 		.ascii	"\301q\026}\372\326\343V\365\0302\264i(\177\346\211\205"
  144      FAD6E356 
  144      F51832B4 
-ARM GAS  /tmp/ccXP3SV1.s 			page 11
+ARM GAS  /tmp/ccEDwDdq.s 			page 11
 
 
  144      69287FE6 
@@ -658,14 +658,14 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  155      E031538D 
  155      8429C6EF 
  155      E1
-ARM GAS  /tmp/ccXP3SV1.s 			page 12
+ARM GAS  /tmp/ccEDwDdq.s 			page 12
 
 
  156 0111 EDFBD66C 		.ascii	"\355\373\326l\340\307\323/\023a\201+"
  156      E0C7D32F 
  156      1361812B 
  157              		.text
- 158              		.section	.gnu.lto_.refs.808bfd7a54622f47,"",%progbits
+ 158              		.section	.gnu.lto_.refs.551157147c2da695,"",%progbits
  159 0000 789C6362 		.ascii	"x\234cb`bpe\200\000I\006&F\222!\023\02033\2620\261\002"
  159      60627065 
  159      80004906 
@@ -675,7 +675,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  160      03002AEC 
  160      00D3
  161              		.text
- 162              		.section	.gnu.lto_.decls.808bfd7a54622f47,"",%progbits
+ 162              		.section	.gnu.lto_.decls.551157147c2da695,"",%progbits
  163 0000 789CBD5A 		.ascii	"x\234\275Z{t\024\325\031\277w6\331G\262 j\265@=\270"
  163      7B7414D5 
  163      19BF7736 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  171 009b 46281F40 		.ascii	"F(\037@\371\030\312J(\253\241\254\201\262\036J\001\364"
  171      F918CA4A 
  171      28ABA1AC 
-ARM GAS  /tmp/ccXP3SV1.s 			page 13
+ARM GAS  /tmp/ccEDwDdq.s 			page 13
 
 
  171      81B21E4A 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  183      894D9BB1 
  183      4EA4FBD1 
  183      4C421B7E 
-ARM GAS  /tmp/ccXP3SV1.s 			page 14
+ARM GAS  /tmp/ccEDwDdq.s 			page 14
 
 
  183      885860F1 
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  194      3D05DBE4 
  195 0250 C81BACA9 		.ascii	"\310\033\254\251\345\350\003$,6R\240]\005Fo\363\030"
  195      E5E80324 
-ARM GAS  /tmp/ccXP3SV1.s 			page 15
+ARM GAS  /tmp/ccEDwDdq.s 			page 15
 
 
  195      2C3652A0 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  206      0AC3A045 
  206      74C80163 
  206      085C667D 
-ARM GAS  /tmp/ccXP3SV1.s 			page 16
+ARM GAS  /tmp/ccEDwDdq.s 			page 16
 
 
  207 0330 F2D3EC11 		.ascii	"\362\323\354\021p\365\204\007\002\300\204\224i\226;"
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  218      490E351E 
  218      2DE7
  219 0403 3506CDA0 		.ascii	"5\006\315\240\264\256\033=\371\352\336\257\343x\"5\300"
-ARM GAS  /tmp/ccXP3SV1.s 			page 17
+ARM GAS  /tmp/ccEDwDdq.s 			page 17
 
 
  219      B4AE1B3D 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  230      1B88191C 
  230      E6AFDAB9 
  230      F19D
-ARM GAS  /tmp/ccXP3SV1.s 			page 18
+ARM GAS  /tmp/ccEDwDdq.s 			page 18
 
 
  231 04dd 9CC1F466 		.ascii	"\234\301\364fi'`\272\\\243LH\211\305R\317\372T\266s"
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  243 05b1 D60842F7 		.ascii	"\326\010B\367E/\254\241y\320\326\031\305\032\306pFq"
  243      452FACA1 
  243      79D0D619 
-ARM GAS  /tmp/ccXP3SV1.s 			page 19
+ARM GAS  /tmp/ccEDwDdq.s 			page 19
 
 
  243      C51AC670 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  254      4DDE65CF 
  255 068c 1447E8A1 		.ascii	"\024G\350\241\221z\012\224H\242*TGj\027xY\325#\035\345"
  255      917A0A94 
-ARM GAS  /tmp/ccXP3SV1.s 			page 20
+ARM GAS  /tmp/ccEDwDdq.s 			page 20
 
 
  255      48A22A54 
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  266      B8B4
  267 0769 723FDD29 		.ascii	"r?\335)\312>\272\323\016s\203\255\3016\316R\225\233"
  267      CA3EBAD3 
-ARM GAS  /tmp/ccXP3SV1.s 			page 21
+ARM GAS  /tmp/ccEDwDdq.s 			page 21
 
 
  267      0E7383AD 
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  279      FC0750FF 
  279      4F374DD3 
  279      5EFEFB50 
-ARM GAS  /tmp/ccXP3SV1.s 			page 22
+ARM GAS  /tmp/ccEDwDdq.s 			page 22
 
 
  279      437C0925 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  291      95166FA7 
  291      3DBCA622 
  291      13BCE4C5 
-ARM GAS  /tmp/ccXP3SV1.s 			page 23
+ARM GAS  /tmp/ccEDwDdq.s 			page 23
 
 
  292 0929 A0DD49CF 		.ascii	"\240\335I\3175w\266\014V`q\255#=+\330\037\377 \232/"
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  303      304C
  304 09fb E4996056 		.ascii	"\344\231`V8\212uL\352$i\264\220\344S3I\244\3467\247"
  304      388A754C 
-ARM GAS  /tmp/ccXP3SV1.s 			page 24
+ARM GAS  /tmp/ccEDwDdq.s 			page 24
 
 
  304      EA2469B4 
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  315      2BC043D6 
  315      4FC658BC 
  315      DD417627 
-ARM GAS  /tmp/ccXP3SV1.s 			page 25
+ARM GAS  /tmp/ccEDwDdq.s 			page 25
 
 
  316 0ae1 0CCB1CB2 		.ascii	"\014\313\034\262F{S\371\026b\207\215\265N\\\272~\263"
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  327      90EB833E 
  327      EDD620BA 
  327      356447CA 
-ARM GAS  /tmp/ccXP3SV1.s 			page 26
+ARM GAS  /tmp/ccEDwDdq.s 			page 26
 
 
  327      08
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  339      2C5F3A8E 
  339      E5393FCB 
  339      570DF5
-ARM GAS  /tmp/ccXP3SV1.s 			page 27
+ARM GAS  /tmp/ccEDwDdq.s 			page 27
 
 
  340 0c8e 97078303 		.ascii	"\227\007\203\003\2411\220\253\032\303\225\226r\245\311"
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  351      CD642961 
  351      3C80B9AA 
  352 0d61 AA056E7C 		.ascii	"\252\005n|@p\007+\002\264\371p\206!\261\0111\225\211"
-ARM GAS  /tmp/ccXP3SV1.s 			page 28
+ARM GAS  /tmp/ccEDwDdq.s 			page 28
 
 
  352      4070072B 
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  364 0e2f 9755B2E5 		.ascii	"\227U\262\3451\227\300se1*\015i\024V\305\312\341\245"
  364      3197C073 
  364      65312A0D 
-ARM GAS  /tmp/ccXP3SV1.s 			page 29
+ARM GAS  /tmp/ccEDwDdq.s 			page 29
 
 
  364      691456C5 
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  375      84
  376 0f0f 19C7F6B1 		.ascii	"\031\307\366\261\000\240\311<\210\272\221\373\220\000"
  376      00A0C93C 
-ARM GAS  /tmp/ccXP3SV1.s 			page 30
+ARM GAS  /tmp/ccEDwDdq.s 			page 30
 
 
  376      88BA91FB 
@@ -1787,7 +1787,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  385      A3FF0192 
  386 0fb4 822739   		.ascii	"\202'9"
  387              		.text
- 388              		.section	.gnu.lto_.symtab.808bfd7a54622f47,"",%progbits
+ 388              		.section	.gnu.lto_.symtab.551157147c2da695,"",%progbits
  389 0000 70617474 		.ascii	"patternheap\000\000\000\000\000\000\000\000\000\000"
  389      65726E68 
  389      65617000 
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  390      73746865 
  390      61703100 
  390      00000000 
-ARM GAS  /tmp/ccXP3SV1.s 			page 31
+ARM GAS  /tmp/ccEDwDdq.s 			page 31
 
 
  391 0029 00000000 		.ascii	"\000\000\000\000\000\000\000\334\001\000\000test\000"
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  404      6F727465 
  404      782D6D34 
  404      2720272D 
-ARM GAS  /tmp/ccXP3SV1.s 			page 32
+ARM GAS  /tmp/ccEDwDdq.s 			page 32
 
 
  405 0033 272D6767 		.ascii	"'-ggdb' '-O2' '-fomit-frame-pointer' '-falign-funct"
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  447 001c 18BF     		it	ne
  448 001e 0121     		movne	r1, #1
  449 0020 0120     		movs	r0, #1
-ARM GAS  /tmp/ccXP3SV1.s 			page 33
+ARM GAS  /tmp/ccEDwDdq.s 			page 33
 
 
  450              	.LVL3:
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  504              		.loc 1 92 0
  505 006c 0446     		mov	r4, r0
  506              	.LVL16:
-ARM GAS  /tmp/ccXP3SV1.s 			page 34
+ARM GAS  /tmp/ccEDwDdq.s 			page 34
 
 
  507              		.loc 1 93 0
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  561 00b6 6248     		ldr	r0, .L8
  562              	.LVL31:
  563 00b8 FFF7FEFF 		bl	chHeapAlloc
-ARM GAS  /tmp/ccXP3SV1.s 			page 35
+ARM GAS  /tmp/ccEDwDdq.s 			page 35
 
 
  564              	.LVL32:
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  618 010e 51EB0C01 		adcs	r1, r1, ip
  619 0112 0520     		movs	r0, #5
  620 0114 FFF7FEFF 		bl	_test_assert
-ARM GAS  /tmp/ccXP3SV1.s 			page 36
+ARM GAS  /tmp/ccEDwDdq.s 			page 36
 
 
  621              	.LVL46:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  675 0174 0028     		cmp	r0, #0
  676 0176 7FF458AF 		bne	.L1
  677              		.loc 1 123 0
-ARM GAS  /tmp/ccXP3SV1.s 			page 37
+ARM GAS  /tmp/ccEDwDdq.s 			page 37
 
 
  678 017a 1021     		movs	r1, #16
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  732 01cc 4141     		adcs	r1, r1, r0
  733 01ce 0920     		movs	r0, #9
  734 01d0 FFF7FEFF 		bl	_test_assert
-ARM GAS  /tmp/ccXP3SV1.s 			page 38
+ARM GAS  /tmp/ccEDwDdq.s 			page 38
 
 
  735              	.LVL71:
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  789 0234 FFF7FEFF 		bl	_test_assert
  790              	.LVL81:
  791 0238 F7E6     		b	.L1
-ARM GAS  /tmp/ccXP3SV1.s 			page 39
+ARM GAS  /tmp/ccEDwDdq.s 			page 39
 
 
  792              	.LVL82:
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  842 0000 48656170 		.ascii	"Heap, allocation and fragmentation test\000"
  842      2C20616C 
  842      6C6F6361 
-ARM GAS  /tmp/ccXP3SV1.s 			page 40
+ARM GAS  /tmp/ccEDwDdq.s 			page 40
 
 
  842      74696F6E 
@@ -2390,7 +2390,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  883 000c 50050000 		.4byte	.LASF131
  884 0010 01       		.byte	0x1
  885 0011 C3040000 		.4byte	.LASF132
- 886 0015 53020000 		.4byte	.LASF133
+ 886 0015 2F020000 		.4byte	.LASF133
  887 0019 00000000 		.4byte	.Ldebug_ranges0+0
  888 001d 00000000 		.4byte	0
  889 0021 00000000 		.4byte	.Ldebug_line0
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  891 0026 04       		.byte	0x4
  892 0027 05       		.byte	0x5
  893 0028 696E7400 		.ascii	"int\000"
-ARM GAS  /tmp/ccXP3SV1.s 			page 41
+ARM GAS  /tmp/ccEDwDdq.s 			page 41
 
 
  894 002c 03       		.uleb128 0x3
@@ -2432,7 +2432,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  922 0060 07       		.byte	0x7
  923 0061 ED010000 		.4byte	.LASF6
  924 0065 03       		.uleb128 0x3
- 925 0066 49020000 		.4byte	.LASF7
+ 925 0066 84020000 		.4byte	.LASF7
  926 006a 03       		.byte	0x3
  927 006b 37       		.byte	0x37
  928 006c 70000000 		.4byte	0x70
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  948 0095 03       		.byte	0x3
  949 0096 4E       		.byte	0x4e
  950 0097 9B000000 		.4byte	0x9b
-ARM GAS  /tmp/ccXP3SV1.s 			page 42
+ARM GAS  /tmp/ccEDwDdq.s 			page 42
 
 
  951 009b 04       		.uleb128 0x4
@@ -2516,9 +2516,9 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1003 010b 41       		.byte	0x41
  1004 010c AD000000 		.4byte	0xad
  1005 0110 03       		.uleb128 0x3
- 1006 0111 3D020000 		.4byte	.LASF24
+ 1006 0111 78020000 		.4byte	.LASF24
  1007 0115 05       		.byte	0x5
-ARM GAS  /tmp/ccXP3SV1.s 			page 43
+ARM GAS  /tmp/ccEDwDdq.s 			page 43
 
 
  1008 0116 43       		.byte	0x43
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1062 0185 FB020000 		.4byte	.LASF33
  1063 0189 07       		.byte	0x7
  1064 018a CB       		.byte	0xcb
-ARM GAS  /tmp/ccXP3SV1.s 			page 44
+ARM GAS  /tmp/ccEDwDdq.s 			page 44
 
 
  1065 018b 27020000 		.4byte	0x227
@@ -2614,7 +2614,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1095 01c8 11050000 		.4byte	0x511
  1096 01cc 20       		.byte	0x20
  1097 01cd 08       		.uleb128 0x8
- 1098 01ce B2020000 		.4byte	.LASF38
+ 1098 01ce 75060000 		.4byte	.LASF38
  1099 01d2 07       		.byte	0x7
  1100 01d3 3C01     		.2byte	0x13c
  1101 01d5 2D020000 		.4byte	0x22d
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1119 01fc DC050000 		.4byte	0x5dc
  1120 0200 34       		.byte	0x34
  1121 0201 08       		.uleb128 0x8
-ARM GAS  /tmp/ccXP3SV1.s 			page 45
+ARM GAS  /tmp/ccEDwDdq.s 			page 45
 
 
  1122 0202 9A040000 		.4byte	.LASF42
@@ -2654,7 +2654,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1132 021a 3C       		.byte	0x3c
  1133 021b 00       		.byte	0
  1134 021c 03       		.uleb128 0x3
- 1135 021d C5020000 		.4byte	.LASF44
+ 1135 021d BD020000 		.4byte	.LASF44
  1136 0221 06       		.byte	0x6
  1137 0222 44       		.byte	0x44
  1138 0223 27020000 		.4byte	0x227
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1176 0273 00       		.byte	0
  1177 0274 06       		.uleb128 0x6
  1178 0275 55030000 		.4byte	.LASF29
-ARM GAS  /tmp/ccXP3SV1.s 			page 46
+ARM GAS  /tmp/ccEDwDdq.s 			page 46
 
 
  1179 0279 07       		.byte	0x7
@@ -2712,7 +2712,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1187 0287 57       		.byte	0x57
  1188 0288 8C020000 		.4byte	0x28c
  1189 028c 0A       		.uleb128 0xa
- 1190 028d 2F020000 		.4byte	.LASF51
+ 1190 028d 6A020000 		.4byte	.LASF51
  1191 0291 1C       		.byte	0x1c
  1192 0292 07       		.byte	0x7
  1193 0293 9201     		.2byte	0x192
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1233 02e9 A5040000 		.4byte	.LASF58
  1234 02ed 06       		.byte	0x6
  1235 02ee 5C       		.byte	0x5c
-ARM GAS  /tmp/ccXP3SV1.s 			page 47
+ARM GAS  /tmp/ccEDwDdq.s 			page 47
 
 
  1236 02ef F3020000 		.4byte	0x2f3
@@ -2802,7 +2802,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1274 0340 26010000 		.4byte	0x126
  1275 0344 08       		.byte	0x8
  1276 0345 08       		.uleb128 0x8
- 1277 0346 75060000 		.4byte	.LASF64
+ 1277 0346 E7020000 		.4byte	.LASF64
  1278 034a 07       		.byte	0x7
  1279 034b 7101     		.2byte	0x171
  1280 034d E8020000 		.4byte	0x2e8
@@ -2818,12 +2818,12 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1290 0361 82000000 		.4byte	.LASF66
  1291 0365 06       		.byte	0x6
  1292 0366 66       		.byte	0x66
-ARM GAS  /tmp/ccXP3SV1.s 			page 48
+ARM GAS  /tmp/ccEDwDdq.s 			page 48
 
 
  1293 0367 6B030000 		.4byte	0x36b
  1294 036b 0A       		.uleb128 0xa
- 1295 036c D8020000 		.4byte	.LASF67
+ 1295 036c D0020000 		.4byte	.LASF67
  1296 0370 10       		.byte	0x10
  1297 0371 07       		.byte	0x7
  1298 0372 7D01     		.2byte	0x17d
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1347 03da DE030000 		.4byte	0x3de
  1348 03de 0E       		.uleb128 0xe
  1349 03df 2F010000 		.4byte	.LASF73
-ARM GAS  /tmp/ccXP3SV1.s 			page 49
+ARM GAS  /tmp/ccEDwDdq.s 			page 49
 
 
  1350 03e3 5001     		.2byte	0x150
@@ -2925,20 +2925,20 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1391 043a 04       		.uleb128 0x4
  1392 043b 04       		.byte	0x4
  1393 043c 07       		.byte	0x7
- 1394 043d BC020000 		.4byte	.LASF78
+ 1394 043d B4020000 		.4byte	.LASF78
  1395 0441 03       		.uleb128 0x3
  1396 0442 78010000 		.4byte	.LASF79
  1397 0446 08       		.byte	0x8
  1398 0447 65       		.byte	0x65
  1399 0448 04030000 		.4byte	0x304
  1400 044c 03       		.uleb128 0x3
- 1401 044d 8C020000 		.4byte	.LASF80
+ 1401 044d 8E020000 		.4byte	.LASF80
  1402 0451 08       		.byte	0x8
  1403 0452 6D       		.byte	0x6d
  1404 0453 C3000000 		.4byte	0xc3
  1405 0457 05       		.uleb128 0x5
  1406 0458 E8040000 		.4byte	.LASF81
-ARM GAS  /tmp/ccXP3SV1.s 			page 50
+ARM GAS  /tmp/ccEDwDdq.s 			page 50
 
 
  1407 045c 04       		.byte	0x4
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1461 04c5 72313000 		.ascii	"r10\000"
  1462 04c9 09       		.byte	0x9
  1463 04ca 1601     		.2byte	0x116
-ARM GAS  /tmp/ccXP3SV1.s 			page 51
+ARM GAS  /tmp/ccEDwDdq.s 			page 51
 
 
  1464 04cc 41040000 		.4byte	0x441
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1518 0539 04030000 		.4byte	0x304
  1519 053d 12       		.uleb128 0x12
  1520 053e 29010000 		.4byte	.LASF88
-ARM GAS  /tmp/ccXP3SV1.s 			page 52
+ARM GAS  /tmp/ccEDwDdq.s 			page 52
 
 
  1521 0542 07       		.byte	0x7
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1575 05b3 DC050000 		.4byte	0x5dc
  1576 05b7 06       		.uleb128 0x6
  1577 05b8 FE000000 		.4byte	.LASF97
-ARM GAS  /tmp/ccXP3SV1.s 			page 53
+ARM GAS  /tmp/ccEDwDdq.s 			page 53
 
 
  1578 05bc 0C       		.byte	0xc
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1632 062b 09       		.uleb128 0x9
  1633 062c 04       		.byte	0x4
  1634 062d 31060000 		.4byte	0x631
-ARM GAS  /tmp/ccXP3SV1.s 			page 54
+ARM GAS  /tmp/ccEDwDdq.s 			page 54
 
 
  1635 0631 17       		.uleb128 0x17
@@ -3193,7 +3193,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1644 0646 3C       		.byte	0x3c
  1645 0647 4B060000 		.4byte	0x64b
  1646 064b 05       		.uleb128 0x5
- 1647 064c 7D060000 		.4byte	.LASF104
+ 1647 064c 7F060000 		.4byte	.LASF104
  1648 0650 20       		.byte	0x20
  1649 0651 0E       		.byte	0xe
  1650 0652 4F       		.byte	0x4f
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1689 06a0 08       		.byte	0x8
  1690 06a1 0E       		.byte	0xe
  1691 06a2 41       		.byte	0x41
-ARM GAS  /tmp/ccXP3SV1.s 			page 55
+ARM GAS  /tmp/ccEDwDdq.s 			page 55
 
 
  1692 06a3 BC060000 		.4byte	0x6bc
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1746 070b 06       		.uleb128 0x6
  1747 070c D9010000 		.4byte	.LASF115
  1748 0710 0F       		.byte	0xf
-ARM GAS  /tmp/ccXP3SV1.s 			page 56
+ARM GAS  /tmp/ccEDwDdq.s 			page 56
 
 
  1749 0711 3E       		.byte	0x3e
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1803 077a 3A040000 		.4byte	0x43a
  1804 077e 28       		.byte	0x28
  1805 077f 00       		.byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 57
+ARM GAS  /tmp/ccEDwDdq.s 			page 57
 
 
  1806 0780 1E       		.uleb128 0x1e
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1860 07f7 47       		.byte	0x47
  1861 07f8 2C000000 		.4byte	0x2c
  1862 07fc 02       		.uleb128 0x2
-ARM GAS  /tmp/ccXP3SV1.s 			page 58
+ARM GAS  /tmp/ccEDwDdq.s 			page 58
 
 
  1863 07fd 91       		.byte	0x91
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1917 0859 00       		.sleb128 0
  1918 085a 74       		.byte	0x74
  1919 085b 00       		.sleb128 0
-ARM GAS  /tmp/ccXP3SV1.s 			page 59
+ARM GAS  /tmp/ccEDwDdq.s 			page 59
 
 
  1920 085c 30       		.byte	0x30
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  1974 08b8 25       		.uleb128 0x25
  1975 08b9 01       		.uleb128 0x1
  1976 08ba 51       		.byte	0x51
-ARM GAS  /tmp/ccXP3SV1.s 			page 60
+ARM GAS  /tmp/ccEDwDdq.s 			page 60
 
 
  1977 08bb 02       		.uleb128 0x2
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2031 0915 05       		.uleb128 0x5
  2032 0916 03       		.byte	0x3
  2033 0917 00000000 		.4byte	.LANCHOR0
-ARM GAS  /tmp/ccXP3SV1.s 			page 61
+ARM GAS  /tmp/ccEDwDdq.s 			page 61
 
 
  2034 091b 00       		.byte	0
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2088 097e 88090000 		.4byte	0x988
  2089 0982 25       		.uleb128 0x25
  2090 0983 01       		.uleb128 0x1
-ARM GAS  /tmp/ccXP3SV1.s 			page 62
+ARM GAS  /tmp/ccEDwDdq.s 			page 62
 
 
  2091 0984 50       		.byte	0x50
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2145 09e1 380E0000 		.4byte	0xe38
  2146 09e5 24       		.uleb128 0x24
  2147 09e6 C6000000 		.4byte	.LVL34
-ARM GAS  /tmp/ccXP3SV1.s 			page 63
+ARM GAS  /tmp/ccEDwDdq.s 			page 63
 
 
  2148 09ea 380E0000 		.4byte	0xe38
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2202 0a4d 01       		.uleb128 0x1
  2203 0a4e 41       		.byte	0x41
  2204 0a4f 25       		.uleb128 0x25
-ARM GAS  /tmp/ccXP3SV1.s 			page 64
+ARM GAS  /tmp/ccEDwDdq.s 			page 64
 
 
  2205 0a50 01       		.uleb128 0x1
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2259 0ab3 25       		.uleb128 0x25
  2260 0ab4 01       		.uleb128 0x1
  2261 0ab5 50       		.byte	0x50
-ARM GAS  /tmp/ccXP3SV1.s 			page 65
+ARM GAS  /tmp/ccEDwDdq.s 			page 65
 
 
  2262 0ab6 01       		.uleb128 0x1
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2316 0b10 4E010000 		.4byte	.LVL52
  2317 0b14 170E0000 		.4byte	0xe17
  2318 0b18 220B0000 		.4byte	0xb22
-ARM GAS  /tmp/ccXP3SV1.s 			page 66
+ARM GAS  /tmp/ccEDwDdq.s 			page 66
 
 
  2319 0b1c 25       		.uleb128 0x25
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2373 0b79 00       		.sleb128 0
  2374 0b7a 30       		.byte	0x30
  2375 0b7b 29       		.byte	0x29
-ARM GAS  /tmp/ccXP3SV1.s 			page 67
+ARM GAS  /tmp/ccEDwDdq.s 			page 67
 
 
  2376 0b7c 25       		.uleb128 0x25
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2430 0bdc 01       		.uleb128 0x1
  2431 0bdd 51       		.byte	0x51
  2432 0bde 02       		.uleb128 0x2
-ARM GAS  /tmp/ccXP3SV1.s 			page 68
+ARM GAS  /tmp/ccEDwDdq.s 			page 68
 
 
  2433 0bdf 7D       		.byte	0x7d
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2487 0c3c 02       		.uleb128 0x2
  2488 0c3d 74       		.byte	0x74
  2489 0c3e 00       		.sleb128 0
-ARM GAS  /tmp/ccXP3SV1.s 			page 69
+ARM GAS  /tmp/ccEDwDdq.s 			page 69
 
 
  2490 0c3f 00       		.byte	0
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2544 0c9f 00000000 		.4byte	.LANCHOR0
  2545 0ca3 00       		.byte	0
  2546 0ca4 24       		.uleb128 0x24
-ARM GAS  /tmp/ccXP3SV1.s 			page 70
+ARM GAS  /tmp/ccEDwDdq.s 			page 70
 
 
  2547 0ca5 F4010000 		.4byte	.LVL76
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2601 0d05 24       		.uleb128 0x24
  2602 0d06 22020000 		.4byte	.LVL80
  2603 0d0a 170E0000 		.4byte	0xe17
-ARM GAS  /tmp/ccXP3SV1.s 			page 71
+ARM GAS  /tmp/ccEDwDdq.s 			page 71
 
 
  2604 0d0e 180D0000 		.4byte	0xd18
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2658 0d6f FA06     		.2byte	0x6fa
  2659 0d71 750D0000 		.4byte	0xd75
  2660 0d75 14       		.uleb128 0x14
-ARM GAS  /tmp/ccXP3SV1.s 			page 72
+ARM GAS  /tmp/ccEDwDdq.s 			page 72
 
 
  2661 0d76 AD000000 		.4byte	0xad
@@ -4273,7 +4273,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2670 0d8b A8       		.byte	0xa8
  2671 0d8c 80070000 		.4byte	0x780
  2672 0d90 2C       		.uleb128 0x2c
- 2673 0d91 97020000 		.4byte	.LASF125
+ 2673 0d91 99020000 		.4byte	.LASF125
  2674 0d95 01       		.byte	0x1
  2675 0d96 8E       		.byte	0x8e
  2676 0d97 A10D0000 		.4byte	0xda1
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2715 0df1 0C       		.uleb128 0xc
  2716 0df2 F70D0000 		.4byte	0xdf7
  2717 0df6 00       		.byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 73
+ARM GAS  /tmp/ccEDwDdq.s 			page 73
 
 
  2718 0df7 09       		.uleb128 0x9
@@ -4359,7 +4359,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2753 0e44 04030000 		.4byte	0x304
  2754 0e48 00       		.byte	0
  2755 0e49 30       		.uleb128 0x30
- 2756 0e4a A1020000 		.4byte	.LASF136
+ 2756 0e4a A3020000 		.4byte	.LASF136
  2757 0e4e 0E       		.byte	0xe
  2758 0e4f 66       		.byte	0x66
  2759 0e50 0C       		.uleb128 0xc
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2772 0003 25       		.uleb128 0x25
  2773 0004 0E       		.uleb128 0xe
  2774 0005 13       		.uleb128 0x13
-ARM GAS  /tmp/ccXP3SV1.s 			page 74
+ARM GAS  /tmp/ccEDwDdq.s 			page 74
 
 
  2775 0006 0B       		.uleb128 0xb
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2829 003c 0B       		.uleb128 0xb
  2830 003d 3A       		.uleb128 0x3a
  2831 003e 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccXP3SV1.s 			page 75
+ARM GAS  /tmp/ccEDwDdq.s 			page 75
 
 
  2832 003f 3B       		.uleb128 0x3b
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2886 0075 0B       		.uleb128 0xb
  2887 0076 0B       		.uleb128 0xb
  2888 0077 49       		.uleb128 0x49
-ARM GAS  /tmp/ccXP3SV1.s 			page 76
+ARM GAS  /tmp/ccEDwDdq.s 			page 76
 
 
  2889 0078 13       		.uleb128 0x13
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  2943 00ae 00       		.byte	0
  2944 00af 00       		.byte	0
  2945 00b0 0F       		.uleb128 0xf
-ARM GAS  /tmp/ccXP3SV1.s 			page 77
+ARM GAS  /tmp/ccEDwDdq.s 			page 77
 
 
  2946 00b1 0D       		.uleb128 0xd
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3000 00e7 26       		.uleb128 0x26
  3001 00e8 00       		.byte	0
  3002 00e9 49       		.uleb128 0x49
-ARM GAS  /tmp/ccXP3SV1.s 			page 78
+ARM GAS  /tmp/ccEDwDdq.s 			page 78
 
 
  3003 00ea 13       		.uleb128 0x13
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3057 0120 01       		.byte	0x1
  3058 0121 03       		.uleb128 0x3
  3059 0122 0E       		.uleb128 0xe
-ARM GAS  /tmp/ccXP3SV1.s 			page 79
+ARM GAS  /tmp/ccEDwDdq.s 			page 79
 
 
  3060 0123 0B       		.uleb128 0xb
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3114 0159 38       		.uleb128 0x38
  3115 015a 05       		.uleb128 0x5
  3116 015b 00       		.byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 80
+ARM GAS  /tmp/ccEDwDdq.s 			page 80
 
 
  3117 015c 00       		.byte	0
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3171 0193 0B       		.uleb128 0xb
  3172 0194 3B       		.uleb128 0x3b
  3173 0195 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccXP3SV1.s 			page 81
+ARM GAS  /tmp/ccEDwDdq.s 			page 81
 
 
  3174 0196 49       		.uleb128 0x49
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3228 01d5 01       		.uleb128 0x1
  3229 01d6 31       		.uleb128 0x31
  3230 01d7 13       		.uleb128 0x13
-ARM GAS  /tmp/ccXP3SV1.s 			page 82
+ARM GAS  /tmp/ccEDwDdq.s 			page 82
 
 
  3231 01d8 00       		.byte	0
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3285 0211 49       		.uleb128 0x49
  3286 0212 13       		.uleb128 0x13
  3287 0213 3F       		.uleb128 0x3f
-ARM GAS  /tmp/ccXP3SV1.s 			page 83
+ARM GAS  /tmp/ccEDwDdq.s 			page 83
 
 
  3288 0214 19       		.uleb128 0x19
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3342 024a 3C       		.uleb128 0x3c
  3343 024b 19       		.uleb128 0x19
  3344 024c 00       		.byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 84
+ARM GAS  /tmp/ccEDwDdq.s 			page 84
 
 
  3345 024d 00       		.byte	0
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3399 0283 3C       		.uleb128 0x3c
  3400 0284 19       		.uleb128 0x19
  3401 0285 00       		.byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 85
+ARM GAS  /tmp/ccEDwDdq.s 			page 85
 
 
  3402 0286 00       		.byte	0
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3456 0088 88010000 		.4byte	.LVL59
  3457 008c 0100     		.2byte	0x1
  3458 008e 50       		.byte	0x50
-ARM GAS  /tmp/ccXP3SV1.s 			page 86
+ARM GAS  /tmp/ccEDwDdq.s 			page 86
 
 
  3459 008f 88010000 		.4byte	.LVL59
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3513 0125 55       		.byte	0x55
  3514 0126 00000000 		.4byte	0
  3515 012a 00000000 		.4byte	0
-ARM GAS  /tmp/ccXP3SV1.s 			page 87
+ARM GAS  /tmp/ccEDwDdq.s 			page 87
 
 
  3516              	.LLST2:
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3561      736700
  3562              	.LASF17:
  3563 001b 75696E74 		.ascii	"uint64_t\000"
-ARM GAS  /tmp/ccXP3SV1.s 			page 88
+ARM GAS  /tmp/ccEDwDdq.s 			page 88
 
 
  3563      36345F74 
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3587      75657565 
  3587      00
  3588              	.LASF30:
-ARM GAS  /tmp/ccXP3SV1.s 			page 89
+ARM GAS  /tmp/ccEDwDdq.s 			page 89
 
 
  3589 00bb 705F7072 		.ascii	"p_prio\000"
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3617      00
  3618              	.LASF103:
  3619 014b 6D656D6F 		.ascii	"memory_heap_t\000"
-ARM GAS  /tmp/ccXP3SV1.s 			page 90
+ARM GAS  /tmp/ccEDwDdq.s 			page 90
 
 
  3619      72795F68 
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3649 01d9 74656172 		.ascii	"teardown\000"
  3649      646F776E 
  3649      00
-ARM GAS  /tmp/ccXP3SV1.s 			page 91
+ARM GAS  /tmp/ccEDwDdq.s 			page 91
 
 
  3650              	.LASF113:
@@ -5431,64 +5431,63 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3664              	.LASF19:
  3665 0227 746D6F64 		.ascii	"tmode_t\000"
  3665      655F7400 
- 3666              	.LASF51:
- 3667 022f 63685F72 		.ascii	"ch_ready_list\000"
- 3667      65616479 
- 3667      5F6C6973 
- 3667      7400
- 3668              	.LASF24:
- 3669 023d 6576656E 		.ascii	"eventmask_t\000"
- 3669      746D6173 
- 3669      6B5F7400 
- 3670              	.LASF7:
- 3671 0249 5F5F696E 		.ascii	"__int32_t\000"
- 3671      7433325F 
- 3671      7400
- 3672              	.LASF133:
- 3673 0253 2F752F67 		.ascii	"/u/galexeev/classes/P442WifiTrailCounterProject/lab"
- 3673      616C6578 
- 3673      6565762F 
- 3673      636C6173 
- 3673      7365732F 
- 3674 0286 355F3434 		.ascii	"5_442\000"
- 3674      3200
+ 3666              	.LASF133:
+ 3667 022f 2F752F67 		.ascii	"/u/galexeev/classes/P442WifiTrailCounterProject/mil"
+ 3667      616C6578 
+ 3667      6565762F 
+ 3667      636C6173 
+ 3667      7365732F 
+ 3668 0262 6573746F 		.ascii	"estone1\000"
+ 3668      6E653100 
+ 3669              	.LASF51:
+ 3670 026a 63685F72 		.ascii	"ch_ready_list\000"
+ 3670      65616479 
+ 3670      5F6C6973 
+ 3670      7400
+ 3671              	.LASF24:
+ 3672 0278 6576656E 		.ascii	"eventmask_t\000"
+ 3672      746D6173 
+ 3672      6B5F7400 
+ 3673              	.LASF7:
+ 3674 0284 5F5F696E 		.ascii	"__int32_t\000"
+ 3674      7433325F 
+ 3674      7400
  3675              	.LASF80:
- 3676 028c 73746B61 		.ascii	"stkalign_t\000"
+ 3676 028e 73746B61 		.ascii	"stkalign_t\000"
  3676      6C69676E 
  3676      5F7400
  3677              	.LASF125:
- 3678 0297 74657374 		.ascii	"testheap1\000"
-ARM GAS  /tmp/ccXP3SV1.s 			page 92
+ 3678 0299 74657374 		.ascii	"testheap1\000"
+ARM GAS  /tmp/ccEDwDdq.s 			page 92
 
 
  3678      68656170 
  3678      3100
  3679              	.LASF136:
- 3680 02a1 63684865 		.ascii	"chHeapObjectInit\000"
+ 3680 02a3 63684865 		.ascii	"chHeapObjectInit\000"
  3680      61704F62 
  3680      6A656374 
  3680      496E6974 
  3680      00
- 3681              	.LASF38:
- 3682 02b2 705F7761 		.ascii	"p_waiting\000"
- 3682      6974696E 
- 3682      6700
- 3683              	.LASF78:
- 3684 02bc 73697A65 		.ascii	"sizetype\000"
- 3684      74797065 
- 3684      00
- 3685              	.LASF44:
- 3686 02c5 74687265 		.ascii	"thread_reference_t\000"
- 3686      61645F72 
- 3686      65666572 
- 3686      656E6365 
- 3686      5F7400
- 3687              	.LASF67:
- 3688 02d8 63685F76 		.ascii	"ch_virtual_timers_list\000"
- 3688      69727475 
- 3688      616C5F74 
- 3688      696D6572 
- 3688      735F6C69 
+ 3681              	.LASF78:
+ 3682 02b4 73697A65 		.ascii	"sizetype\000"
+ 3682      74797065 
+ 3682      00
+ 3683              	.LASF44:
+ 3684 02bd 74687265 		.ascii	"thread_reference_t\000"
+ 3684      61645F72 
+ 3684      65666572 
+ 3684      656E6365 
+ 3684      5F7400
+ 3685              	.LASF67:
+ 3686 02d0 63685F76 		.ascii	"ch_virtual_timers_list\000"
+ 3686      69727475 
+ 3686      616C5F74 
+ 3686      696D6572 
+ 3686      735F6C69 
+ 3687              	.LASF64:
+ 3688 02e7 76745F66 		.ascii	"vt_func\000"
+ 3688      756E6300 
  3689              	.LASF68:
  3690 02ef 76745F6C 		.ascii	"vt_lasttime\000"
  3690      61737474 
@@ -5518,10 +5517,10 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3703              	.LASF12:
  3704 0332 5F5F7569 		.ascii	"__uint64_t\000"
  3704      6E743634 
-ARM GAS  /tmp/ccXP3SV1.s 			page 93
-
-
  3704      5F7400
+ARM GAS  /tmp/ccEDwDdq.s 			page 93
+
+
  3705              	.LASF21:
  3706 033d 74726566 		.ascii	"trefs_t\000"
  3706      735F7400 
@@ -5578,10 +5577,10 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3734 03cc 725F7072 		.ascii	"r_prio\000"
  3734      696F00
  3735              	.LASF92:
-ARM GAS  /tmp/ccXP3SV1.s 			page 94
-
-
  3736 03d3 65776D61 		.ascii	"ewmask\000"
+ARM GAS  /tmp/ccEDwDdq.s 			page 94
+
+
  3736      736B00
  3737              	.LASF28:
  3738 03da 705F6E65 		.ascii	"p_next\000"
@@ -5638,10 +5637,10 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3764      20756E73 
  3764      69676E65 
  3764      6420696E 
-ARM GAS  /tmp/ccXP3SV1.s 			page 95
-
-
  3764      7400
+ARM GAS  /tmp/ccEDwDdq.s 			page 95
+
+
  3765              	.LASF100:
  3766 046e 63686172 		.ascii	"char\000"
  3766      00
@@ -5698,10 +5697,10 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3791              	.LASF18:
  3792 0501 7274636E 		.ascii	"rtcnt_t\000"
  3792      745F7400 
-ARM GAS  /tmp/ccXP3SV1.s 			page 96
-
-
  3793              	.LASF65:
+ARM GAS  /tmp/ccEDwDdq.s 			page 96
+
+
  3794 0509 76745F70 		.ascii	"vt_par\000"
  3794      617200
  3795              	.LASF118:
@@ -5758,10 +5757,10 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3814      6C746F00 
  3815              	.LASF87:
  3816 0630 77746F62 		.ascii	"wtobjp\000"
-ARM GAS  /tmp/ccXP3SV1.s 			page 97
-
-
  3816      6A7000
+ARM GAS  /tmp/ccEDwDdq.s 			page 97
+
+
  3817              	.LASF34:
  3818 0637 705F6E61 		.ascii	"p_name\000"
  3818      6D6500
@@ -5787,37 +5786,38 @@ ARM GAS  /tmp/ccXP3SV1.s 			page 1
  3829              	.LASF31:
  3830 066f 705F6374 		.ascii	"p_ctx\000"
  3830      7800
- 3831              	.LASF64:
- 3832 0675 76745F66 		.ascii	"vt_func\000"
- 3832      756E6300 
+ 3831              	.LASF38:
+ 3832 0675 705F7761 		.ascii	"p_waiting\000"
+ 3832      6974696E 
+ 3832      6700
  3833              	.LASF104:
- 3834 067d 6D656D6F 		.ascii	"memory_heap\000"
+ 3834 067f 6D656D6F 		.ascii	"memory_heap\000"
  3834      72795F68 
  3834      65617000 
  3835              		.comm	__gnu_lto_v1,1,1
  3836              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
-ARM GAS  /tmp/ccXP3SV1.s 			page 98
+ARM GAS  /tmp/ccEDwDdq.s 			page 98
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 testheap.c
-     /tmp/ccXP3SV1.s:411    .text.heap1_execute:00000000 $t
-     /tmp/ccXP3SV1.s:416    .text.heap1_execute:00000000 heap1_execute
-     /tmp/ccXP3SV1.s:799    .text.heap1_execute:00000240 $d
-     /tmp/ccXP3SV1.s:804    .text.heap1_setup:00000000 $t
-     /tmp/ccXP3SV1.s:809    .text.heap1_setup:00000000 heap1_setup
-     /tmp/ccXP3SV1.s:825    .text.heap1_setup:0000000c $d
-     /tmp/ccXP3SV1.s:836    .rodata.patternheap:00000000 patternheap
-     /tmp/ccXP3SV1.s:847    .rodata.testheap1:00000000 testheap1
-     /tmp/ccXP3SV1.s:833    .rodata.patternheap:00000000 $d
-     /tmp/ccXP3SV1.s:840    .rodata.str1.4:00000000 $d
-     /tmp/ccXP3SV1.s:844    .rodata.testheap1:00000000 $d
-     /tmp/ccXP3SV1.s:853    .bss.test_heap:00000000 $d
-     /tmp/ccXP3SV1.s:857    .bss.test_heap:00000000 test_heap
+     /tmp/ccEDwDdq.s:411    .text.heap1_execute:00000000 $t
+     /tmp/ccEDwDdq.s:416    .text.heap1_execute:00000000 heap1_execute
+     /tmp/ccEDwDdq.s:799    .text.heap1_execute:00000240 $d
+     /tmp/ccEDwDdq.s:804    .text.heap1_setup:00000000 $t
+     /tmp/ccEDwDdq.s:809    .text.heap1_setup:00000000 heap1_setup
+     /tmp/ccEDwDdq.s:825    .text.heap1_setup:0000000c $d
+     /tmp/ccEDwDdq.s:836    .rodata.patternheap:00000000 patternheap
+     /tmp/ccEDwDdq.s:847    .rodata.testheap1:00000000 testheap1
+     /tmp/ccEDwDdq.s:833    .rodata.patternheap:00000000 $d
+     /tmp/ccEDwDdq.s:840    .rodata.str1.4:00000000 $d
+     /tmp/ccEDwDdq.s:844    .rodata.testheap1:00000000 $d
+     /tmp/ccEDwDdq.s:853    .bss.test_heap:00000000 $d
+     /tmp/ccEDwDdq.s:857    .bss.test_heap:00000000 test_heap
                             *COM*:00000001 __gnu_lto_v1
                      .debug_frame:00000010 $d
-     /tmp/ccXP3SV1.s:803    .text.heap1_execute:00000244 $t
-     /tmp/ccXP3SV1.s:832    .text.heap1_setup:00000014 $t
+     /tmp/ccEDwDdq.s:803    .text.heap1_execute:00000244 $t
+     /tmp/ccEDwDdq.s:832    .text.heap1_setup:00000014 $t
 
 UNDEFINED SYMBOLS
 chCoreGetStatusX
