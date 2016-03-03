@@ -19,6 +19,9 @@
 static THD_WORKING_AREA(waShell,2048);
 
 static thread_t *shelltp1;
+static uint8_t header[] = {0x10, 0x00, 0x0A};
+static uint8_t headerSize = 3;
+static uint8_t bufferSize = 6;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
 static SPIConfig bluefruit_config = {
@@ -47,12 +50,11 @@ void WriteCommand (char *data, uint8_t size) {
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
 
-void WriteRead (char *data, uint8_t size, char *receive_data) {
+void WriteRead (uint8_t *data, uint8_t size, uint8_t *receive_data) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
   spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiSend(&SPID1, size, data);
-  spiReceive(&SPID1, 20, receive_data);
+  spiExchange(&SPID1, size, data, receive_data);
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
@@ -71,35 +73,76 @@ static THD_FUNCTION(counterThread,arg) {
 static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
   UNUSED(argc);
   if(!strcmp("cmd", argv[0])) {
-    uint8_t size = 0;
-    // while (argv[1][size] != '\0') {
-    //   size++;
-    // }
-    size = 6;
-    int receive_size = 20;
+    uint8_t payloadSize = 0;
+    uint8_t payload[16];
+    /* Scan the message, gather size, and fill the message payload */
+    while (argv[1][payloadSize] != '\0') {
+      /* Need to take messages that are larger than 16 into account */
 
-    uint8_t testAT[6] = {0x10, 0x00, 0x0A, 0x02, 0x41, 0x54};
+      /*********/
+      payload[payloadSize] = (uint8_t)argv[1][payloadSize];
+      payloadSize++;
+    }
+   
+    /* Initialize send/receive messages */
+    uint8_t messageSize = payloadSize + headerSize + 1;
+    uint8_t tx_data[messageSize];
+    uint8_t rx_data[messageSize];
+
+    /* Begin creating message */
+    int messageIndex = 0;
+    int payloadIndex = 0;
+
+    /* Header */
+    while (messageIndex < headerSize) { 
+      tx_data[messageIndex] = header[messageIndex];
+      messageIndex++;
+    }
+
+    /* Payload Size */
+    tx_data[messageIndex] = payloadSize;
+    messageIndex++;
     
-    char s_data[size];
-    char r_data[receive_size];
+    /* Payload */
+    while (messageIndex < messageSize) {
+      tx_data[messageIndex] = payload[payloadIndex];
+      messageIndex++; payloadIndex++;
+    }
+    
+    chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
+    WriteRead(tx_data, 20, rx_data);
 
-    //strcpy(s_data, argv[1]);
-    // WriteCommand(s_data,size);
-    chprintf(chp, "Sent: %d %s \n\r", size, testAT);
-    //chThdSleepMicroseconds(100);
-    // ReceiveData(r_data, 2);
-    WriteRead(testAT,size, r_data);
-    int i = -1;
+    /* Everything below is the same */
+    int i = headerSize + 1;
+    //int size = 20;
     chprintf(chp, "Received:");
-    while(++i < receive_size) {
-      chprintf(chp, " %02x", r_data[i]);  
+    while(i < messageSize) {
+      chprintf(chp, " %c", rx_data[i]);  
+      i++;
     }
     chprintf(chp, "\n\r");
-    i = -1;
-    while(++i < receive_size && r_data[i] != '\n') {
-      chprintf(chp, "%c ", r_data[i]);
-    }
-    chprintf(chp, "\n\r");
+    //i = headerSize + 1;
+    /*while(i < messageSize && rx_data[i] != '\n') {
+      chprintf(chp, "%c ", rx_data[i]);
+      i++;
+      }*/
+    //chprintf(chp, "\n\r");
+
+    /* Scratch work area */
+
+    //size = 8;
+    //int receive_size = 20;
+    // uint8_t testAT[8] = {0x10, 0x00, 0x0A, 0x02, 0x41, 0x54, '\n', '\r'};
+
+    
+    //strcpy(tx_data, argv[1]);
+    // WriteCommand(tx_data,size);
+
+    //chThdSleepMicroseconds(100);
+    // ReceiveData(rx_data, 2);
+
+    /*********************/
+
   }
 }
 
