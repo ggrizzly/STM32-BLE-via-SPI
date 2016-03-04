@@ -1,9 +1,3 @@
-//Name: Gleb Alexeev
-//Lab: Lab4
-//Point: 
-//Class: P442
-//Date: 1/28/16
-
 #include "ch.h"
 #include "hal.h"
 #include "test.h"
@@ -58,6 +52,62 @@ void WriteRead (uint8_t *data, uint8_t size, uint8_t *receive_data) {
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
+
+
+
+
+
+
+
+///Gleb is working on this, still needs work, but getting closer to the sol'n
+
+void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
+  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
+  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
+  spiSelect(&SPID1);                   /* Slave Select assertion.          */
+  int i = 0;
+  while(i < size) {
+  	spiSend(&SPID1, 1, send_data[i]);
+  	i++;
+  }
+  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
+
+  chThdSleepMilliseconds(3);
+
+  spiSelect(&SPID1);	                /* Slave Select assertion.          */
+
+  int j = 0;
+  uint8_t recSize;
+  uint8_t temp = 0;
+  while(j == 0) {
+	spiReceive(&SPID1, 1, &temp);
+	if ((temp == 0x10) ||
+		(temp == 0x20) ||
+		(temp == 0x40) ||
+		(temp == 0x80)) {
+		j = 1;
+	}
+  }
+  spiReceive(&SPID1, 1, &temp);
+  spiReceive(&SPID1, 1, &temp);
+  spiReceive(&SPID1, 1, &recSize);
+  uint8_t rece_data[recSize];
+  i = 0;
+  while(i < recSize) {
+  	spiReceive(&SPID1, 1, rece_data[i]);
+  	i++;
+  }
+  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
+  spiReleaseBus(&SPID1);               /* Ownership release.               */
+  receive_data = rece_data;
+}
+
+
+
+
+
+
+
 /* Thread that blinks North LED as an "alive" indicator */
 static THD_WORKING_AREA(waCounterThread,128);
 static THD_FUNCTION(counterThread,arg) {
@@ -87,7 +137,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     /* Initialize send/receive messages */
     uint8_t messageSize = payloadSize + headerSize + 1;
     uint8_t tx_data[messageSize];
-    uint8_t rx_data[messageSize];
+    uint8_t rx_data[20];
 
     /* Begin creating message */
     int messageIndex = 0;
@@ -110,7 +160,8 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     }
     
     chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
-    WriteRead(tx_data, 20, rx_data);
+    //CHANGE>>>
+    WriteRead(tx_data, messageSize, rx_data);
 
     /* Everything below is the same */
     int i = headerSize + 1;
