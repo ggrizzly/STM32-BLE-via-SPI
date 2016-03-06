@@ -53,14 +53,6 @@ void WriteRead (uint8_t *data, uint8_t size, uint8_t *receive_data) {
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
 
-
-
-
-
-
-
-///Gleb is working on this, still needs work, but getting closer to the sol'n
-
 void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
   spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
@@ -105,12 +97,6 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
-
-
-
-
-
-
 
 /* Thread that blinks North LED as an "alive" indicator */
 static THD_WORKING_AREA(waCounterThread,128);
