@@ -26,33 +26,6 @@ static SPIConfig bluefruit_config = {
   0
 };
 
-void ReceiveData (char *receive_data, uint8_t size) {
-  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
-  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
-  spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiReceive(&SPID1, size, receive_data); 
-  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
-  spiReleaseBus(&SPID1);               /* Ownership release.               */
-}
-
-void WriteCommand (char *data, uint8_t size) {
-  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
-  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
-  spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiSend(&SPID1, size, data); 
-  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
-  spiReleaseBus(&SPID1);               /* Ownership release.               */
-}
-
-void WriteRead (uint8_t *data, uint8_t size, uint8_t *receive_data) {
-  spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
-  spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
-  spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  spiExchange(&SPID1, size, data, receive_data);
-  spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
-  spiReleaseBus(&SPID1);               /* Ownership release.               */
-}
-
 void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
   spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
@@ -153,7 +126,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     tx_data[messageIndex+1] = '\r';
     messageIndex = messageIndex + 2;
     chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
-    //CHANGE>>>
+    
     WriteReadMain(tx_data, messageSize+2, rx_data);
 
     /* Everything below is the same */
