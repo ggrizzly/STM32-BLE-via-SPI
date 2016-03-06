@@ -67,39 +67,43 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
   int i = 0;
   while(i < size) {
-  	spiSend(&SPID1, 1, send_data[i]);
+  	spiSend(&SPID1, 1, send_data);
+    send_data++;
   	i++;
   }
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
 
   chThdSleepMilliseconds(3);
-
+  
   spiSelect(&SPID1);	                /* Slave Select assertion.          */
 
   int j = 0;
   uint8_t recSize;
-  uint8_t temp = 0;
   while(j == 0) {
-	spiReceive(&SPID1, 1, &temp);
-	if ((temp == 0x10) ||
-		(temp == 0x20) ||
-		(temp == 0x40) ||
-		(temp == 0x80)) {
+	spiReceive(&SPID1, 1, receive_data);
+	 if ((receive_data[0] == 0x10) ||
+		(receive_data[0] == 0x20) ||
+		(receive_data[0] == 0x40) ||
+		(receive_data[0] == 0x80)) {
+    receive_data++;
 		j = 1;
-	}
+	 }
   }
-  spiReceive(&SPID1, 1, &temp);
-  spiReceive(&SPID1, 1, &temp);
+  spiReceive(&SPID1, 1, receive_data);
+  receive_data++;
+  spiReceive(&SPID1, 1, receive_data);
+  receive_data++;
   spiReceive(&SPID1, 1, &recSize);
-  uint8_t rece_data[recSize];
+  receive_data[3] = recSize;
+  receive_data++;
   i = 0;
   while(i < recSize) {
-  	spiReceive(&SPID1, 1, rece_data[i]);
-  	i++;
+  	spiReceive(&SPID1, 1, receive_data);
+    receive_data++;
+    i++;
   }
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
   spiReleaseBus(&SPID1);               /* Ownership release.               */
-  receive_data = rece_data;
 }
 
 
@@ -159,9 +163,12 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
       messageIndex++; payloadIndex++;
     }
     
+    tx_data[messageIndex] = '\n';
+    tx_data[messageIndex+1] = '\r';
+    messageIndex = messageIndex + 2;
     chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
     //CHANGE>>>
-    WriteRead(tx_data, messageSize, rx_data);
+    WriteReadMain(tx_data, messageSize+2, rx_data);
 
     /* Everything below is the same */
     int i = headerSize + 1;
