@@ -67,27 +67,27 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
   int i = 0;
   while(i < size) {
-  	spiSend(&SPID1, 1, send_data);
+    spiSend(&SPID1, 1, send_data);
     send_data++;
-  	i++;
+    i++;
   }
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
 
   chThdSleepMilliseconds(3);
   
-  spiSelect(&SPID1);	                /* Slave Select assertion.          */
+  spiSelect(&SPID1);                  /* Slave Select assertion.          */
 
   int j = 0;
   uint8_t recSize;
   while(j == 0) {
-	spiReceive(&SPID1, 1, receive_data);
-	 if ((receive_data[0] == 0x10) ||
-		(receive_data[0] == 0x20) ||
-		(receive_data[0] == 0x40) ||
-		(receive_data[0] == 0x80)) {
+  spiReceive(&SPID1, 1, receive_data);
+   if ((receive_data[0] == 0x10) ||
+    (receive_data[0] == 0x20) ||
+    (receive_data[0] == 0x40) ||
+    (receive_data[0] == 0x80)) {
     receive_data++;
-		j = 1;
-	 }
+    j = 1;
+   }
   }
   spiReceive(&SPID1, 1, receive_data);
   receive_data++;
@@ -98,7 +98,7 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   receive_data++;
   i = 0;
   while(i < recSize) {
-  	spiReceive(&SPID1, 1, receive_data);
+    spiReceive(&SPID1, 1, receive_data);
     receive_data++;
     i++;
   }
