@@ -30,12 +30,96 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
   spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
-  int i = 0;
-  while(i < size) {
-    spiSend(&SPID1, 1, send_data);
-    send_data++;
-    i++;
+
+  int i = size - 4;
+  int k = 1;
+  int m = 0;
+  int sdpointer = 0;
+
+  /* Split the message if possible */
+  while (i > 0) {
+    if (i > 16) { 
+      uint8_t tx_data[20];
+      uint8_t temp;
+      uint8_t rec_temp = 0xFE;
+      i = i - 16;
+      tx_data[0] = 0x10;
+      while(rec_temp == 0xFE) {
+        temp = tx_data[0];
+        spiExchange(&SPID1, 1, &temp, &rec_temp);
+        //spiSend(&SPID1, 1, &temp);
+        //spiReceive(&SPID1, 1, &rec_temp);
+        if(rec_temp == 0xFE) {
+          break;
+          break;
+          break;
+        } else {
+        chThdSleepMicroseconds(10);
+        spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
+        chThdSleepMicroseconds(100);
+        spiSelect(&SPID1);
+        }
+      }
+      tx_data[1] = 0x00;
+      tx_data[2] = 0x0A;
+      tx_data[3] = (16|0x80);
+      int thresh = sdpointer; //current sdpointer for counting purposes.
+      for(sdpointer; sdpointer < thresh + 16; sdpointer++) {
+        tx_data[m+4] = send_data[sdpointer+4];
+        m++;
+      }
+      while(k < 20) {
+        temp = tx_data[k];
+        spiSend(&SPID1, 1, &temp);
+        k++;    
+      }
+      k = 1;
+      m = 0;
+      chThdSleepMicroseconds(20);
+      spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
+      chThdSleepMilliseconds(3);
+      spiSelect(&SPID1);
+    } else {
+      uint8_t tx_data[i+4];
+      uint8_t temp;
+      uint8_t rec_temp = 0xFE;
+      tx_data[0] = 0x10;
+      while(rec_temp == 0xFE) {
+        temp = tx_data[0];
+        spiExchange(&SPID1, 1, &temp, &rec_temp);
+        //spiSend(&SPID1, 1, &temp);
+        //spiReceive(&SPID1, 1, &rec_temp);
+        if(rec_temp == 0xFE) {
+          break;
+          break;
+          break;
+        } else {
+        chThdSleepMicroseconds(10);
+        spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
+        chThdSleepMicroseconds(100);
+        spiSelect(&SPID1);
+        }
+      }
+      tx_data[1] = 0x00;
+      tx_data[2] = 0x0A;
+      tx_data[3] = i;
+      int thresh = sdpointer;
+      for(sdpointer; sdpointer < thresh + i; sdpointer++) {
+        tx_data[m+4] = send_data[sdpointer+4];
+        m++;
+      }
+      while(k < i+4) {
+        temp = tx_data[k];
+        spiSend(&SPID1, 1, &temp);
+        k++;
+      }
+      k = 1;
+      m = 0;
+      sdpointer = 0;
+      i = -2;
+    }
   }
+
   spiUnselect(&SPID1);                 /* Slave Select de-assertion.       */
 
   chThdSleepMilliseconds(3);
@@ -46,13 +130,18 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   uint8_t recSize;
   while(j == 0) {
   spiReceive(&SPID1, 1, receive_data);
-   if ((receive_data[0] == 0x10) ||
+   if (((receive_data[0] == 0x10) ||
     (receive_data[0] == 0x20) ||
     (receive_data[0] == 0x40) ||
-    (receive_data[0] == 0x80)) {
+    (receive_data[0] == 0x80))) {
     receive_data++;
     j = 1;
-   }
+   } // else {
+   //  spiUnselect(&SPID1);
+   //  chThdSleepMicroseconds(3);
+   //  spiSelect(&SPID1);
+   //  chThdSleepMicroseconds(1);
+   // }
   }
   spiReceive(&SPID1, 1, receive_data);
   receive_data++;
@@ -87,16 +176,43 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
   UNUSED(argc);
   if(!strcmp("cmd", argv[0])) {
     uint8_t payloadSize = 0;
-    uint8_t payload[16];
+    //uint8_t payload[16];
+    
+    int n = 0;
+    /*
+    1)
+    Get gyroscope data
+    Sprintf(gyroscopedata)
+    make a new command bf sendGyro
+    header + "AT+BLEUARTTX=" + sendGyrodata
+
+    2)
+    IRQ pin interrupt on receive data;
+    anytime the IRQ pin goes, we start reading.
+    BUT -> how do we change IRQ pin to work on bluetooth connection?
+    Mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+    */
+
     /* Scan the message, gather size, and fill the message payload */
     while (argv[1][payloadSize] != '\0') {
       /* Need to take messages that are larger than 16 into account */
 
       /*********/
-      payload[payloadSize] = (uint8_t)argv[1][payloadSize];
+      //payload[payloadSize] = (uint8_t)argv[1][payloadSize];
       payloadSize++;
     }
-   
+
+    if(payloadSize > 256) { 
+      chprintf(chp, "ERROR:\n\rMAX 256 BYTES ALLOWED\n\r");
+      return; 
+    }
+
+    uint8_t payload[payloadSize];
+
+    for(n = 0; n < payloadSize; n++) {
+      payload[n] = (uint8_t)argv[1][n];
+    }
+
     /* Initialize send/receive messages */
     uint8_t messageSize = payloadSize + headerSize + 1;
     uint8_t tx_data[messageSize];
@@ -122,44 +238,19 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
       messageIndex++; payloadIndex++;
     }
     
-    tx_data[messageIndex] = '\n';
-    tx_data[messageIndex+1] = '\r';
-    messageIndex = messageIndex + 2;
     chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
-    
-    WriteReadMain(tx_data, messageSize+2, rx_data);
+
+    WriteReadMain(tx_data, messageSize, rx_data);
 
     /* Everything below is the same */
     int i = headerSize + 1;
     //int size = 20;
     chprintf(chp, "Received:");
-    while(i < messageSize) {
+    while(i < 20) {
       chprintf(chp, " %c", rx_data[i]);  
       i++;
     }
     chprintf(chp, "\n\r");
-    //i = headerSize + 1;
-    /*while(i < messageSize && rx_data[i] != '\n') {
-      chprintf(chp, "%c ", rx_data[i]);
-      i++;
-      }*/
-    //chprintf(chp, "\n\r");
-
-    /* Scratch work area */
-
-    //size = 8;
-    //int receive_size = 20;
-    // uint8_t testAT[8] = {0x10, 0x00, 0x0A, 0x02, 0x41, 0x54, '\n', '\r'};
-
-    
-    //strcpy(tx_data, argv[1]);
-    // WriteCommand(tx_data,size);
-
-    //chThdSleepMicroseconds(100);
-    // ReceiveData(rx_data, 2);
-
-    /*********************/
-
   }
 }
 
@@ -260,5 +351,3 @@ int main(void) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }
  }
-
-
