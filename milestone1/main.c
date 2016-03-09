@@ -15,7 +15,7 @@ static THD_WORKING_AREA(waShell,2048);
 static thread_t *shelltp1;
 static uint8_t header[] = {0x10, 0x00, 0x0A};
 static uint8_t headerSize = 3;
-static uint8_t bufferSize = 6;
+//static uint8_t bufferSize = 6;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
 static SPIConfig bluefruit_config = {
@@ -64,9 +64,10 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
       tx_data[2] = 0x0A;
       tx_data[3] = (16|0x80);
       int thresh = sdpointer; //current sdpointer for counting purposes.
-      for(sdpointer; sdpointer < thresh + 16; sdpointer++) {
+      while (sdpointer < thresh + 16) {
         tx_data[m+4] = send_data[sdpointer+4];
         m++;
+        sdpointer++;
       }
       while(k < 20) {
         temp = tx_data[k];
@@ -91,23 +92,24 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
         //spiReceive(&SPID1, 1, &rec_temp);
         if(rec_temp == 0xFE) {
           break;
-          break;
-          break;
         } else {
-        chThdSleepMicroseconds(10);
-        spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
-        chThdSleepMicroseconds(100);
-        spiSelect(&SPID1);
+          chThdSleepMicroseconds(10);
+          spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
+          chThdSleepMicroseconds(100);
+          spiSelect(&SPID1);
         }
       }
       tx_data[1] = 0x00;
       tx_data[2] = 0x0A;
       tx_data[3] = i;
       int thresh = sdpointer;
-      for(sdpointer; sdpointer < thresh + i; sdpointer++) {
+
+      while (sdpointer < thresh + i) {
         tx_data[m+4] = send_data[sdpointer+4];
         m++;
+        sdpointer++;
       }
+
       while(k < i+4) {
         temp = tx_data[k];
         spiSend(&SPID1, 1, &temp);
@@ -172,13 +174,25 @@ static THD_FUNCTION(counterThread,arg) {
   }
 }
 
+/* Thread that blinks North LED as an "alive" indicator */
+static THD_WORKING_AREA(waMessageThread,128);
+static THD_FUNCTION(messageThread,arg) {
+  uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x5C, 0x72, 0x5C, 0x6E};
+  uint8_t rx_data_test[20];
+  UNUSED(arg);
+  while (TRUE) {
+    chThdSleepMilliseconds(500);
+    WriteReadMain(tx_data_test, 23, rx_data_test);
+    chThdSleepMilliseconds(1000);
+  }
+}
+
 static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
   UNUSED(argc);
   if(!strcmp("cmd", argv[0])) {
-    uint8_t payloadSize = 0;
-    //uint8_t payload[16];
+    uint16_t payloadSize = 0;
     
-    int n = 0;
+    uint8_t n = 0;
     /*
     1)
     Get gyroscope data
@@ -195,16 +209,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
 
     /* Scan the message, gather size, and fill the message payload */
     while (argv[1][payloadSize] != '\0') {
-      /* Need to take messages that are larger than 16 into account */
-
-      /*********/
-      //payload[payloadSize] = (uint8_t)argv[1][payloadSize];
       payloadSize++;
-    }
-
-    if(payloadSize > 256) { 
-      chprintf(chp, "ERROR:\n\rMAX 256 BYTES ALLOWED\n\r");
-      return; 
     }
 
     uint8_t payload[payloadSize];
@@ -347,6 +352,7 @@ int main(void) {
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
   chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
+  //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
   while (TRUE) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }
