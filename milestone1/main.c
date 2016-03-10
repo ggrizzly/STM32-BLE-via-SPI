@@ -352,7 +352,7 @@ int main(void) {
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
   chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
-  //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
+  chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
   while (TRUE) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }
