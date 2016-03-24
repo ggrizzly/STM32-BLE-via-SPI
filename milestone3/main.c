@@ -16,6 +16,12 @@ static thread_t *shelltp1;
 static uint8_t header[] = {0x10, 0x00, 0x0A};
 static uint8_t headerSize = 3;
 //static uint8_t bufferSize = 6;
+static uint8_t tx_advstart[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'A', 'R', 'T', 'A', 'D', 'V'};
+static uint8_t tx_advstop[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'O', 'P', 'A', 'D', 'V'};
+static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'G', 'E', 'T', 'C', 'O', 'N', 'N'};
+static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T', 0x5C, 0x72, 0x5C, 0x6E};
+static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X', 0x5C, 0x72, 0x5C, 0x6E};
+uint8_t genericRxBuffer[20];
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
 static SPIConfig bluefruit_config = {
@@ -25,7 +31,6 @@ static SPIConfig bluefruit_config = {
   SPI_CR1_BR_2 | SPI_CR1_BR_1,
   0
 };
-
 
 /*
 TODO:
@@ -152,19 +157,14 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   int j = 0;
   uint8_t recSize;
   while(j == 0) {
-  spiReceive(&SPID1, 1, receive_data);
-   if (((receive_data[0] == 0x10) ||
-    (receive_data[0] == 0x20) ||
-    (receive_data[0] == 0x40) ||
-    (receive_data[0] == 0x80))) {
-    receive_data++;
-    j = 1;
-   } // else {
-   //  spiUnselect(&SPID1);
-   //  chThdSleepMicroseconds(3);
-   //  spiSelect(&SPID1);
-   //  chThdSleepMicroseconds(1);
-   // }
+    spiReceive(&SPID1, 1, receive_data);
+    if (((receive_data[0] == 0x10) ||
+      (receive_data[0] == 0x20) ||
+      (receive_data[0] == 0x40) ||
+      (receive_data[0] == 0x80))) {
+        receive_data++;
+        j = 1;
+      } 
   }
   spiReceive(&SPID1, 1, receive_data);
   receive_data++;
@@ -195,10 +195,36 @@ static THD_FUNCTION(counterThread,arg) {
   }
 }
 
+static THD_WORKING_AREA(waAdvertisingThread,128);
+static THD_FUNCTION(advertisingThread,arg) {
+  UNUSED(arg);
+  uint8_t rx_data[20];
+  uint8_t tmp_data[20];
+
+  while (TRUE) {
+    chThdSleepMilliseconds(500);
+    WriteReadMain(tx_advstart, 22, tmp_data);
+    chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
+    chThdSleepMilliseconds(10000);
+    WriteReadMain(tx_getconn, 21, rx_data);
+    if (rx_data[4] == '1') { //Pump Data if we're here
+      chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
+    //
+    // TODO
+    //
+    } else {
+      chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
+      WriteReadMain(tx_advstop, 21, tmp_data);
+    }
+    chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
+    chThdSleepMilliseconds(5000);
+  }
+}
+
 /* Thread that blinks North LED as an "alive" indicator */
 static THD_WORKING_AREA(waMessageThread,128);
 static THD_FUNCTION(messageThread,arg) {
-  uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x5C, 0x72, 0x5C, 0x6E};
+  uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A};
   uint8_t rx_data_test[20];
   UNUSED(arg);
   while (TRUE) {
@@ -277,6 +303,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
       i++;
     }
     chprintf(chp, "\n\r");
+    chThdSleepMilliseconds(3);
   }
 }
 
@@ -341,11 +368,7 @@ int main(void) {
   palSetPadMode(GPIOC, 4, PAL_MODE_ALTERNATE(7));
   palSetPadMode(GPIOC, 5, PAL_MODE_ALTERNATE(7));
 
-  /* 
-   *  Setup the pins for the spi link on the GPIOA. This link connects to the pressure sensor and the gyro.  
-   * 
-   */
-
+  //Setup the pins for the spi link on the GPIOA. This link connects to the pressure sensor and the gyro.  
   palSetPadMode(GPIOA, 5, PAL_MODE_ALTERNATE(5));     /* SCK. */
   palSetPadMode(GPIOA, 6, PAL_MODE_ALTERNATE(5));     /* MISO.*/
   palSetPadMode(GPIOA, 7, PAL_MODE_ALTERNATE(5));     /* MOSI.*/
@@ -354,26 +377,19 @@ int main(void) {
   palSetPad(GPIOA, 8);                                /* Deassert the bluetooth sensor chip select */
   palSetPadMode(GPIOC, GPIOC_PIN3, PAL_MODE_INPUT_PULLUP); /* IRQ pin */
 
-
-
   chprintf((BaseSequentialStream*)&SD1, "\n\rUp and Running\n\r");
-  // chprintf((BaseSequentialStream*)&SD1, "Gyro Whoami Byte = 0x%02x\n\r",gyro_read_register(0x0F));
-  // chprintf((BaseSequentialStream*)&SD1, "Pressure Whoami Byte = 0x%02x\n\r", pressure_read_register(0x0F));
-
   /* Initialize the command shell */ 
   shellInit();
+     
+  //WriteReadMain(tx_advstop, 21, genericRxBuffer);
 
-  // gyro_write_register(0x20, 0x3F);
-  // pressure_write_register(0x10, 0x7A);
-  // pressure_write_register(0x20, 0xB4);
-  /* 
-   *  setup to listen for the shell_terminated event. This setup will be stored in the tel  * event listner structure in item 0
-  */
+  //setup to listen for the shell_terminated event. This setup will be stored in the tel  * event listner structure in item 0
   chEvtRegister(&shell_terminated, &tel, 0);
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
-  chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
+  //chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
   //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
+  chThdCreateStatic(waAdvertisingThread, sizeof(waAdvertisingThread), NORMALPRIO+2, advertisingThread, NULL);
   while (TRUE) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccpoJgnP.s 			page 1
+ARM GAS  /tmp/ccMctrC3.s 			page 1
 
 
    1              	# 1 "../ChibiOS/os/common/ports/ARMCMx/compilers/GCC/crt0_v7m.s"
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
   52              	
   53              	/*===========================================================================*/
   54              	/* Module pre-compile time settings.                                         */
-ARM GAS  /tmp/ccpoJgnP.s 			page 2
+ARM GAS  /tmp/ccMctrC3.s 			page 2
 
 
   55              	/*===========================================================================*/
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
  109              	#if !defined(CRT0_INIT_BSS) || defined(__DOXYGEN__)
  110              	#define CRT0_INIT_BSS                       TRUE
  111              	#endif
-ARM GAS  /tmp/ccpoJgnP.s 			page 3
+ARM GAS  /tmp/ccMctrC3.s 			page 3
 
 
  112              	
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
  166              	
  167              	/*
  168              	 * Reset handler.
-ARM GAS  /tmp/ccpoJgnP.s 			page 4
+ARM GAS  /tmp/ccMctrC3.s 			page 4
 
 
  169              	 */
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
  223              	#endif
  224              	
  225              	                /* Early initialization.*/
-ARM GAS  /tmp/ccpoJgnP.s 			page 5
+ARM GAS  /tmp/ccMctrC3.s 			page 5
 
 
  226 0016 FFF7FEFF 	                bl      __early_init
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
  280              	#if CRT0_INIT_RAM_AREAS == TRUE
  281              	                /* RAM areas initialization.*/
  282 0064 FFF7FEFF 	                bl      __init_ram_areas
-ARM GAS  /tmp/ccpoJgnP.s 			page 6
+ARM GAS  /tmp/ccMctrC3.s 			page 6
 
 
  283              	#endif
@@ -341,7 +341,7 @@ ARM GAS  /tmp/ccpoJgnP.s 			page 1
  318      55555555 
  318      00000000 
  318      00000000 
-ARM GAS  /tmp/ccpoJgnP.s 			page 7
+ARM GAS  /tmp/ccMctrC3.s 			page 7
 
 
 DEFINED SYMBOLS
