@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccIKVkxs.s 			page 1
+ARM GAS  /tmp/ccBEg3Xb.s 			page 1
 
 
    1              		.syntax unified
@@ -17,14 +17,14 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   14              		.file	"vectors.c"
   15              		.text
   16              	.Ltext0:
-  17              		.section	.gnu.lto_.jmpfuncs.9a50bfcc94cc59d5,"",%progbits
+  17              		.section	.gnu.lto_.jmpfuncs.614c31f71fcc3e6c,"",%progbits
   18 0000 789C6362 		.ascii	"x\234cb`b\300\006X\2404#\020\003\000\000\344\000\012"
   18      6062C006 
   18      58A03423 
   18      10030000 
   18      E4000A
   19              		.text
-  20              		.section	.gnu.lto_.inline.9a50bfcc94cc59d5,"",%progbits
+  20              		.section	.gnu.lto_.inline.614c31f71fcc3e6c,"",%progbits
   21 0000 789C6DCB 		.ascii	"x\234m\313\305VB\001\024\206\321\013^\305\026l,T\354"
   21      C5564201 
   21      1486D10B 
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   27      466894C6 
   27      689C2668 
   27      92A6
-ARM GAS  /tmp/ccIKVkxs.s 			page 2
+ARM GAS  /tmp/ccBEg3Xb.s 			page 2
 
 
   28 0087 689A6668 		.ascii	"h\232fh\226\346h\236\026h\221\226(C\313\224\245\025"
@@ -85,7 +85,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   32      1B151315 
   32      81
   33              		.text
-  34              		.section	.gnu.lto_.pureconst.9a50bfcc94cc59d5,"",%progbits
+  34              		.section	.gnu.lto_.pureconst.614c31f71fcc3e6c,"",%progbits
   35 0000 789C25C1 		.ascii	"x\234%\301\325\"C\001\000\000\320\353\212\351m\362h"
   35      D5224301 
   35      0000D0EB 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   40      6CC5AA35 
   41 006e 36146DDA 		.ascii	"6\024m\332\262\255d\307\256=\373\016\034:r\354\304\251"
   41      B2AD64C7 
-ARM GAS  /tmp/ccIKVkxs.s 			page 3
+ARM GAS  /tmp/ccBEg3Xb.s 			page 3
 
 
   41      AE3DFB0E 
@@ -133,7 +133,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   43      FAF2ED0F 
   43      CCE42002 
   44              		.text
-  45              		.section	.gnu.lto__unhandled_exception.9a50bfcc94cc59d5,"",%progbits
+  45              		.section	.gnu.lto__unhandled_exception.614c31f71fcc3e6c,"",%progbits
   46 0000 789C6362 		.ascii	"x\234cb`b@\007:@\354\005\3046@\314\310\312\300\3104"
   46      60624007 
   46      3A40EC05 
@@ -177,8 +177,8 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   54      4B660000 
   54      0DE52C2A 
   55              		.text
-  56              		.section	.gnu.lto_.symbol_nodes.9a50bfcc94cc59d5,"",%progbits
-ARM GAS  /tmp/ccIKVkxs.s 			page 4
+  56              		.section	.gnu.lto_.symbol_nodes.614c31f71fcc3e6c,"",%progbits
+ARM GAS  /tmp/ccBEg3Xb.s 			page 4
 
 
   57 0000 789C55D5 		.ascii	"x\234U\325\325V\226Q\000\204\341=\237\376`www\267\242"
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   68      A2B64186 
   68      A863B05D 
   68      D435D8
-ARM GAS  /tmp/ccIKVkxs.s 			page 5
+ARM GAS  /tmp/ccBEg3Xb.s 			page 5
 
 
   69 00e1 21EA19EC 		.ascii	"!\352\031\354\024\365\015v\211\006\006\273EC\203=\242"
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   80 01aa 2DC61BBC 		.ascii	"-\306\033\274\021\023\014\336\212\211\006\357\304$\203"
   80      11130CDE 
   80      8A8906EF 
-ARM GAS  /tmp/ccIKVkxs.s 			page 6
+ARM GAS  /tmp/ccBEg3Xb.s 			page 6
 
 
   80      C42483
@@ -316,7 +316,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   83      DE2E1B2E 
   83      5104D8
   84              		.text
-  85              		.section	.gnu.lto_.refs.9a50bfcc94cc59d5,"",%progbits
+  85              		.section	.gnu.lto_.refs.614c31f71fcc3e6c,"",%progbits
   86 0000 789C1DC3 		.ascii	"x\234\035\303\005R\025\000\024@\321\367\357\247\273"
   86      05521500 
   86      1440D1F7 
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
   94      DF0B3E
   95 0094 E0835EF4 		.ascii	"\340\203^\364\222\017\371\260\217\370\250\217\371\270"
   95      920FF9B0 
-ARM GAS  /tmp/ccIKVkxs.s 			page 7
+ARM GAS  /tmp/ccBEg3Xb.s 			page 7
 
 
   95      8FF8A88F 
@@ -409,7 +409,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  105      01527442 
  105      9C
  106              		.text
- 107              		.section	.gnu.lto_.decls.9a50bfcc94cc59d5,"",%progbits
+ 107              		.section	.gnu.lto_.decls.614c31f71fcc3e6c,"",%progbits
  108 0000 789CBD9C 		.ascii	"x\234\275\234yp\024U\036\307\273'\311$!\004\010\202"
  108      79701455 
  108      1EC7BB27 
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  109 0012 A2EE0AB8 		.ascii	"\242\356\012\270\213\272\2700\271\017w=`\270\\7^\010"
  109      8BBAB830 
  109      B90F773D 
-ARM GAS  /tmp/ccIKVkxs.s 			page 8
+ARM GAS  /tmp/ccBEg3Xb.s 			page 8
 
 
  109      60B85C37 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  121      18F425E8 
  121      24E81BD0 
  121      F7A04BA0 
-ARM GAS  /tmp/ccIKVkxs.s 			page 9
+ARM GAS  /tmp/ccBEg3Xb.s 			page 9
 
 
  122 00fb 1BA05F40 		.ascii	"\033\240_@ap\362\321\240\316\240\356\240{A\275A\017"
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  133      91DF95
  134 01d1 1D7CD6C6 		.ascii	"\035|\326\306\242\332\253j]\371\305\226\226\316&\337"
  134      A2DAAB6A 
-ARM GAS  /tmp/ccIKVkxs.s 			page 10
+ARM GAS  /tmp/ccBEg3Xb.s 			page 10
 
 
  134      5DF9C596 
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  146 02a0 969E0479 		.ascii	"\226\236\004yJ \362\020\212,\346\221\347\005\"\217\241"
  146      4A20F210 
  146      8A2CE691 
-ARM GAS  /tmp/ccIKVkxs.s 			page 11
+ARM GAS  /tmp/ccBEg3Xb.s 			page 11
 
 
  146      E705228F 
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  157      1E14883C 
  157      8D228B3E 
  157      E5
-ARM GAS  /tmp/ccIKVkxs.s 			page 12
+ARM GAS  /tmp/ccBEg3Xb.s 			page 12
 
 
  158 037b 90C70522 		.ascii	"\220\307\005\"\317\241\310b\036yF \362\002\212\234\305"
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  169 0446 88BC8C22 		.ascii	"\210\274\214\"Kxd\245@\344M\024Y\312#\327\013D\336F"
  169      4B7864A5 
  169      40E44D14 
-ARM GAS  /tmp/ccIKVkxs.s 			page 13
+ARM GAS  /tmp/ccBEg3Xb.s 			page 13
 
 
  169      59CA23D7 
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  180      23970844 
  180      4E479155 
  181 052f 729540E4 		.ascii	"r\225@\344,\024Y\315#k\004\"KQ\344\006\036\271U \262"
-ARM GAS  /tmp/ccIKVkxs.s 			page 14
+ARM GAS  /tmp/ccBEg3Xb.s 			page 14
 
 
  181      2C1459CD 
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  192      7E1FBF2C 
  192      77956618 
  192      B7BC
-ARM GAS  /tmp/ccIKVkxs.s 			page 15
+ARM GAS  /tmp/ccBEg3Xb.s 			page 15
 
 
  193 0607 D775A2F7 		.ascii	"\327u\242\367\241k\367\220\273\306\313\365\033\366\215"
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  205      4D1B1BE9 
  205      A7F20134 
  205      C0DF
-ARM GAS  /tmp/ccIKVkxs.s 			page 16
+ARM GAS  /tmp/ccBEg3Xb.s 			page 16
 
 
  206 06dd 12B61AAC 		.ascii	"\022\266\032\254\300\332}\252\275\230\367V\223Z\027"
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  217      47E8A7B3 
  217      229739FB 
  217      C076BEB3 
-ARM GAS  /tmp/ccIKVkxs.s 			page 17
+ARM GAS  /tmp/ccBEg3Xb.s 			page 17
 
 
  217      376C97
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  230 087a 6B64525D 		.ascii	"kdR]M\252\253\254j\013\255\256%\325\012\253u\313\011"
  230      4DAAABAC 
  230      6A0BADAE 
-ARM GAS  /tmp/ccIKVkxs.s 			page 18
+ARM GAS  /tmp/ccBEg3Xb.s 			page 18
 
 
  230      25D50AAB 
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  241      D08564D8 
  241      686538CB 
  241      38E2
-ARM GAS  /tmp/ccIKVkxs.s 			page 19
+ARM GAS  /tmp/ccBEg3Xb.s 			page 19
 
 
  242 095e 6C197E64 		.ascii	"l\031~d\352]\355\031\2560\206;\354\031~f\014\335H\206"
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  253      1E6370D9 
  253      332C620C 
  253      F124
-ARM GAS  /tmp/ccIKVkxs.s 			page 20
+ARM GAS  /tmp/ccBEg3Xb.s 			page 20
 
 
  254 0a30 C37C2BC3 		.ascii	"\303|+\303{\214#\301\226\341C\246\236h\317\260\2321"
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  265      D60F8CE1 
  265      1964FDC0 
  266 0afc 189EA5FF 		.ascii	"\030\236\245\377R\2602\234e\034\317\331\327\017L\375"
-ARM GAS  /tmp/ccIKVkxs.s 			page 21
+ARM GAS  /tmp/ccBEg3Xb.s 			page 21
 
 
  266      52B0329C 
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  277      1A71
  278 0bd0 13DCC141 		.ascii	"\023\334\301Ab<\031$\223Az\314\360\221n\332s\220:\252"
  278      623C1924 
-ARM GAS  /tmp/ccIKVkxs.s 			page 22
+ARM GAS  /tmp/ccBEg3Xb.s 			page 22
 
 
  278      93417ACC 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  289      D4974C7D 
  289      C9D49742 
  289      7D29D497 
-ARM GAS  /tmp/ccIKVkxs.s 			page 23
+ARM GAS  /tmp/ccBEg3Xb.s 			page 23
 
 
  290 0cb6 7D29D497 		.ascii	"})\324\227J}\251\324\227J}\251\324\227F}i\324\227F}"
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  301 0d85 7A50B31F 		.ascii	"zP\263\037\331\223\243\346\344\230\027\335\340\236."
  301      D993A3E6 
  301      E49817DD 
-ARM GAS  /tmp/ccIKVkxs.s 			page 24
+ARM GAS  /tmp/ccBEg3Xb.s 			page 24
 
 
  301      E09E2E
@@ -1415,7 +1415,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  308      00CE2D98 
  308      A6
  309              		.text
- 310              		.section	.gnu.lto_.symtab.9a50bfcc94cc59d5,"",%progbits
+ 310              		.section	.gnu.lto_.symtab.614c31f71fcc3e6c,"",%progbits
  311 0000 5F756E68 		.ascii	"_unhandled_exception\000\000\000\000\000\000\000\000"
  311      616E646C 
  311      65645F65 
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  315 0055 000000B3 		.ascii	"\000\000\000\263\000\000\000HardFault_Handler\000\000"
  315      00000048 
  315      61726446 
-ARM GAS  /tmp/ccIKVkxs.s 			page 25
+ARM GAS  /tmp/ccBEg3Xb.s 			page 25
 
 
  315      61756C74 
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  327      56435F48 
  327      616E646C 
  327      65720000 
-ARM GAS  /tmp/ccIKVkxs.s 			page 26
+ARM GAS  /tmp/ccBEg3Xb.s 			page 26
 
 
  327      01000000 
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  339      00000000 
  339      00000019 
  339      01
-ARM GAS  /tmp/ccIKVkxs.s 			page 27
+ARM GAS  /tmp/ccBEg3Xb.s 			page 27
 
 
  340 022e 00005665 		.ascii	"\000\000Vector50\000\000\001\000\000\000\000\000\000"
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  351      01000000 
  351      00000000 
  351      00004F
-ARM GAS  /tmp/ccIKVkxs.s 			page 28
+ARM GAS  /tmp/ccBEg3Xb.s 			page 28
 
 
  352 0305 01000056 		.ascii	"\001\000\000Vector74\000\000\001\000\000\000\000\000"
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  363      00000000 
  363      00000000 
  363      00
-ARM GAS  /tmp/ccIKVkxs.s 			page 29
+ARM GAS  /tmp/ccBEg3Xb.s 			page 29
 
 
  364 03dc 85010000 		.ascii	"\205\001\000\000Vector98\000\000\001\000\000\000\000"
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  375      6F724238 
  375      000001
  376 04ab 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\273\001\000\000"
-ARM GAS  /tmp/ccIKVkxs.s 			page 30
+ARM GAS  /tmp/ccBEg3Xb.s 			page 30
 
 
  376      00000000 
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  387      00
  388 0577 00566563 		.ascii	"\000VectorDC\000\000\001\000\000\000\000\000\000\000"
  388      746F7244 
-ARM GAS  /tmp/ccIKVkxs.s 			page 31
+ARM GAS  /tmp/ccBEg3Xb.s 			page 31
 
 
  388      43000001 
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  399      000000
  400 0649 00000021 		.ascii	"\000\000\000!\002\000\000Vector100\000\000\001\000\000"
  400      02000056 
-ARM GAS  /tmp/ccIKVkxs.s 			page 32
+ARM GAS  /tmp/ccBEg3Xb.s 			page 32
 
 
  400      6563746F 
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  411      0000
  412 072c 00570200 		.ascii	"\000W\002\000\000Vector124\000\000\001\000\000\000\000"
  412      00566563 
-ARM GAS  /tmp/ccIKVkxs.s 			page 33
+ARM GAS  /tmp/ccBEg3Xb.s 			page 33
 
 
  412      746F7231 
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  423      00000000 
  424 080c 00008D02 		.ascii	"\000\000\215\002\000\000Vector148\000\000\001\000\000"
  424      00005665 
-ARM GAS  /tmp/ccIKVkxs.s 			page 34
+ARM GAS  /tmp/ccBEg3Xb.s 			page 34
 
 
  424      63746F72 
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  435      00000100 
  436 08e7 00000000 		.ascii	"\000\000\000\000\000\000\000\000\303\002\000\000Vec"
  436      00000000 
-ARM GAS  /tmp/ccIKVkxs.s 			page 35
+ARM GAS  /tmp/ccBEg3Xb.s 			page 35
 
 
  436      C3020000 
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  448 09bb 56656374 		.ascii	"Vector18C\000\000\001\000\000\000\000\000\000\000\000"
  448      6F723138 
  448      43000001 
-ARM GAS  /tmp/ccIKVkxs.s 			page 36
+ARM GAS  /tmp/ccBEg3Xb.s 			page 36
 
 
  448      00000000 
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  461      666F6D69 
  462 0066 696F6E73 		.ascii	"ions=16' '-ffunction-sections' '-fdata-sections' '-"
  462      3D313627 
-ARM GAS  /tmp/ccIKVkxs.s 			page 37
+ARM GAS  /tmp/ccBEg3Xb.s 			page 37
 
 
  462      20272D66 
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  510              		.thumb_set DebugMon_Handler,_unhandled_exception
  511              		.weak	Vector34
  512              		.thumb_set Vector34,_unhandled_exception
-ARM GAS  /tmp/ccIKVkxs.s 			page 38
+ARM GAS  /tmp/ccBEg3Xb.s 			page 38
 
 
  513              		.weak	PendSV_Handler
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  567              		.weak	VectorA4
  568              		.thumb_set VectorA4,_unhandled_exception
  569              		.weak	VectorA8
-ARM GAS  /tmp/ccIKVkxs.s 			page 39
+ARM GAS  /tmp/ccBEg3Xb.s 			page 39
 
 
  570              		.thumb_set VectorA8,_unhandled_exception
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  624              		.thumb_set Vector114,_unhandled_exception
  625              		.weak	Vector118
  626              		.thumb_set Vector118,_unhandled_exception
-ARM GAS  /tmp/ccIKVkxs.s 			page 40
+ARM GAS  /tmp/ccBEg3Xb.s 			page 40
 
 
  627              		.weak	Vector11C
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  681              		.weak	Vector188
  682              		.thumb_set Vector188,_unhandled_exception
  683              		.weak	Vector18C
-ARM GAS  /tmp/ccIKVkxs.s 			page 41
+ARM GAS  /tmp/ccBEg3Xb.s 			page 41
 
 
  684              		.thumb_set Vector18C,_unhandled_exception
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  735 0090 00000000 		.word	Vector90
  736 0094 00000000 		.word	Vector94
  737 0098 00000000 		.word	Vector98
-ARM GAS  /tmp/ccIKVkxs.s 			page 42
+ARM GAS  /tmp/ccBEg3Xb.s 			page 42
 
 
  738 009c 00000000 		.word	Vector9C
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  792 0174 00000000 		.word	Vector174
  793 0178 00000000 		.word	Vector178
  794 017c 00000000 		.word	Vector17C
-ARM GAS  /tmp/ccIKVkxs.s 			page 43
+ARM GAS  /tmp/ccBEg3Xb.s 			page 43
 
 
  795 0180 00000000 		.word	Vector180
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  845 004d 04       		.byte	0x4
  846 004e 05       		.byte	0x5
  847 004f 07030000 		.4byte	.LASF4
-ARM GAS  /tmp/ccIKVkxs.s 			page 44
+ARM GAS  /tmp/ccBEg3Xb.s 			page 44
 
 
  848 0053 03       		.uleb128 0x3
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  902 00ba 52000000 		.4byte	.LASF15
  903 00be 04       		.byte	0x4
  904 00bf 3B       		.byte	0x3b
-ARM GAS  /tmp/ccIKVkxs.s 			page 45
+ARM GAS  /tmp/ccBEg3Xb.s 			page 45
 
 
  905 00c0 86010000 		.4byte	0x186
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  959 012c 9E000000 		.4byte	0x9e
  960 0130 24       		.byte	0x24
  961 0131 08       		.uleb128 0x8
-ARM GAS  /tmp/ccIKVkxs.s 			page 46
+ARM GAS  /tmp/ccBEg3Xb.s 			page 46
 
 
  962 0132 9C010000 		.4byte	.LASF25
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1016 01a1 04       		.byte	0x4
  1017 01a2 4C       		.byte	0x4c
  1018 01a3 B0000000 		.4byte	0xb0
-ARM GAS  /tmp/ccIKVkxs.s 			page 47
+ARM GAS  /tmp/ccBEg3Xb.s 			page 47
 
 
  1019 01a7 0B       		.uleb128 0xb
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1073 0017 0B       		.uleb128 0xb
  1074 0018 3E       		.uleb128 0x3e
  1075 0019 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccIKVkxs.s 			page 48
+ARM GAS  /tmp/ccBEg3Xb.s 			page 48
 
 
  1076 001a 03       		.uleb128 0x3
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1130 0050 13       		.uleb128 0x13
  1131 0051 00       		.byte	0
  1132 0052 00       		.byte	0
-ARM GAS  /tmp/ccIKVkxs.s 			page 49
+ARM GAS  /tmp/ccBEg3Xb.s 			page 49
 
 
  1133 0053 08       		.uleb128 0x8
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1187 008a 00       		.byte	0
  1188 008b 00       		.byte	0
  1189 008c 0C       		.uleb128 0xc
-ARM GAS  /tmp/ccIKVkxs.s 			page 50
+ARM GAS  /tmp/ccBEg3Xb.s 			page 50
 
 
  1190 008d 34       		.uleb128 0x34
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1244 00c3 19       		.uleb128 0x19
  1245 00c4 00       		.byte	0
  1246 00c5 00       		.byte	0
-ARM GAS  /tmp/ccIKVkxs.s 			page 51
+ARM GAS  /tmp/ccBEg3Xb.s 			page 51
 
 
  1247 00c6 00       		.byte	0
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1280      6E7400
  1281              	.LASF15:
  1282 0052 696E6974 		.ascii	"init_stack\000"
-ARM GAS  /tmp/ccIKVkxs.s 			page 52
+ARM GAS  /tmp/ccBEg3Xb.s 			page 52
 
 
  1282      5F737461 
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1303              	.LASF18:
  1304 013d 68617264 		.ascii	"hardfault_handler\000"
  1304      6661756C 
-ARM GAS  /tmp/ccIKVkxs.s 			page 53
+ARM GAS  /tmp/ccBEg3Xb.s 			page 53
 
 
  1304      745F6861 
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1328 01d8 6C6F6E67 		.ascii	"long long int\000"
  1328      206C6F6E 
  1328      6720696E 
-ARM GAS  /tmp/ccIKVkxs.s 			page 54
+ARM GAS  /tmp/ccBEg3Xb.s 			page 54
 
 
  1328      7400
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1347              	.LASF19:
  1348 0310 6D656D6D 		.ascii	"memmanage_handler\000"
  1348      616E6167 
-ARM GAS  /tmp/ccIKVkxs.s 			page 55
+ARM GAS  /tmp/ccBEg3Xb.s 			page 55
 
 
  1348      655F6861 
@@ -3260,126 +3260,126 @@ ARM GAS  /tmp/ccIKVkxs.s 			page 1
  1354      5F5F00
  1355              		.comm	__gnu_lto_v1,1,1
  1356              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
-ARM GAS  /tmp/ccIKVkxs.s 			page 56
+ARM GAS  /tmp/ccBEg3Xb.s 			page 56
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 vectors.c
-     /tmp/ccIKVkxs.s:467    .text._unhandled_exception:00000000 $t
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 _unhandled_exception
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Reset_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 NMI_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 HardFault_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 MemManage_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 BusFault_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 UsageFault_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector1C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector20
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector24
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector28
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 SVC_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 DebugMon_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector34
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 PendSV_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 SysTick_Handler
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector40
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector44
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector48
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector4C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector50
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector54
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector58
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector5C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector60
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector64
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector68
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector6C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector70
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector74
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector78
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector7C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector80
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector84
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector88
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector8C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector90
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector94
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector98
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector9C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorA0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorA4
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorA8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorAC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorB0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorB4
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorB8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorBC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorC0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorC4
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorC8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorCC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorD0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorD4
-ARM GAS  /tmp/ccIKVkxs.s 			page 57
+     /tmp/ccBEg3Xb.s:467    .text._unhandled_exception:00000000 $t
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 _unhandled_exception
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Reset_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 NMI_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 HardFault_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 MemManage_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 BusFault_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 UsageFault_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector1C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector20
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector24
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector28
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 SVC_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 DebugMon_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector34
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 PendSV_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 SysTick_Handler
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector40
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector44
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector48
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector4C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector50
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector54
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector58
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector5C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector60
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector64
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector68
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector6C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector70
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector74
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector78
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector7C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector80
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector84
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector88
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector8C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector90
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector94
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector98
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector9C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorA0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorA4
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorA8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorAC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorB0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorB4
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorB8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorBC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorC0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorC4
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorC8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorCC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorD0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorD4
+ARM GAS  /tmp/ccBEg3Xb.s 			page 57
 
 
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorD8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorDC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorE0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorE4
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorE8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorEC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorF0
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorF4
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorF8
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 VectorFC
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector100
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector104
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector108
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector10C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector110
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector114
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector118
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector11C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector120
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector124
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector128
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector12C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector130
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector134
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector138
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector13C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector140
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector144
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector148
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector14C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector150
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector154
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector158
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector15C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector160
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector164
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector168
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector16C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector170
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector174
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector178
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector17C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector180
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector184
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector188
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector18C
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector190
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector194
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector198
-     /tmp/ccIKVkxs.s:473    .text._unhandled_exception:00000000 Vector19C
-     /tmp/ccIKVkxs.s:698    .vectors:00000000 _vectors
-     /tmp/ccIKVkxs.s:695    .vectors:00000000 $d
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorD8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorDC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorE0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorE4
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorE8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorEC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorF0
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorF4
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorF8
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 VectorFC
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector100
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector104
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector108
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector10C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector110
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector114
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector118
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector11C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector120
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector124
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector128
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector12C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector130
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector134
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector138
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector13C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector140
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector144
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector148
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector14C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector150
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector154
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector158
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector15C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector160
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector164
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector168
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector16C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector170
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector174
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector178
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector17C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector180
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector184
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector188
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector18C
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector190
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector194
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector198
+     /tmp/ccBEg3Xb.s:473    .text._unhandled_exception:00000000 Vector19C
+     /tmp/ccBEg3Xb.s:698    .vectors:00000000 _vectors
+     /tmp/ccBEg3Xb.s:695    .vectors:00000000 $d
                             *COM*:00000001 __gnu_lto_v1
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
 __main_stack_end__
-ARM GAS  /tmp/ccIKVkxs.s 			page 58
+ARM GAS  /tmp/ccBEg3Xb.s 			page 58
 
 

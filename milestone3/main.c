@@ -19,9 +19,11 @@ static uint8_t headerSize = 3;
 static uint8_t tx_advstart[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'A', 'R', 'T', 'A', 'D', 'V'};
 static uint8_t tx_advstop[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'O', 'P', 'A', 'D', 'V'};
 static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'G', 'E', 'T', 'C', 'O', 'N', 'N'};
-static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T', 0x5C, 0x72, 0x5C, 0x6E};
+static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
 static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X', 0x5C, 0x72, 0x5C, 0x6E};
-uint8_t genericRxBuffer[20];
+
+uint8_t bigData[1024];
+int connectedFLAG = 0;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
 static SPIConfig bluefruit_config = {
@@ -46,13 +48,46 @@ Connect to phone and tinker with advertising data:
   -> If we are, get ack'd and send all the data accumulated from the trail counter
 
 Other:
-- Remember that we can only send 256 bytes at a time
 - Set the device name, so that our future app looks for the name automatically.
 - Turn off LEDS
 */
 
 
-void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
+void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
+  uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
+  uint8_t rdata[20] = { 0 };
+  uint32_t i = 0;
+  while (size > 0) {
+    if(size > 191) {
+      for (i = 17; i < 208; i++) {
+        tx_data_plus[i] = send_data[i - 17];
+      }
+      chThdSleepMilliseconds(100);
+      WriteRead(tx_data_plus, 208, rdata);
+      chThdSleepMilliseconds(100);
+      send_data += 191;
+      size -= 191;
+    } 
+    else {
+      if(size > 3) {
+        tx_data_plus[3] = (uint8_t) (0x80 | (size + 13));
+      }
+      else {
+        tx_data_plus[3] = (uint8_t) size + 13;
+      }
+      for (i = 17; i < size+17; i++) {
+        tx_data_plus[i] = send_data[i - 17];
+      }
+      //tx_data_plus[3] = (uint8_t) size;
+      chThdSleepMilliseconds(100);
+      WriteRead(tx_data_plus, size + 17, rdata);
+      chThdSleepMilliseconds(100);
+      size = 0;
+    }
+  }
+}
+
+void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiAcquireBus(&SPID1);               /* Acquire ownership of the bus.    */
   spiStart(&SPID1, &bluefruit_config);     /* Setup transfer parameters.       */
   spiSelect(&SPID1);                   /* Slave Select assertion.          */
@@ -76,8 +111,6 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
         //spiSend(&SPID1, 1, &temp);
         //spiReceive(&SPID1, 1, &rec_temp);
         if(rec_temp == 0xFE) {
-          break;
-          break;
           break;
         } else {
         chThdSleepMicroseconds(10);
@@ -184,54 +217,96 @@ void WriteReadMain(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 }
 
 /* Thread that blinks North LED as an "alive" indicator */
-static THD_WORKING_AREA(waCounterThread,128);
-static THD_FUNCTION(counterThread,arg) {
-  UNUSED(arg);
-  while (TRUE) {
-    palSetPad(GPIOE, GPIOE_LED3_RED);
-    chThdSleepMilliseconds(500);
-    palClearPad(GPIOE, GPIOE_LED3_RED);
-    chThdSleepMilliseconds(500);
-  }
-}
+// static THD_WORKING_AREA(waCounterThread,128);
+// static THD_FUNCTION(counterThread,arg) {
+//   UNUSED(arg);
+//   while (TRUE) {
+//     palSetPad(GPIOE, GPIOE_LED3_RED);
+//     chThdSleepMilliseconds(500);
+//     palClearPad(GPIOE, GPIOE_LED3_RED);
+//     chThdSleepMilliseconds(500);
+//   }
+// }
 
-static THD_WORKING_AREA(waAdvertisingThread,128);
-static THD_FUNCTION(advertisingThread,arg) {
+// static THD_WORKING_AREA(waAdvertisingThread,128);
+// static THD_FUNCTION(advertisingThread,arg) {
+//   UNUSED(arg);
+//   uint8_t rx_data[20];
+//   uint8_t tmp_data[20];
+
+//   while (TRUE) {
+//     chThdSleepMilliseconds(500);
+//     WriteRead(tx_advstart, 22, tmp_data);
+//     chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
+//     chThdSleepMilliseconds(10000);
+//     WriteRead(tx_getconn, 21, rx_data);
+//     if (rx_data[4] == '1') { //Pump Data if we're here
+//       chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
+//       connectedFLAG = 1;
+//       chThdSleepMilliseconds(10000);
+//     } else {
+//       chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
+//       WriteRead(tx_advstop, 21, tmp_data);
+//       connectedFLAG = 0;
+//     }
+//     chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
+//     chThdSleepMilliseconds(5000);
+//   }
+// }
+
+/* Thread for sending Hi all the time */
+// static THD_WORKING_AREA(waMessageThread,128);
+// static THD_FUNCTION(messageThread,arg) {
+//   uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A};
+//   uint8_t rx_data_test[20];
+//   UNUSED(arg);
+//   while (TRUE) {
+//     chThdSleepMilliseconds(500);
+//     WriteReadMain(tx_data_test, 23, rx_data_test);
+//     chThdSleepMilliseconds(1000);
+//   }
+// }
+
+
+static THD_WORKING_AREA(waBigDataThread,4096);
+static THD_FUNCTION(bigDataThread,arg) {
   UNUSED(arg);
+  chThdSleepMicroseconds(1);
+  uint8_t rx_tmp_data[20];
   uint8_t rx_data[20];
   uint8_t tmp_data[20];
 
-  while (TRUE) {
-    chThdSleepMilliseconds(500);
-    WriteReadMain(tx_advstart, 22, tmp_data);
-    chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
-    chThdSleepMilliseconds(10000);
-    WriteReadMain(tx_getconn, 21, rx_data);
-    if (rx_data[4] == '1') { //Pump Data if we're here
-      chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
-    //
-    // TODO
-    //
-    } else {
-      chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
-      WriteReadMain(tx_advstop, 21, tmp_data);
+  while(TRUE) {
+    while (!connectedFLAG) {
+      chThdSleepMilliseconds(500);
+      WriteRead(tx_advstart, 22, tmp_data);
+      chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
+      chThdSleepMilliseconds(10000);
+      WriteRead(tx_getconn, 21, rx_data);
+      if (rx_data[4] == '1') { //Pump Data if we're here
+        chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
+        connectedFLAG = 1;
+        break;
+      } else {
+        chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
+        WriteRead(tx_advstop, 21, tmp_data);
+        connectedFLAG = 0;
+      }
+      chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
+      chThdSleepMilliseconds(5000);
     }
-    chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
-    chThdSleepMilliseconds(5000);
-  }
-}
-
-/* Thread that blinks North LED as an "alive" indicator */
-static THD_WORKING_AREA(waMessageThread,128);
-static THD_FUNCTION(messageThread,arg) {
-  uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A};
-  uint8_t rx_data_test[20];
-  UNUSED(arg);
-  while (TRUE) {
-    chThdSleepMilliseconds(500);
-    WriteReadMain(tx_data_test, 23, rx_data_test);
+    if (connectedFLAG) {
+      WriteReadWrapper(bigData, 1024);
+      chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
+      chThdSleepMilliseconds(10000);
+      WriteRead(tx_disconnect, 20, rx_tmp_data);
+      chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
+      connectedFLAG = 0;
+      chThdSleepMilliseconds(10000);
+    }
     chThdSleepMilliseconds(1000);
   }
+  chThdSleepMilliseconds(100);
 }
 
 static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
@@ -240,19 +315,6 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     uint16_t payloadSize = 0;
     
     uint8_t n = 0;
-    /*
-    1)
-    Get gyroscope data
-    Sprintf(gyroscopedata)
-    make a new command bf sendGyro
-    header + "AT+BLEUARTTX=" + sendGyrodata
-
-    2)
-    IRQ pin interrupt on receive data;
-    anytime the IRQ pin goes, we start reading.
-    BUT -> how do we change IRQ pin to work on bluetooth connection?
-    Mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-    */
 
     /* Scan the message, gather size, and fill the message payload */
     while (argv[1][payloadSize] != '\0') {
@@ -292,7 +354,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     
     chprintf(chp, "Sent: %d %x \n\r", payloadSize, tx_data);
 
-    WriteReadMain(tx_data, messageSize, rx_data);
+    WriteRead(tx_data, messageSize, rx_data);
 
     /* Everything below is the same */
     int i = headerSize + 1;
@@ -380,16 +442,26 @@ int main(void) {
   chprintf((BaseSequentialStream*)&SD1, "\n\rUp and Running\n\r");
   /* Initialize the command shell */ 
   shellInit();
-     
-  //WriteReadMain(tx_advstop, 21, genericRxBuffer);
 
+
+  uint32_t i;
+
+  for (i = 0; i < 1024; i++) {
+    if (i % 5 == 0) {
+      bigData[i] = '1';
+    }
+    else {
+      bigData[i] = '0';
+    }
+  }
   //setup to listen for the shell_terminated event. This setup will be stored in the tel  * event listner structure in item 0
   chEvtRegister(&shell_terminated, &tel, 0);
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
+  chThdCreateStatic(waBigDataThread, sizeof(waBigDataThread), NORMALPRIO+2, bigDataThread, NULL);
   //chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
   //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
-  chThdCreateStatic(waAdvertisingThread, sizeof(waAdvertisingThread), NORMALPRIO+2, advertisingThread, NULL);
+  //chThdCreateStatic(waAdvertisingThread, sizeof(waAdvertisingThread), NORMALPRIO+1, advertisingThread, NULL);
   while (TRUE) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }
