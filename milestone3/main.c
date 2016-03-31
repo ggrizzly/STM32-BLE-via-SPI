@@ -22,7 +22,9 @@ static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 
 static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
 static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X', 0x5C, 0x72, 0x5C, 0x6E};
 
-uint8_t bigData[1024];
+uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
+uint8_t rdata[20] = { 0 };
+uint8_t bigData[4096];
 int connectedFLAG = 0;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
@@ -54,8 +56,6 @@ Other:
 
 
 void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
-  uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
-  uint8_t rdata[20] = { 0 };
   uint32_t i = 0;
   while (size > 0) {
     if(size > 191) {
@@ -217,16 +217,16 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 }
 
 /* Thread that blinks North LED as an "alive" indicator */
-// static THD_WORKING_AREA(waCounterThread,128);
-// static THD_FUNCTION(counterThread,arg) {
-//   UNUSED(arg);
-//   while (TRUE) {
-//     palSetPad(GPIOE, GPIOE_LED3_RED);
-//     chThdSleepMilliseconds(500);
-//     palClearPad(GPIOE, GPIOE_LED3_RED);
-//     chThdSleepMilliseconds(500);
-//   }
-// }
+static THD_WORKING_AREA(waCounterThread,128);
+static THD_FUNCTION(counterThread,arg) {
+   UNUSED(arg);
+   while (TRUE) {
+     palSetPad(GPIOE, GPIOE_LED3_RED);
+     chThdSleepMilliseconds(500);
+     palClearPad(GPIOE, GPIOE_LED3_RED);
+     chThdSleepMilliseconds(500);
+  }
+}
 
 // static THD_WORKING_AREA(waAdvertisingThread,128);
 // static THD_FUNCTION(advertisingThread,arg) {
@@ -268,13 +268,14 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 // }
 
 
-static THD_WORKING_AREA(waBigDataThread,4096);
+static THD_WORKING_AREA(waBigDataThread,256);
 static THD_FUNCTION(bigDataThread,arg) {
   UNUSED(arg);
   chThdSleepMicroseconds(1);
   uint8_t rx_tmp_data[20];
   uint8_t rx_data[20];
   uint8_t tmp_data[20];
+  // chprintf((BaseSequentialStream*)&SD1, "bigDataThreadNowRunning\r\n");
 
   while(TRUE) {
     while (!connectedFLAG) {
@@ -296,9 +297,9 @@ static THD_FUNCTION(bigDataThread,arg) {
       chThdSleepMilliseconds(5000);
     }
     if (connectedFLAG) {
-      WriteReadWrapper(bigData, 1024);
+      WriteReadWrapper(bigData, 4096);
       chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
-      chThdSleepMilliseconds(10000);
+      chThdSleepMilliseconds(20000);
       WriteRead(tx_disconnect, 20, rx_tmp_data);
       chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
       connectedFLAG = 0;
@@ -446,7 +447,7 @@ int main(void) {
 
   uint32_t i;
 
-  for (i = 0; i < 1024; i++) {
+  for (i = 0; i < 4095; i++) {
     if (i % 5 == 0) {
       bigData[i] = '1';
     }
@@ -454,12 +455,13 @@ int main(void) {
       bigData[i] = '0';
     }
   }
+  bigData[4095] = '9';
   //setup to listen for the shell_terminated event. This setup will be stored in the tel  * event listner structure in item 0
   chEvtRegister(&shell_terminated, &tel, 0);
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
   chThdCreateStatic(waBigDataThread, sizeof(waBigDataThread), NORMALPRIO+2, bigDataThread, NULL);
-  //chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
+  chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
   //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
   //chThdCreateStatic(waAdvertisingThread, sizeof(waAdvertisingThread), NORMALPRIO+1, advertisingThread, NULL);
   while (TRUE) {
