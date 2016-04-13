@@ -1,4 +1,4 @@
-  #include "ch.h"
+#include "ch.h"
 #include "hal.h"
 #include "test.h"
 #include "shell.h" 
@@ -22,9 +22,10 @@ static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 
 static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
 static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X', 0x5C, 0x72, 0x5C, 0x6E};
 
+uint8_t tx_data_preamble[22] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t rdata[20] = { 0 };
-uint8_t bigData[2048];
+uint8_t bigData[256];
 int connectedFLAG = 0;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
@@ -54,9 +55,38 @@ Other:
 - Turn off LEDS
 */
 
+void preamble(char* digits, uint32_t size) {
+  /* Turn the size into a character array of digits */
+  int i = 4;
+  while (size > 0) { // this fills in the digits in reverse order
+    digits[i] = (size % 10) + '0';
+    size /= 10;
+    i--;
+  }
+  while (i >= 0) {
+    digits[i] = '0';
+    i--;
+  }
+
+  /* Prepare the preamble */
+  uint8_t preambleIndex = 17;
+  uint8_t digitIndex = 0;
+  while (digits[digitIndex] != '\0') {
+    tx_data_preamble[preambleIndex] = digits[digitIndex];
+    preambleIndex++;
+    digitIndex++;
+  }
+
+  /* Send the preamble */
+  chThdSleepMilliseconds(100);
+  WriteRead(tx_data_preamble, 22, rdata);
+  chThdSleepMilliseconds(100);
+}
 
 void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
   uint32_t i = 0;
+
+  /* Send the packets! */
   while (size > 0) {
     if(size > 191) {
       for (i = 17; i < 208; i++) {
@@ -255,17 +285,18 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 // }
 
 /* Thread for sending Hi all the time */
-// static THD_WORKING_AREA(waMessageThread,128);
-// static THD_FUNCTION(messageThread,arg) {
-//   uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A};
-//   uint8_t rx_data_test[20];
-//   UNUSED(arg);
-//   while (TRUE) {
-//     chThdSleepMilliseconds(500);
-//     WriteReadMain(tx_data_test, 23, rx_data_test);
-//     chThdSleepMilliseconds(1000);
-//   }
-// }
+/* static THD_WORKING_AREA(waMessageThread,128); */
+/* static THD_FUNCTION(messageThread,arg) { */
+/*   //uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A}; */
+/*   //uint8_t rx_data_test[20]; */
+/*   UNUSED(arg); */
+/*   char sizeChars[5]; */
+/*   while (TRUE) { */
+/*     chThdSleepMilliseconds(500); */
+/*     preamble(sizeChars, 2048); */
+/*     chThdSleepMilliseconds(500); */
+/*   } */
+/* } */
 
 
 static THD_WORKING_AREA(waBigDataThread,512);
@@ -275,6 +306,7 @@ static THD_FUNCTION(bigDataThread,arg) {
   uint8_t rx_tmp_data[20];
   uint8_t rx_data[20];
   uint8_t tmp_data[20];
+  char sizeChars[5];
 
   while(TRUE) {
     while (!connectedFLAG) {
@@ -296,12 +328,18 @@ static THD_FUNCTION(bigDataThread,arg) {
       chThdSleepMilliseconds(5000);
     }
     if (connectedFLAG) {
-      WriteReadWrapper(bigData, 2048);
+      preamble(sizeChars, 256);
+      chprintf((BaseSequentialStream*)&SD1, "Preamble Sent\r\n");
+      chThdSleepMilliseconds(2000);
+      WriteReadWrapper(bigData, 256);
       chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
       chThdSleepMilliseconds(20000);
       WriteRead(tx_disconnect, 20, rx_tmp_data);
       chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
       connectedFLAG = 0;
+      chThdSleepMilliseconds(100);
+      WriteRead(tx_advstop, 21, tmp_data);
+      chprintf((BaseSequentialStream*)&SD1, "Advertising Stopped\r\n");
       chThdSleepMilliseconds(10000);
     }
     chThdSleepMilliseconds(1000);
@@ -446,7 +484,7 @@ int main(void) {
 
   uint32_t i;
 
-  for (i = 0; i < 2048; i++) {
+  for (i = 0; i < 256; i++) {
     if (i % 5 == 0) {
       bigData[i] = '1';
     }
