@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RuE-Ab-FL3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RuE-Ab-FL3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--List-->
         <scene sceneID="DMZ-4f-KJw">
             <objects>
-                <viewController id="RuE-Ab-FL3" customClass="ViewController" customModule="TrailCounterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="List" id="RuE-Ab-FL3" customClass="ViewController" customModule="TrailCounterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4D-Gp-m3R"/>
                         <viewControllerLayoutGuide type="bottom" id="fyZ-qE-HK7"/>
@@ -16,12 +16,58 @@
                     <view key="view" contentMode="scaleToFill" id="lVb-B7-y38">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-B0-eS7">
+                                <rect key="frame" x="258" y="550" width="85" height="30"/>
+                                <state key="normal" title="Upload Data"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="RuE-Ab-FL3" eventType="touchUpInside" id="Yio-9t-lPx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrH-EW-dvM">
+                                <rect key="frame" x="0.0" y="28" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUN-1L-7Sg">
+                                <rect key="frame" x="0.0" y="57" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZTp-6j-aWx">
+                                <rect key="frame" x="0.0" y="86" width="600" height="456"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZTp-6j-aWx" firstAttribute="centerX" secondItem="5QL-B0-eS7" secondAttribute="centerX" id="0Q1-6U-s2Q"/>
+                            <constraint firstItem="UrH-EW-dvM" firstAttribute="leading" secondItem="aUN-1L-7Sg" secondAttribute="leading" id="1NF-vg-loM"/>
+                            <constraint firstItem="UrH-EW-dvM" firstAttribute="trailing" secondItem="aUN-1L-7Sg" secondAttribute="trailing" id="4IX-6i-3ig"/>
+                            <constraint firstAttribute="trailing" secondItem="UrH-EW-dvM" secondAttribute="trailing" id="8gs-j3-bjb"/>
+                            <constraint firstItem="5QL-B0-eS7" firstAttribute="top" secondItem="ZTp-6j-aWx" secondAttribute="bottom" constant="8" symbolic="YES" id="9ql-EP-YgI"/>
+                            <constraint firstItem="aUN-1L-7Sg" firstAttribute="trailing" secondItem="ZTp-6j-aWx" secondAttribute="trailing" id="Cx7-9h-qQT"/>
+                            <constraint firstItem="aUN-1L-7Sg" firstAttribute="top" secondItem="UrH-EW-dvM" secondAttribute="bottom" constant="8" symbolic="YES" id="ZZP-fC-Dwq"/>
+                            <constraint firstAttribute="bottom" secondItem="5QL-B0-eS7" secondAttribute="bottom" constant="20" symbolic="YES" id="gHQ-OF-wdP"/>
+                            <constraint firstItem="aUN-1L-7Sg" firstAttribute="leading" secondItem="ZTp-6j-aWx" secondAttribute="leading" id="nhv-MK-STN"/>
+                            <constraint firstItem="ZTp-6j-aWx" firstAttribute="top" secondItem="aUN-1L-7Sg" secondAttribute="bottom" constant="8" symbolic="YES" id="odg-Z3-p6E"/>
+                            <constraint firstItem="UrH-EW-dvM" firstAttribute="top" secondItem="M4D-Gp-m3R" secondAttribute="bottom" constant="8" symbolic="YES" id="rqK-Mn-bEG"/>
+                            <constraint firstItem="UrH-EW-dvM" firstAttribute="leading" secondItem="lVb-B7-y38" secondAttribute="leading" id="s1h-y4-4dw"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vbP-sZ-M1u"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="aUN-1L-7Sg" id="QXx-L0-W8c"/>
+                        <outlet property="tableView" destination="ZTp-6j-aWx" id="GcS-gK-xhS"/>
+                        <outlet property="titleLabel" destination="UrH-EW-dvM" id="N7f-7W-9ow"/>
+                        <outlet property="uploadButton" destination="5QL-B0-eS7" id="jJh-yc-qr7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6I-6l-gap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-273" y="-50"/>
+            <point key="canvasLocation" x="-193" y="-434"/>
         </scene>
     </scenes>
 </document>
