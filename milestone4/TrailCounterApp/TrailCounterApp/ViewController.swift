@@ -11,65 +11,104 @@ import CoreBluetooth
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var uploadButton : UIButton!
+    @IBOutlet var titleLabel : UILabel!
+    @IBOutlet var statusLabel : UILabel!
+    var tableLabel : UILabel!
+    @IBOutlet var tableView : UITableView!
+    var tData = TrailData()
+    var isFirst = 1
+    var size = 0
+    var counter = 0
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         return refreshControl
     }()
     
     var peripherals: Set<CBPeripheral> = Set<CBPeripheral>()
     var currentPeripheral: CBPeripheral?
-    
-    var titleLabel : UILabel!
-    var statusLabel : UILabel!
-    var tableLabel : UILabel!
-    var tableView: UITableView  =   UITableView()
+    let alert = UIAlertController(title: "Downloading Data", message: "0%", preferredStyle: UIAlertControllerStyle.Alert)
     //var shouldConnect = false
     
     // BLE
     var centralManager : CBCentralManager!
     var blePeripheral : CBPeripheral!
     
-    // IR Temp UUIDs
+    // UUIDS for services offered by BLE device
     let RXDataUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
     let TXDataUUID   = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     let UARTServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
     let deviceName = "Adafruit Bluefruit LE"
+    var data = Array<Int>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up title label
-        titleLabel = UILabel()
-        titleLabel.text = "BLE TAG"
+        titleLabel.text = "AdaFruit Data Retriever"
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-        titleLabel.sizeToFit()
-        titleLabel.center = CGPoint(x: self.view.frame.midX, y: self.titleLabel.bounds.midY+28)
-        self.view.addSubview(titleLabel)
+        titleLabel.textAlignment = NSTextAlignment.Center
         
-        // Set up status label
-        statusLabel = UILabel()
         statusLabel.textAlignment = NSTextAlignment.Center
         statusLabel.text = "Loading..."
         statusLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12)
-        statusLabel.sizeToFit()
-        statusLabel.frame = CGRect(x: self.view.frame.origin.x, y: self.titleLabel.frame.maxY, width: self.view.frame.width, height: self.statusLabel.bounds.height)
-        self.view.addSubview(statusLabel)
         
-        tableView.frame = CGRectMake(0, 100, 420, 500);
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         self.tableView.addSubview(self.refreshControl)
-        
-        self.view.addSubview(tableView)
 
-        // Do any additional setup after loading the view.
-        // Initialize central manager on load
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
+        alert.addAction(UIAlertAction(title: "Disconnect", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+            case .Cancel:
+                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+            case .Destructive:
+                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+            }
+        }))
+    }
+    
+    func sendDataToServer() throws {
+        self.tData.retrieveData()
+        let json = ["title":"Trail Counter Data" , "dict": tData.dataDict]
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+        
+        // create post request
+        let url = NSURL(string: "http://demo1679746.mockable.io/data")!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // insert json data to the request
+        request.HTTPBody = jsonData
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data: NSData?, response:NSURLResponse?,
+            error: NSError?) -> Void in
+                print(error?.code)
+            })
+        
+        task.resume()
+    }
+    
+    func disconnect(alert: UIAlertAction) {
+        self.alert.message = "0%"
+        self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+    }
+    
+    @IBAction func buttonAction(sender: UIButton) {
+        // send the stored data to web server and then delete it
+        print("Going to try")
+        do {
+            try self.sendDataToServer()
+            self.tData.removeData()
+            print("Sent")
+        } catch { print("DID NOT SEND") }
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,15 +125,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             self.statusLabel.text = "Searching for BLE Devices"
         }
         else {
-            // Can have different conditions for all states if needed - print generic message for now
+            // print this since the device is not powered on
             print("Bluetooth switched off or not initialized")
         }
     }
     
     // Check out the discovered peripherals to find Device Tag
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        //let nameOfDeviceFound = (advertisementData as NSDictionary).objectForKey(CBAdvertisementDataLocalNameKey) as? NSString
-        //print(nameOfDeviceFound)
         var nameOfDeviceFound = ""
         if let txt = peripheral.name {
             nameOfDeviceFound = txt
@@ -106,26 +143,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             peripherals.insert(peripheral)
             tableView.reloadData()
         }
-        // we need to set the name of we can check against an ID
-        //print("Device Found: " + nameOfDeviceFound)
-        //print("Device Name: " + deviceName)
-        //print(shouldConnect)
-        //print(nameOfDeviceFound)
-        //if (shouldConnect) {
-        //    print("Found the device!")
-            // Update Status Label
-        //    self.statusLabel.text = "BLE Device Tag Found"
-            // Stop scanning
-        //    self.centralManager.stopScan()
-            // Set as the peripheral to use and establish connection
-        //    self.blePeripheral = currentPeripheral
-        //    self.blePeripheral.delegate = self
-        //    self.centralManager.connectPeripheral(blePeripheral, options: nil)
-            //print(peripheral)
-        //}
-        //else {
-        //    self.statusLabel.text = "BLE Device Tag NOT Found"
-        //}
     }
     
     // Discover services of the peripheral
@@ -144,8 +161,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 // Discover characteristics of Adafruit
                 peripheral.discoverCharacteristics(nil, forService: thisService)
             }
-            // Uncomment to print list of UUIDs
-            //println(thisService.UUID)
         }
     }
     
@@ -159,18 +174,37 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             let dataBytes = characteristic.value
             let dataLength = dataBytes!.length
             var dataArray = [UInt8](count: dataLength, repeatedValue: 0)
-            dataBytes!.getBytes(&dataArray, length: dataLength * sizeof(Int16))
-            if let str = String(bytes: dataArray, encoding: NSUTF8StringEncoding) {
-                print(str)
+            dataBytes!.getBytes(&dataArray, length: dataLength * sizeof(UInt8))
+            if isFirst == 1 {
+                if let str = String(bytes: dataArray, encoding: NSUTF8StringEncoding) {
+                    self.size = Int(str)!
+                }
+                isFirst = 0
+            }
+            else {
+                if self.counter <= self.size {
+                    for d in dataArray {
+                        data.append(Int(d))
+                        self.counter = self.counter + 1
+                        self.alert.message = String(Float(self.counter) / Float(self.size) * 100.0) + "%"
+                    }
+                    if self.counter == self.size {
+                        self.tData.saveData(data)
+                        self.counter = 0
+                        self.isFirst = 1
+                        data = Array<Int>()
+                        self.alert.message = "0%"
+                        self.alert.dismissViewControllerAnimated(true, completion: nil)
+                        self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+                    }
+                }
             }
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?)
-    {
-        //print("peripheral:\(peripheral) and service:\(service)")
-        for characteristic in service.characteristics!
-        {
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        
+        for characteristic in service.characteristics! {
             peripheral.setNotifyValue(true, forCharacteristic: characteristic)
         }
     }
@@ -182,17 +216,15 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     //UITableView methods
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         
         let peripheral = peripherals[peripherals.startIndex.advancedBy(indexPath.row)]
-        cell.textLabel?.text = peripheral.name! + "                       Connect"
+        cell.textLabel?.text = peripheral.name!
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return peripherals.count
     }
     
@@ -211,6 +243,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             self.blePeripheral = currentPeripheral
             self.blePeripheral.delegate = self
             self.centralManager.connectPeripheral(blePeripheral, options: nil)
+            self.presentViewController(alert, animated: true, completion: nil)
             //print(peripheral)
         }
         else {

@@ -13,6 +13,7 @@
 		D5CA47DA1CB5A4F60032872E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CA47D81CB5A4F60032872E /* LaunchScreen.storyboard */; };
 		D5CA47E91CB5B4890032872E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CA47E81CB5B4890032872E /* CoreBluetooth.framework */; };
 		D5CA47F21CB5C9E70032872E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA47F11CB5C9E70032872E /* ViewController.swift */; };
+		D5EB86391CBDA24E0044A914 /* TrailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB86381CBDA24E0044A914 /* TrailData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D5CA47DB1CB5A4F60032872E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5CA47E81CB5B4890032872E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		D5CA47F11CB5C9E70032872E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5EB86381CBDA24E0044A914 /* TrailData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				D5CA47D81CB5A4F60032872E /* LaunchScreen.storyboard */,
 				D5CA47DB1CB5A4F60032872E /* Info.plist */,
 				D5CA47F11CB5C9E70032872E /* ViewController.swift */,
+				D5EB86381CBDA24E0044A914 /* TrailData.swift */,
 			);
 			path = TrailCounterApp;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				D5CA47F21CB5C9E70032872E /* ViewController.swift in Sources */,
 				D5CA47D01CB5A4F60032872E /* AppDelegate.swift in Sources */,
+				D5EB86391CBDA24E0044A914 /* TrailData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
