@@ -20,6 +20,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     var isFirst = 1
     var size = 0
     var counter = 0
+    var date : NSDate?
+    var dateNotWritten = 1
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -29,6 +31,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }()
     
     var peripherals: Set<CBPeripheral> = Set<CBPeripheral>()
+    var txCharacteristic:CBCharacteristic?
     var currentPeripheral: CBPeripheral?
     let alert = UIAlertController(title: "Downloading Data", message: "0%", preferredStyle: UIAlertControllerStyle.Alert)
     //var shouldConnect = false
@@ -65,22 +68,24 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         alert.addAction(UIAlertAction(title: "Disconnect", style: .Default, handler: { action in
             switch action.style{
             case .Default:
-                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+                self.disconnectHandler()
             case .Cancel:
-                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+                self.disconnectHandler()
             case .Destructive:
-                self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+                self.disconnectHandler()
             }
         }))
+        
+        self.date = NSDate()
     }
     
     func sendDataToServer() throws {
         self.tData.retrieveData()
-        let json = ["title":"Trail Counter Data" , "dict": tData.dataDict]
+        let json = ["title":"Trail Counter Data P442" , "Data": tData.dataDict]
         let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
         
         // create post request
-        let url = NSURL(string: "http://demo1679746.mockable.io/data")!
+        let url = NSURL(string: "http://burrow.soic.indiana.edu:50000/data.php")!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -96,7 +101,11 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         task.resume()
     }
     
-    func disconnect(alert: UIAlertAction) {
+    func disconnectHandler() {
+        self.counter = 0
+        self.isFirst = 1
+        self.dateNotWritten = 1
+        data = Array<Int>()
         self.alert.message = "0%"
         self.centralManager.cancelPeripheralConnection(self.blePeripheral)
     }
@@ -190,12 +199,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                     }
                     if self.counter == self.size {
                         self.tData.saveData(data)
-                        self.counter = 0
-                        self.isFirst = 1
-                        data = Array<Int>()
-                        self.alert.message = "0%"
+                        self.disconnectHandler()
                         self.alert.dismissViewControllerAnimated(true, completion: nil)
-                        self.centralManager.cancelPeripheralConnection(self.blePeripheral)
                     }
                 }
             }
@@ -205,13 +210,34 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         
         for characteristic in service.characteristics! {
+            if (characteristic.UUID == TXDataUUID) {
+                txCharacteristic = characteristic
+            }
             peripheral.setNotifyValue(true, forCharacteristic: characteristic)
         }
+        
+        if self.dateNotWritten == 1 {
+            self.date = NSDate()
+            let timeData = String(self.date)
+            print("trying to write date")
+            writeString(timeData)
+            self.dateNotWritten = 0
+        }
+    }
+    
+    func writeString(string: NSString) {
+        let data = NSData(bytes: string.UTF8String, length: string.length)
+        writeRawData(data)
     }
     
     // If disconnected, start searching again
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         self.statusLabel.text = "Disconnected"
+        self.counter = 0
+        self.isFirst = 1
+        self.dateNotWritten = 1
+        data = Array<Int>()
+        self.alert.message = "0%"
         central.scanForPeripheralsWithServices(nil, options: nil)
     }
     
@@ -256,6 +282,60 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.centralManager.scanForPeripheralsWithServices(nil, options: nil)
         self.tableView.reloadData()
         refreshControl.endRefreshing()
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        print(error)
+    }
+    
+    // i did not write this, just modified for my usage
+    //  Created by Collin Cunningham on 10/29/14.
+    //  Copyright (c) 2014 Adafruit Industries. All rights reserved.
+    func writeRawData(data:NSData) {
+        
+        var writeType:CBCharacteristicWriteType
+            
+        writeType = CBCharacteristicWriteType.WithResponse
+        
+        
+        //TODO: Test packetization
+        
+        //send data in lengths of <= 20 bytes
+        let dataLength = data.length
+        let limit = 20
+        
+        //Below limit, send as-is
+        if dataLength <= limit {
+            print("writing")
+            print(dataLength)
+            print(txCharacteristic)
+            self.blePeripheral.writeValue(data, forCharacteristic: txCharacteristic!, type: writeType)
+        }
+            
+            //Above limit, send in lengths <= 20 bytes
+        else {
+            
+            var len = limit
+            var loc = 0
+            var idx = 0 //for debug
+            
+            while loc < dataLength {
+                
+                let rmdr = dataLength - loc
+                if rmdr <= len {
+                    len = rmdr
+                }
+                
+                let range = NSMakeRange(loc, len)
+                var newBytes = [UInt8](count: len, repeatedValue: 0)
+                data.getBytes(&newBytes, range: range)
+                let newData = NSData(bytes: newBytes, length: len)
+                self.blePeripheral.writeValue(newData, forCharacteristic: self.txCharacteristic!, type: writeType)
+                loc += len
+                idx += 1
+            }
+        }
+        
     }
 
 }
