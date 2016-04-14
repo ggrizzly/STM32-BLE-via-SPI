@@ -25,7 +25,7 @@ static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', '
 uint8_t tx_data_preamble[22] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t rdata[20] = { 0 };
-uint8_t bigData[256];
+uint8_t bigData[4096];
 int connectedFLAG = 0;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
@@ -94,7 +94,7 @@ void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
       }
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, 208, rdata);
-      chThdSleepMilliseconds(100);
+      chThdSleepMilliseconds(2000);
       send_data += 191;
       size -= 191;
     } 
@@ -111,7 +111,7 @@ void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
       //tx_data_plus[3] = (uint8_t) size;
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, size + 17, rdata);
-      chThdSleepMilliseconds(100);
+      chThdSleepMilliseconds(2000);
       size = 0;
     }
   }
@@ -299,7 +299,7 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 /* } */
 
 
-static THD_WORKING_AREA(waBigDataThread,512);
+static THD_WORKING_AREA(waBigDataThread,256);
 static THD_FUNCTION(bigDataThread,arg) {
   UNUSED(arg);
   chThdSleepMicroseconds(1);
@@ -328,12 +328,12 @@ static THD_FUNCTION(bigDataThread,arg) {
       chThdSleepMilliseconds(5000);
     }
     if (connectedFLAG) {
-      preamble(sizeChars, 256);
+      preamble(sizeChars, 4096);
       chprintf((BaseSequentialStream*)&SD1, "Preamble Sent\r\n");
       chThdSleepMilliseconds(2000);
-      WriteReadWrapper(bigData, 256);
+      WriteReadWrapper(bigData, 4096);
       chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
-      chThdSleepMilliseconds(20000);
+      chThdSleepMilliseconds(5000);
       WriteRead(tx_disconnect, 20, rx_tmp_data);
       chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
       connectedFLAG = 0;
@@ -484,7 +484,7 @@ int main(void) {
 
   uint32_t i;
 
-  for (i = 0; i < 256; i++) {
+  for (i = 0; i < 4096; i++) {
     if (i % 5 == 0) {
       bigData[i] = '1';
     }

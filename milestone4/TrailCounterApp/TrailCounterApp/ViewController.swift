@@ -105,6 +105,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.counter = 0
         self.isFirst = 1
         self.dateNotWritten = 1
+        self.statusLabel.text = "Disconnected"
         data = Array<Int>()
         self.alert.message = "0%"
         self.centralManager.cancelPeripheralConnection(self.blePeripheral)
@@ -238,6 +239,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.dateNotWritten = 1
         data = Array<Int>()
         self.alert.message = "0%"
+        self.alert.dismissViewControllerAnimated(true, completion: nil)
         central.scanForPeripheralsWithServices(nil, options: nil)
     }
     
