@@ -20,12 +20,13 @@ static uint8_t tx_advstart[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A',
 static uint8_t tx_advstop[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'O', 'P', 'A', 'D', 'V'};
 static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'G', 'E', 'T', 'C', 'O', 'N', 'N'};
 static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
-static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X', 0x5C, 0x72, 0x5C, 0x6E};
+static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X'};
 
 uint8_t tx_data_preamble[22] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
 uint8_t rdata[20] = { 0 };
 uint8_t bigData[4096];
+uint8_t curEpochTime[30];
 int connectedFLAG = 0;
 
 /* SPI configuration, sets up PortA Bit 8 as the chip select for the pressure sensor */
@@ -94,7 +95,7 @@ void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
       }
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, 208, rdata);
-      chThdSleepMilliseconds(2000);
+      chThdSleepMilliseconds(4000);
       send_data += 191;
       size -= 191;
     } 
@@ -111,7 +112,7 @@ void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
       //tx_data_plus[3] = (uint8_t) size;
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, size + 17, rdata);
-      chThdSleepMilliseconds(2000);
+      chThdSleepMilliseconds(4000);
       size = 0;
     }
   }
@@ -237,6 +238,7 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   receive_data[3] = recSize;
   receive_data++;
   i = 0;
+
   while(i < recSize) {
     spiReceive(&SPID1, 1, receive_data);
     receive_data++;
@@ -299,7 +301,7 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
 /* } */
 
 
-static THD_WORKING_AREA(waBigDataThread,256);
+static THD_WORKING_AREA(waBigDataThread,512);
 static THD_FUNCTION(bigDataThread,arg) {
   UNUSED(arg);
   chThdSleepMicroseconds(1);
@@ -328,14 +330,24 @@ static THD_FUNCTION(bigDataThread,arg) {
       chThdSleepMilliseconds(5000);
     }
     if (connectedFLAG) {
+      //WriteRead(tx_uartrx, 16, curEpochTime);
+      // chprintf((BaseSequentialStream*)&SD1, "Current Epoch Time Is:\r\n");
+      // int i = 0;
+      // while(i < 26) {
+      //   chprintf((BaseSequentialStream*)&SD1, "%d", curEpochTime[i]);
+      //   i++;
+      // }
+      //chprintf((BaseSequentialStream*)&SD1, "%f\r\n\r\n", atof(curEpochTime+4));
+      //chThdSleepMicroseconds(2000);
+
       preamble(sizeChars, 4096);
       chprintf((BaseSequentialStream*)&SD1, "Preamble Sent\r\n");
       chThdSleepMilliseconds(2000);
       WriteReadWrapper(bigData, 4096);
       chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
       chThdSleepMilliseconds(5000);
-      WriteRead(tx_disconnect, 20, rx_tmp_data);
-      chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
+      //WriteRead(tx_disconnect, 20, rx_tmp_data);
+      //chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
       connectedFLAG = 0;
       chThdSleepMilliseconds(100);
       WriteRead(tx_advstop, 21, tmp_data);
@@ -399,7 +411,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     //int size = 20;
     chprintf(chp, "Received:");
     while(i < 20) {
-      chprintf(chp, " %c", rx_data[i]);  
+      chprintf(chp, "0x%x ", rx_data[i]);  
       i++;
     }
     chprintf(chp, "\n\r");
