@@ -10,6 +10,9 @@
 #include <math.h>
 
 #define UNUSED(x) (void)(x)
+#define BIG_DATA 24000
+//#define BIG_DATA 2304
+
 static THD_WORKING_AREA(waShell,2048);
 
 static thread_t *shelltp1;
@@ -19,13 +22,17 @@ static uint8_t headerSize = 3;
 static uint8_t tx_advstart[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'A', 'R', 'T', 'A', 'D', 'V'};
 static uint8_t tx_advstop[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'S', 'T', 'O', 'P', 'A', 'D', 'V'};
 static uint8_t tx_getconn[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'G', 'E', 'T', 'C', 'O', 'N', 'N'};
-static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
-static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X'};
+//static uint8_t tx_disconnect[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'G', 'A', 'P', 'D', 'I', 'S', 'C', 'O', 'N', 'N', 'E', 'C', 'T'};
 
+//Need to figure out how to read the code in to reset the time.
+//static uint8_t tx_uartrx[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'R', 'X'};
+//
+
+//uint8_t tx_data_plus[208];
 uint8_t tx_data_preamble[22] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
-uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
+
 uint8_t rdata[20] = { 0 };
-uint8_t bigData[4096];
+uint8_t bigData[BIG_DATA];
 uint8_t curEpochTime[30];
 int connectedFLAG = 0;
 
@@ -37,24 +44,6 @@ static SPIConfig bluefruit_config = {
   SPI_CR1_BR_2 | SPI_CR1_BR_1,
   0
 };
-
-/*
-TODO:
-Connect to phone and tinker with advertising data:
-- Find the minimum interval on which the cell connects
-- Alter intervals with AT+GAPINTERVALS (For future, power consumption)
-- Two commands we have also is AT+GAPSTARTADV and STOPADV.
-- During this time, use the command AT+GAPGETCONN
-  -> 1 if we are connected
-  -> 0 if we are not
-- We advertise for x amount of times
-  -> If we are not connected during any of those times go back to sleep
-  -> If we are, get ack'd and send all the data accumulated from the trail counter
-
-Other:
-- Set the device name, so that our future app looks for the name automatically.
-- Turn off LEDS
-*/
 
 void preamble(char* digits, uint32_t size) {
   /* Turn the size into a character array of digits */
@@ -68,6 +57,7 @@ void preamble(char* digits, uint32_t size) {
     digits[i] = '0';
     i--;
   }
+  digits[5] = 0;
 
   /* Prepare the preamble */
   uint8_t preambleIndex = 17;
@@ -84,18 +74,35 @@ void preamble(char* digits, uint32_t size) {
   chThdSleepMilliseconds(100);
 }
 
+void MainWrapper(uint8_t *data, uint32_t size) {
+  while (size > 0) {
+    if(size >= 2304) {
+      WriteReadWrapper(data, 2304);
+      chThdSleepMilliseconds(6700);
+      data+=2304;
+      size -= 2304;
+    } 
+    else {
+      WriteReadWrapper(data,size);
+      chThdSleepMilliseconds(1000);
+      data+=size;
+      size = 0;
+    }
+  }
+}
+
 void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
   uint32_t i = 0;
-
+  uint8_t tx_data_plus[208] = {0x10, 0x00, 0x0A, 0xD0, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '='};
   /* Send the packets! */
   while (size > 0) {
-    if(size > 191) {
+    if(size >= 191) {
       for (i = 17; i < 208; i++) {
         tx_data_plus[i] = send_data[i - 17];
       }
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, 208, rdata);
-      chThdSleepMilliseconds(4000);
+      chThdSleepMilliseconds(100);
       send_data += 191;
       size -= 191;
     } 
@@ -112,7 +119,7 @@ void WriteReadWrapper(uint8_t *send_data, uint32_t size) {
       //tx_data_plus[3] = (uint8_t) size;
       chThdSleepMilliseconds(100);
       WriteRead(tx_data_plus, size + 17, rdata);
-      chThdSleepMilliseconds(4000);
+      chThdSleepMilliseconds(2000);
       size = 0;
     }
   }
@@ -141,12 +148,12 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
         spiExchange(&SPID1, 1, &temp, &rec_temp);
         //spiSend(&SPID1, 1, &temp);
         //spiReceive(&SPID1, 1, &rec_temp);
-        if(rec_temp == 0xFE) {
+        if(rec_temp != 0xFE) {
           break;
         } else {
         chThdSleepMicroseconds(10);
         spiUnselect(&SPID1);                 /* Slave Select de-assertion. */
-        chThdSleepMicroseconds(100);
+        chThdSleepMicroseconds(2000);
         spiSelect(&SPID1);
         }
       }
@@ -248,59 +255,6 @@ void WriteRead(uint8_t *send_data, uint8_t size, uint8_t *receive_data) {
   spiReleaseBus(&SPID1);               /* Ownership release.               */
 }
 
-/* Thread that blinks North LED as an "alive" indicator */
-// static THD_WORKING_AREA(waCounterThread,128);
-// static THD_FUNCTION(counterThread,arg) {
-//   UNUSED(arg);
-//   while (TRUE) {
-//     palSetPad(GPIOE, GPIOE_LED3_RED);
-//     chThdSleepMilliseconds(500);
-//     palClearPad(GPIOE, GPIOE_LED3_RED);
-//     chThdSleepMilliseconds(500);
-//   }
-// }
-
-// static THD_WORKING_AREA(waAdvertisingThread,128);
-// static THD_FUNCTION(advertisingThread,arg) {
-//   UNUSED(arg);
-//   uint8_t rx_data[20];
-//   uint8_t tmp_data[20];
-
-//   while (TRUE) {
-//     chThdSleepMilliseconds(500);
-//     WriteRead(tx_advstart, 22, tmp_data);
-//     chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
-//     chThdSleepMilliseconds(10000);
-//     WriteRead(tx_getconn, 21, rx_data);
-//     if (rx_data[4] == '1') { //Pump Data if we're here
-//       chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
-//       connectedFLAG = 1;
-//       chThdSleepMilliseconds(10000);
-//     } else {
-//       chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
-//       WriteRead(tx_advstop, 21, tmp_data);
-//       connectedFLAG = 0;
-//     }
-//     chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
-//     chThdSleepMilliseconds(5000);
-//   }
-// }
-
-/* Thread for sending Hi all the time */
-/* static THD_WORKING_AREA(waMessageThread,128); */
-/* static THD_FUNCTION(messageThread,arg) { */
-/*   //uint8_t tx_data_test[] = {0x10, 0x00, 0x0A, 0x13, 'A', 'T', '+', 'B', 'L', 'E', 'U', 'A', 'R', 'T', 'T', 'X', '=', 'h', 'i', 0x0D, 0x0A}; */
-/*   //uint8_t rx_data_test[20]; */
-/*   UNUSED(arg); */
-/*   char sizeChars[5]; */
-/*   while (TRUE) { */
-/*     chThdSleepMilliseconds(500); */
-/*     preamble(sizeChars, 2048); */
-/*     chThdSleepMilliseconds(500); */
-/*   } */
-/* } */
-
-
 static THD_WORKING_AREA(waBigDataThread,512);
 static THD_FUNCTION(bigDataThread,arg) {
   UNUSED(arg);
@@ -308,26 +262,72 @@ static THD_FUNCTION(bigDataThread,arg) {
   uint8_t rx_tmp_data[20];
   uint8_t rx_data[20];
   uint8_t tmp_data[20];
-  char sizeChars[5];
+  char sizeChars[6];
+  uint8_t adv = 1;
+  uint8_t conn_t = 0;
+  uint8_t tenSecCounter = 0;
+
+ /* while(TRUE) { */
+ /*    while (!connectedFLAG) { */
+ /*      chThdSleepMilliseconds(500); */
+ /*      WriteRead(tx_advstart, 22, tmp_data); */
+ /*      chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n"); */
+ /*      chThdSleepMilliseconds(10000); */
+ /*      WriteRead(tx_getconn, 21, rx_data); */
+ /*      if (rx_data[4] == '1') { //Pump Data if we're here */
+ /*        chprintf((BaseSequentialStream*)&SD1, "Connected\r\n"); */
+ /*        connectedFLAG = 1; */
+ /*        break; */
+ /*      } else { */
+ /*        chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n"); */
+ /*        WriteRead(tx_advstop, 21, tmp_data); */
+ /*        connectedFLAG = 0; */
+ /*      } */
+ /*      chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n"); */
+ /*      chThdSleepMilliseconds(5000); */
+ /*    } */
 
   while(TRUE) {
     while (!connectedFLAG) {
       chThdSleepMilliseconds(500);
       WriteRead(tx_advstart, 22, tmp_data);
       chprintf((BaseSequentialStream*)&SD1, "Advertising Started\r\n");
-      chThdSleepMilliseconds(10000);
-      WriteRead(tx_getconn, 21, rx_data);
-      if (rx_data[4] == '1') { //Pump Data if we're here
-        chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
-        connectedFLAG = 1;
-        break;
-      } else {
-        chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
+      adv = 1;
+      conn_t = 0;
+      tenSecCounter = 0;
+      while(adv) {
+  	chprintf((BaseSequentialStream*)&SD1, "%d", tenSecCounter);
+  	WriteRead(tx_getconn, 21, rx_data);
+  	if (rx_data[4] == '1') { //Pump Data if we're here
+  	  chprintf((BaseSequentialStream*)&SD1, "Connected\r\n");
+  	  connectedFLAG = 1;
+  	  conn_t = 1;
+  	  adv = 0;
+  	} else {
+  	  chprintf((BaseSequentialStream*)&SD1, "Not connected\r\n");
+  	  tenSecCounter += 1;
+  	  chThdSleepMilliseconds(1500);
+  	}
+  	if (tenSecCounter >= 10) {
+  	  adv = 0;
+  	  break;
+  	}
+      }
+      if (conn_t == 0) {
+  	chprintf((BaseSequentialStream*)&SD1, "No connection, Advertising Stopped\r\n");
         WriteRead(tx_advstop, 21, tmp_data);
         connectedFLAG = 0;
       }
-      chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
-      chThdSleepMilliseconds(5000);
+      if (conn_t == 1) {
+  	break;
+      }
+      else {
+  	adv = 1;
+  	conn_t = 0;
+  	tenSecCounter = 0;
+  	chprintf((BaseSequentialStream*)&SD1, "Shutting off\r\n");
+  	chThdSleepMilliseconds(2000);
+      }
     }
     if (connectedFLAG) {
       //WriteRead(tx_uartrx, 16, curEpochTime);
@@ -339,19 +339,18 @@ static THD_FUNCTION(bigDataThread,arg) {
       // }
       //chprintf((BaseSequentialStream*)&SD1, "%f\r\n\r\n", atof(curEpochTime+4));
       //chThdSleepMicroseconds(2000);
-
-      preamble(sizeChars, 4096);
+      chThdSleepMilliseconds(1500);
+      preamble(sizeChars, BIG_DATA);
       chprintf((BaseSequentialStream*)&SD1, "Preamble Sent\r\n");
       chThdSleepMilliseconds(2000);
-      WriteReadWrapper(bigData, 4096);
+      MainWrapper(bigData, BIG_DATA);
       chprintf((BaseSequentialStream*)&SD1, "BigData Sent\r\n");
-      chThdSleepMilliseconds(5000);
       //WriteRead(tx_disconnect, 20, rx_tmp_data);
       //chprintf((BaseSequentialStream*)&SD1, "Disconnect Sent\r\n");
       connectedFLAG = 0;
       chThdSleepMilliseconds(100);
-      WriteRead(tx_advstop, 21, tmp_data);
-      chprintf((BaseSequentialStream*)&SD1, "Advertising Stopped\r\n");
+      //WriteRead(tx_advstop, 21, tmp_data);
+      //chprintf((BaseSequentialStream*)&SD1, "Advertising Stopped\r\n");
       chThdSleepMilliseconds(10000);
     }
     chThdSleepMilliseconds(1000);
@@ -411,7 +410,7 @@ static void cmd_bluefruit(BaseSequentialStream *chp, int argc, char *argv[]) {
     //int size = 20;
     chprintf(chp, "Received:");
     while(i < 20) {
-      chprintf(chp, "0x%x ", rx_data[i]);  
+      chprintf(chp, "%c ", rx_data[i]);  
       i++;
     }
     chprintf(chp, "\n\r");
@@ -496,7 +495,7 @@ int main(void) {
 
   uint32_t i;
 
-  for (i = 0; i < 4096; i++) {
+  for (i = 0; i < BIG_DATA; i++) {
     if (i % 5 == 0) {
       bigData[i] = '1';
     }
@@ -509,9 +508,6 @@ int main(void) {
 
   shelltp1 = shellCreate(&shell_cfg1, sizeof(waShell), NORMALPRIO);
   chThdCreateStatic(waBigDataThread, sizeof(waBigDataThread), NORMALPRIO+2, bigDataThread, NULL);
-  //chThdCreateStatic(waCounterThread, sizeof(waCounterThread), NORMALPRIO+1, counterThread, NULL);
-  //chThdCreateStatic(waMessageThread, sizeof(waMessageThread), NORMALPRIO+1, messageThread, NULL);
-  //chThdCreateStatic(waAdvertisingThread, sizeof(waAdvertisingThread), NORMALPRIO+1, advertisingThread, NULL);
   while (TRUE) {
     chEvtDispatch(fhandlers, chEvtWaitOne(ALL_EVENTS));
   }
