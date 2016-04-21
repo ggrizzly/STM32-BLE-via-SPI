@@ -33,6 +33,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     var peripherals: Set<CBPeripheral> = Set<CBPeripheral>()
     var txCharacteristic:CBCharacteristic?
     let alert = UIAlertController(title: "Downloading Data: Do NOT disconnect", message: "0%", preferredStyle: UIAlertControllerStyle.Alert)
+    let alert2 = UIAlertController(title: "Sending Data to server.", message: "", preferredStyle: UIAlertControllerStyle.Alert)
     //var shouldConnect = false
     
     // BLE
@@ -79,6 +80,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     func sendDataToServer() throws {
+        self.presentViewController(alert2, animated: true, completion: nil)
         self.tData.retrieveData()
         let json = ["title":"Trail Counter Data P442" , "Data": tData.dataDict]
         let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
@@ -94,7 +96,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data: NSData?, response:NSURLResponse?,
             error: NSError?) -> Void in
-                print(error?.code)
+              self.alert2.dismissViewControllerAnimated(true, completion: nil)
+              print(error?.code)
             })
         
         task.resume()
@@ -110,6 +113,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.tableView.reloadData()
         self.centralManager.cancelPeripheralConnection(self.blePeripheral)
         self.peripherals = Set<CBPeripheral>()
+        self.tableView.reloadData()
     }
     
     @IBAction func buttonAction(sender: UIButton) {
@@ -205,7 +209,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                         self.counter = self.counter + 1
                         self.alert.message = String(Float(self.counter) / Float(self.size) * 100.0) + "%"
                     }
-                    if self.counter == self.size {
+                    if self.counter >= self.size {
                         self.tData.saveData(data)
                         self.disconnectHandler()
                         self.alert.dismissViewControllerAnimated(true, completion: nil)

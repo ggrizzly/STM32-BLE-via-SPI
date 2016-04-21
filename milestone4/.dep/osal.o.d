@@ -1,11 +1,13 @@
 build/obj/osal.o: ../ChibiOS/os/hal/osal/rt/osal.c \
  ../ChibiOS/os/hal/osal/rt/osal.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stddef.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdint.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdint.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_default_types.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/features.h \
- /nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdbool.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/stdint.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/machine/_default_types.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/features.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/_intsup.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/_stdint.h \
+ /usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h \
  ../ChibiOS/os/rt/include/ch.h \
  ../ChibiOS/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h chconf.h \
  ../ChibiOS/os/rt/include/chlicense.h \
@@ -41,17 +43,21 @@ build/obj/osal.o: ../ChibiOS/os/hal/osal/rt/osal.c \
 
 ../ChibiOS/os/hal/osal/rt/osal.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stddef.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdint.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/stdint.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/stdint.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/machine/_default_types.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/machine/_default_types.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/arm-none-eabi/include/sys/features.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/features.h:
 
-/nfs/nfs5/home/research/hardware/arm2/gcc-arm-embedded/gcc-arm-none-eabi-4_8-2014q2/lib/gcc/arm-none-eabi/4.8.4/include/stdbool.h:
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/_intsup.h:
+
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/arm-none-eabi/include/sys/_stdint.h:
+
+/usr/local/Cellar/arm-none-eabi-gcc/20150921/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h:
 
 ../ChibiOS/os/rt/include/ch.h:
 

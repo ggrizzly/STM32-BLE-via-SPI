@@ -10,7 +10,7 @@
 #include <math.h>
 
 #define UNUSED(x) (void)(x)
-#define BIG_DATA 24000
+#define BIG_DATA 36000
 //#define BIG_DATA 2304
 
 static THD_WORKING_AREA(waShell,2048);
@@ -78,7 +78,7 @@ void MainWrapper(uint8_t *data, uint32_t size) {
   while (size > 0) {
     if(size >= 2304) {
       WriteReadWrapper(data, 2304);
-      chThdSleepMilliseconds(6700);
+      chThdSleepMilliseconds(7000);
       data+=2304;
       size -= 2304;
     } 
