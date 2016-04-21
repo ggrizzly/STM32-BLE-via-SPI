@@ -205,7 +205,10 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             else {
                 if self.counter <= self.size {
                     for d in dataArray {
-                        data.append(Int(d))
+                        // this is just a temporary encoding since we are testing
+                        // by sending ints
+                        let temp = String(bytes: [d], encoding: NSUTF8StringEncoding)
+                        data.append(Int(temp!)!)
                         self.counter = self.counter + 1
                         self.alert.message = String(Float(self.counter) / Float(self.size) * 100.0) + "%"
                     }
