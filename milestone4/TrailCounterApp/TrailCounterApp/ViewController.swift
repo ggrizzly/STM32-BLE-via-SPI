@@ -32,8 +32,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     var peripherals: Set<CBPeripheral> = Set<CBPeripheral>()
     var txCharacteristic:CBCharacteristic?
-    var currentPeripheral: CBPeripheral?
-    let alert = UIAlertController(title: "Downloading Data", message: "0%", preferredStyle: UIAlertControllerStyle.Alert)
+    let alert = UIAlertController(title: "Downloading Data: Do NOT disconnect", message: "0%", preferredStyle: UIAlertControllerStyle.Alert)
     //var shouldConnect = false
     
     // BLE
@@ -108,7 +107,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.statusLabel.text = "Disconnected"
         data = Array<Int>()
         self.alert.message = "0%"
+        self.tableView.reloadData()
         self.centralManager.cancelPeripheralConnection(self.blePeripheral)
+        self.peripherals = Set<CBPeripheral>()
     }
     
     @IBAction func buttonAction(sender: UIButton) {
@@ -187,7 +188,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             dataBytes!.getBytes(&dataArray, length: dataLength * sizeof(UInt8))
             if isFirst == 1 {
                 if let str = String(bytes: dataArray, encoding: NSUTF8StringEncoding) {
-                    self.size = Int(str)!
+                    if str.characters.count < 6 {
+                        self.size = Int(str)!
+                    }
+                    else {
+                        self.size = 0
+                        self.disconnectHandler()
+                    }
                 }
                 isFirst = 0
             }
@@ -222,6 +229,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             let timeData = String(self.date)
             print("trying to write date")
             writeString(timeData)
+            print("wrote data")
             self.dateNotWritten = 0
         }
     }
@@ -239,6 +247,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.dateNotWritten = 1
         data = Array<Int>()
         self.alert.message = "0%"
+        self.peripherals = Set<CBPeripheral>()
         self.alert.dismissViewControllerAnimated(true, completion: nil)
         central.scanForPeripheralsWithServices(nil, options: nil)
     }
@@ -259,8 +268,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         var peripheralName = ""
-        currentPeripheral = peripherals[peripherals.startIndex.advancedBy(indexPath.row)]
-        if let name = currentPeripheral!.name {
+        self.blePeripheral = peripherals[peripherals.startIndex.advancedBy(indexPath.row)]
+        if let name = self.blePeripheral!.name {
             peripheralName = name
         }
         if (peripheralName == deviceName) {
@@ -268,7 +277,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             // Stop scanning
             self.centralManager.stopScan()
             // Set as the peripheral to use and establish connection
-            self.blePeripheral = currentPeripheral
             self.blePeripheral.delegate = self
             self.centralManager.connectPeripheral(blePeripheral, options: nil)
             self.presentViewController(alert, animated: true, completion: nil)

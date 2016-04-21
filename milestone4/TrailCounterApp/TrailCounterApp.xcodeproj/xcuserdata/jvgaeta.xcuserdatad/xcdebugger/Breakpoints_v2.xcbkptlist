@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrailCounterApp/ViewController.swift"
-            timestampString = "482352615.588761"
+            timestampString = "482893829.440245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,7 +42,7 @@
                   moduleName = "TrailCounterApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
-                  timestampString = "482350752.03586"
+                  timestampString = "482888013.094299"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -57,7 +57,7 @@
                   moduleName = "TrailCounterApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
-                  timestampString = "482350752.036009"
+                  timestampString = "482888013.094584"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -72,7 +72,7 @@
                   moduleName = "TrailCounterApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
-                  timestampString = "482350752.036098"
+                  timestampString = "482888013.094926"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -87,7 +87,7 @@
                   moduleName = "TrailCounterApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
-                  timestampString = "482350752.036196"
+                  timestampString = "482888013.095139"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -104,7 +104,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrailCounterApp/ViewController.swift"
-            timestampString = "482352615.588761"
+            timestampString = "482893829.440245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -120,7 +120,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrailCounterApp/ViewController.swift"
-            timestampString = "482352615.588761"
+            timestampString = "482893829.440245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrailCounterApp/ViewController.swift"
-            timestampString = "482273649.277459"
+            timestampString = "482893082.484508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "sendDataToServer()"
             landmarkType = "5">
             <Locations>
@@ -175,6 +175,150 @@
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "peripheral(_:didDiscoverCharacteristicsForService:error:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "peripheral(_:didDiscoverServices:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrailCounterApp.ViewController.peripheral (__ObjC.CBPeripheral, didDiscoverServices : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()"
+                  moduleName = "TrailCounterApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
+                  timestampString = "482889511.638119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrailCounterApp.ViewController.peripheral (__ObjC.CBPeripheral, didDiscoverServices : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()"
+                  moduleName = "TrailCounterApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jvgaeta/Desktop/P442WifiTrailCounterProject/milestone4/TrailCounterApp/TrailCounterApp/ViewController.swift"
+                  timestampString = "482889511.638382"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "peripheral(_:didUpdateValueForCharacteristic:error:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrailCounterApp/ViewController.swift"
+            timestampString = "482893829.440245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "peripheral(_:didUpdateValueForCharacteristic:error:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
