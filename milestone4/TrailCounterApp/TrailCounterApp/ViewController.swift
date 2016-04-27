@@ -207,8 +207,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                     for d in dataArray {
                         // this is just a temporary encoding since we are testing
                         // by sending ints
-                        let temp = String(bytes: [d], encoding: NSUTF8StringEncoding)
-                        data.append(Int(temp!)!)
+                        if let temp = String(bytes: [d], encoding: NSUTF8StringEncoding) {
+                           data.append(Int(temp)!)
+                        }
+                        else {
+                            data.append(-1)
+                        }
                         self.counter = self.counter + 1
                         self.alert.message = String(Float(self.counter) / Float(self.size) * 100.0) + "%"
                     }
