@@ -1,2 +1,2 @@
 # Web Server Address
-  * http://burrow.soic.indiana.edu:50000/
+  * http://burrow.soic.indiana.edu:52654
